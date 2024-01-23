@@ -1,5 +1,5 @@
 {
-  "name": "mm-notes",
+  "name": "katolan",
   "type": "module",
   "private": true,
   "version": "1.0.0",
@@ -7,14 +7,14 @@
   "description": "Development related notes",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/maomao1996/mm-notes.git"
+    "url": "git+https://github.com/acgtap/KatoLan.git"
   },
   "bugs": {
-    "url": "https://github.com/maomao1996/mm-notes/issues"
+    "url": "https://github.com/acgtap/KatoLan/issues"
   },
   "license": "MIT",
-  "homepage": "https://github.com/maomao1996/mm-notes#readme",
-  "author": "maomao1996 <1714487678@qq.com>",
+  "homepage": "https://github.com/acgtap/KatoLan#readme",
+  "author": "xiaomiao <2968608803@qq.com>",
   "scripts": {
     "dev": "cross-env NODE_ENV=development vitepress dev docs --port=8732",
     "build": "vitepress build docs",
