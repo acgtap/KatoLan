@@ -9,11 +9,11 @@ const links: { url: string; lastmod: PageData['lastUpdated'] }[] = []
 
 export default defineConfig({
   outDir: '../dist',
-  base: process.env.APP_BASE_PATH || '/',
+  base:  '/',
 
   lang: 'zh-CN',
-  title: '茂茂物语',
-  description: '茂茂的成长之路，包含前端常用知识、源码阅读笔记、各种奇淫技巧、日常提效工具等',
+  title: 'KatoLan',
+  description: '免费异地组网联机工具，快速、简洁、方便与朋友异地联机游戏！',
   head,
 
   lastUpdated: true,
@@ -38,7 +38,7 @@ export default defineConfig({
       label: '本页目录'
     },
 
-    socialLinks: [{ icon: 'github', link: 'https://github.com/maomao1996' }],
+    socialLinks: [{ icon: 'github', link: 'https://github.com/acgtap' }],
 
     footer: {
       message: '如有转载或 CV 的请标注本站原文地址',
