@@ -12,7 +12,7 @@ export default defineConfig({
   base:  '/',
 
   lang: 'zh-CN',
-  title: 'KatoLan',
+  title: 'KatoLan 免费异地组网联机工具，快速、简洁、方便与朋友异地联机游戏！超简单的虚拟局域网！',
   description: '免费异地组网联机工具，快速、简洁、方便与朋友异地联机游戏！',
   head,
 
