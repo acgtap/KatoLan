@@ -75,4 +75,7 @@ features:
     /* pointer-events: auto; */
     display: none;
 }
+  table{
+    margin:auto;
+  }
 </style>
