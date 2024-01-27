@@ -76,3 +76,7 @@
 .DocSearch {
   --docsearch-primary-color: var(--vp-c-brand) !important;
 }
+.title :nth-child(1) {
+  /* pointer-events: auto; */
+  display: none;
+}

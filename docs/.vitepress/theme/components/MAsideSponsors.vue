@@ -18,5 +18,6 @@ const data = [
 <style>
 .vp-sponsor-grid.medium .vp-sponsor-grid-image {
   max-height: 90px;
+  display:none;
 }
 </style>
