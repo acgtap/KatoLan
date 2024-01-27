@@ -1,0 +1,318 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="Webpixels">
+    <title>KatoLan 免费异地组网联机工具，快速、简洁、方便与朋友异地联机游戏！超简单的虚拟局域网！ </title>
+    <meta name="description" content="免费异地组网联机工具，快速、简洁、方便与朋友异地联机游戏！">
+    <meta name="keywords" content="虚拟局域网,异地组网,免费联机工具,远程联机,局域网联机,游戏联机,MC联机">
+    <meta name="theme-color" content="#3eaf7c">
+    <!-- Preloader -->
+    <style>
+        @keyframes hidePreloader {
+            0% {
+                width: 100%;
+                height: 100%;
+            }
+
+            100% {
+                width: 0;
+                height: 0;
+            }
+        }
+
+        body>div.preloader {
+            position: fixed;
+            background: white;
+            width: 100%;
+            height: 100%;
+            z-index: 1071;
+            opacity: 0;
+            transition: opacity .5s ease;
+            overflow: hidden;
+            pointer-events: none;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        body:not(.loaded)>div.preloader {
+            opacity: 1;
+        }
+
+        body:not(.loaded) {
+            overflow: hidden;
+        }
+
+        body.loaded>div.preloader {
+            animation: hidePreloader .5s linear .5s forwards;
+        }
+    </style>
+    <script>
+        window.addEventListener("load", function() {
+            setTimeout(function() {
+                document.querySelector('body').classList.add('loaded');
+            }, 300);
+        });
+    </script>
+    <!-- Favicon -->
+    <link rel="icon" href="assets/img/brand/favicon.png" type="image/png"><!-- Font Awesome -->
+    <link rel="stylesheet" href="assets/libs/@fortawesome/fontawesome-free/css/all.min.css">
+    <!-- Quick CSS -->
+    <link rel="stylesheet" href="assets/css/quick-website.css" id="stylesheet">
+</head>
+
+<body>
+    <!-- Preloader -->
+    <div class="preloader">
+        <div class="spinner-border text-primary" role="status">
+            <span class="sr-only">Loading...</span>
+        </div>
+    </div>
+    <div class="modal fade" tabindex="-1" role="dialog" id="modal-cookies" data-backdrop="false" aria-labelledby="modal-cookies" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-aside left-4 right-4 bottom-4">
+            <div class="modal-content bg-dark-dark">
+                <div class="modal-body">
+                    <!-- Text -->
+                    <p class="text-sm text-white mb-3">
+                        We use cookies so that our themes work for you. By using our website, you agree to our use of cookies.
+                    </p>
+                    <!-- Buttons -->
+                    <a href="pages/utility/terms.html" class="btn btn-sm btn-white" target="_blank">Learn more</a>
+                    <button type="button" class="btn btn-sm btn-primary mr-2" data-dismiss="modal">OK</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-lg navbar-light bg-white">
+        <div class="container">
+            <!-- Brand -->
+            <a class="navbar-brand" href="index.html">
+                <img alt="Image placeholder" src="assets/img/brand/dark.svg" id="navbar-logo">
+            </a>
+            <!-- Toggler -->
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <!-- Collapse -->
+            <div class="collapse navbar-collapse" id="navbarCollapse">
+                <ul class="navbar-nav mt-4 mt-lg-0 ml-auto">
+                    <li class="nav-item ">
+                        <a class="nav-link" href="index.html">首页</a>
+                    </li>
+                    <li class="nav-item dropdown dropdown-animate" data-toggle="hover">
+                        <a class="nav-link" href="download.html">下载</a>
+                    </li>
+                    <li class="nav-item ">
+                        <a class="nav-link" href="https://afdian.net/a/seeyouagain">赞助</a>
+                    </li>
+                    <li class="nav-item ">
+                        <a class="nav-link" href="https://lan.katomegumi.net">文档</a>
+                    </li>
+                </ul>
+                <!-- Button -->
+                <a class="navbar-btn btn btn-sm btn-primary d-none d-lg-inline-block ml-3" href="download.html">
+                    马上下载
+                </a>
+                <!-- Mobile button -->
+                <div class="d-lg-none text-center">
+                    <a href="https://webpixels.io/themes/quick-website-ui-kit" class="btn btn-block btn-sm btn-warning">See more details</a>
+                </div>
+            </div>
+        </div>
+    </nav>
+    <!-- Main content -->
+   
+    <section class="slice slice-lg bg-section-dark pt-5 pt-lg-8">
+        <!-- SVG separator -->
+        <!-- <div class="shape-container shape-line shape-position-top shape-orientation-inverse">
+            <svg width="2560px" height="100px" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" preserveAspectRatio="none" x="0px" y="0px" viewBox="0 0 2560 100" style="enable-background:new 0 0 2560 100;" xml:space="preserve" class="">
+                <polygon points="2560 0 2560 100 0 100"></polygon>
+            </svg>
+        </div> -->
+        <!-- Container -->
+        <div class="container position-relative zindex-100">
+            <div class="col">
+                <div class="row justify-content-center">
+                    <div class="col-md-10 text-center">
+                        <div class="mt-4 mb-6">
+                            <h2 class="h1 text-white">
+                                准备好与你的朋友开始吗?
+                            </h2>
+                            <h4 class="text-white mt-3"> 3秒 后自动下载，如果没有开始请点击下面的按钮</h4>
+                            <!-- Play button -->
+                            <a href="#" class="btn btn-primary btn-icon mt-4">立即下载</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <section class="slice pt-0">
+        <div class="container position-relative zindex-100">
+            <div class="row">
+                <div class="col-xl-4 col-sm-6 mt-n7">
+                    <div class="card">
+                        <div class="d-flex p-5">
+                            <div>
+                                <span class="badge badge-warning badge-pill">第一步</span>
+                            </div>
+                            <div class="pl-4">
+                                <h5 class="lh-130">下载安装KatoLan</h5>
+                                <p class="text-muted mb-0">
+                                    下载并运行，选择一个位置安装KatoLan，这一步很简单！
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-xl-4 col-sm-6 mt-sm-n7">
+                    <div class="card">
+                        <div class="d-flex p-5">
+                            <div>
+                                <span class="badge badge-success badge-pill">第二步</span>
+                            </div>
+                            <div class="pl-4">
+                                <h5 class="lh-130">连接</h5>
+                                <p class="text-muted mb-0">
+                                    选择一个服务器，你与朋友们都填一个一样的房间名（英文数字），点击连接，等待连接成功，这一步也很简单！
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-xl-4 col-md-12 col-sm-6 mt-xl-n7">
+                    <div class="card">
+                        <div class="d-flex p-5">
+                            <div>
+                                <span class="badge badge-danger badge-pill">第三步</span>
+                            </div>
+                            <div class="pl-3">
+                                <h5 class="lh-130">开始游戏</h5>
+                                <p class="text-muted mb-0">
+                                    打开你的游戏，搜索游戏内房间或通过IP加入到一起吧，然后开始游戏吧！
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+        </div>
+    </section>
+    
+    
+    <footer class="position-relative" id="footer-main">
+        <div class="footer ">
+            
+            <!-- Footer -->
+            <div class="container pt-4">
+                <div class="row">
+                    <div class="col-lg-4 mb-5 mb-lg-0">
+                        <!-- Theme's logo -->
+                        <a href="index.html">
+                            <img alt="Image placeholder" src="assets/img/brand/light.svg" id="footer-logo">
+                        </a>
+                        <!-- Webpixels' mission -->
+                        <p class="mt-4 text-sm opacity-8 pr-lg-4">Katomegumi.net</p>
+                        <!-- Social -->
+                        <!-- <ul class="nav mt-4">
+                            <li class="nav-item">
+                                <a class="nav-link pl-0" href="https://dribbble.com/webpixels" target="_blank">
+                                    <i class="fab fa-dribbble"></i>
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="https://github.com/webpixels" target="_blank">
+                                    <i class="fab fa-github"></i>
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="https://www.instagram.com/webpxs" target="_blank">
+                                    <i class="fab fa-instagram"></i>
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="https://www.facebook.com/webpixels" target="_blank">
+                                    <i class="fab fa-facebook"></i>
+                                </a>
+                            </li>
+                        </ul> -->
+                    </div>
+                    <div class="col-lg-2 col-6 col-sm-4 ml-lg-auto mb-5 mb-lg-0">
+                        <h6 class="heading mb-3">联系我们</h6>
+                        <ul class="list-unstyled">
+                            <li><a href="#">官方QQ群</a></li>
+                            <li><a href="#">公告</a></li>
+                        </ul>
+                    </div>
+                    <div class="col-lg-2 col-6 col-sm-4 mb-5 mb-lg-0">
+                        <h6 class="heading mb-3">关于我们</h6>
+                        <ul class="list-unstyled">
+                            <li><a href="#">服务</a></li>
+                            <li><a href="#">赞助</a></li>
+                            <li><a href="#">更新日志</a></li>
+                            <li><a href="#">加入我们</a></li>
+                        </ul>
+                    </div>
+                    <div class="col-lg-2 col-6 col-sm-4 mb-5 mb-lg-0">
+                        <h6 class="heading mb-3">友情链接</h6>
+                        <ul class="list-unstyled">
+                            <li><a href="https://ai.katomegumi.net">AI的调教手册</a></li>
+                            <li><a href="https://www.bilibili.com">bilibili</a></li>
+                            <li><a href="https://www.radmin-lan.cn/">radmin-lan</a></li>
+                        </ul>
+                    </div>
+                </div>
+                <hr class="divider divider-fade divider-dark my-4">
+                <div class="row align-items-center justify-content-md-between pb-4">
+                    <div class="col-md-6">
+                        <div class="copyright text-sm font-weight-bold text-center text-md-left">
+                            &copy; 2023 <a href="https://www.katomegumi.net" class="font-weight-bold" target="_blank">Katomegumi Inc.</a>. All rights reserved
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <ul class="nav justify-content-center justify-content-md-end mt-3 mt-md-0">
+                            <li class="nav-item">
+                                <a class="nav-link" href="#">
+                                    Terms
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="#">
+                                    Privacy
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="#">
+                                    Cookies
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+    <!-- Core JS  -->
+    <script src="assets/libs/jquery/dist/jquery.min.js"></script>
+    <script src="assets/libs/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="assets/libs/svg-injector/dist/svg-injector.min.js"></script>
+    <script src="assets/libs/feather-icons/dist/feather.min.js"></script>
+    <!-- Quick JS -->
+    <script src="assets/js/quick-website.js"></script>
+    <!-- Feather Icons -->
+    <script>
+        feather.replace({
+            'width': '1em',
+            'height': '1em'
+        })
+    </script>
+</body>
+
+</html>
