@@ -49,4 +49,5 @@ export const nav: DefaultTheme.Config['nav'] = [
     ],
     activeMatch: '^/workflow',
   },
+  { text: '常见问题', link: '/q', activeMatch: '^/q' },
 ]
