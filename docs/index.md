@@ -11,7 +11,7 @@ hero:
     alt: Katolan
   actions:
     - text: 马上下载
-      link: /download/index
+      link: https://lan.katomegumi.net/download.html
     - text: 使用文档
       link: /use/index
       theme: alt

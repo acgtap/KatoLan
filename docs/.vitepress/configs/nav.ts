@@ -1,7 +1,8 @@
 import type { DefaultTheme } from 'vitepress'
 
 export const nav: DefaultTheme.Config['nav'] = [
-  { text: '马上下载', link: '/download/index', activeMatch: '^/download' },
+  { text: '首页', link: '/', activeMatch: '^/' },
+  { text: '马上下载', link: 'https://lan.katomegumi.net/download.html', activeMatch: '^/download' },
   {
     text: '快速使用',
     items: [
@@ -26,5 +27,6 @@ export const nav: DefaultTheme.Config['nav'] = [
     activeMatch: '^/workflow',
   },
   { text: '常见问题', link: '/q/index', activeMatch: '^/q' },
-  { text: '我们愿景', link: '/q/hope', activeMatch: '^/q' },
+  { text: '赞助支持我们', link: 'https://afdian.net/a/seeyouagain' },
+  { text: '我们的愿景', link: '/q/hope', activeMatch: '^/q' },
 ]

@@ -8,8 +8,8 @@ import { head, nav, sidebar, algolia } from './configs'
 const links: { url: string; lastmod: PageData['lastUpdated'] }[] = []
 
 export default defineConfig({
-  outDir: '../dist',
-  base:  '/',
+  outDir: '../dist/docs',
+  base: '/docs',
 
   lang: 'zh-CN',
   title: 'KatoLan 免费异地组网联机工具，快速、简洁、方便与朋友异地联机游戏！超简单的虚拟局域网！',
@@ -21,7 +21,7 @@ export default defineConfig({
 
   /* markdown 配置 */
   markdown: {
-    lineNumbers: true
+    lineNumbers: true,
   },
 
   /* 主题配置 */
@@ -35,14 +35,14 @@ export default defineConfig({
     /* 右侧大纲配置 */
     outline: {
       level: 'deep',
-      label: '本页目录'
+      label: '本页目录',
     },
 
     socialLinks: [{ icon: 'github', link: 'https://github.com/acgtap' }],
 
     footer: {
       message: 'with Katomegumi by ❤️‍🔥',
-      copyright: 'Copyright © 2018-present katolan'
+      copyright: 'Copyright © 2018-present katolan',
     },
 
     darkModeSwitchLabel: '外观',
@@ -54,8 +54,8 @@ export default defineConfig({
 
     docFooter: {
       prev: '上一篇',
-      next: '下一篇'
-    }
+      next: '下一篇',
+    },
   },
 
   /* 生成站点地图 */
@@ -63,7 +63,7 @@ export default defineConfig({
     if (!/[\\/]404\.html$/.test(id))
       links.push({
         url: pageData.relativePath.replace(/((^|\/)index)?\.md$/, '$2'),
-        lastmod: pageData.lastUpdated
+        lastmod: pageData.lastUpdated,
       })
   },
   buildEnd: async ({ outDir }) => {
@@ -73,5 +73,5 @@ export default defineConfig({
     links.forEach((link) => sitemap.write(link))
     sitemap.end()
     await new Promise((r) => writeStream.on('finish', r))
-  }
+  },
 })
