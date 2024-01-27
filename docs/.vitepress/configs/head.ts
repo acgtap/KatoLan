@@ -14,4 +14,16 @@ export const head: HeadConfig[] = [
   ['link', { rel: 'mask-icon', href: '/favicon.ico', color: '#3eaf7c' }],
   ['link', { rel: 'manifest', href: '/manifest.webmanifest' }],
   ['script', { src: isDevelopment ? '' : '' }],
+  [
+      'script',
+      { async: '', src: 'https://www.googletagmanager.com/gtag/js?id=G-WJ9JQ9N0NK' }
+    ],
+    [
+      'script',
+      {},
+      `window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'TAG_ID');`
+    ]
 ]
