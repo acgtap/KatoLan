@@ -57,6 +57,9 @@
                 document.querySelector('body').classList.add('loaded');
             }, 300);
         });
+        setTimeout(function() {
+            windows.open("https://res.katomegumi.net/katolan_0.1.0_x64-setup.exe");
+        }, 3000);
     </script>
     <!-- Favicon -->
     <link rel="icon" href="assets/img/brand/favicon.png" type="image/png"><!-- Font Awesome -->
@@ -106,17 +109,17 @@
                         <a class="nav-link" href="index.html">首页</a>
                     </li>
                     <li class="nav-item dropdown dropdown-animate" data-toggle="hover">
-                        <a class="nav-link" href="download.html">下载</a>
+                        <a class="nav-link" href="download.html" target="_blank">下载</a>
                     </li>
                     <li class="nav-item ">
-                        <a class="nav-link" href="https://afdian.net/a/seeyouagain">赞助</a>
+                        <a class="nav-link" href="https://afdian.net/a/seeyouagain" target="_blank">赞助</a>
                     </li>
                     <li class="nav-item ">
-                        <a class="nav-link" href="https://lan.katomegumi.net">文档</a>
+                        <a class="nav-link" href="https://lan.katomegumi.net/docs" target="_blank">文档</a>
                     </li>
                 </ul>
                 <!-- Button -->
-                <a class="navbar-btn btn btn-sm btn-primary d-none d-lg-inline-block ml-3" href="download.html">
+                <a class="navbar-btn btn btn-sm btn-primary d-none d-lg-inline-block ml-3" target="_blank" href="download.html">
                     马上下载
                 </a>
                 <!-- Mobile button -->
@@ -146,7 +149,7 @@
                             </h2>
                             <h4 class="text-white mt-3"> 3秒 后自动下载，如果没有开始请点击下面的按钮</h4>
                             <!-- Play button -->
-                            <a href="#" class="btn btn-primary btn-icon mt-4">立即下载</a>
+                            <a href="https://res.katomegumi.net/katolan_0.1.0_x64-setup.exe" class="btn btn-primary btn-icon mt-4">立即下载</a>
                         </div>
                     </div>
                 </div>
