@@ -21,7 +21,7 @@ export const NAV_DATA: NavData[] = [
         title: 'Minecraft',
         desc: '可用',
         link: 'https://caniuse.com'
-      }{
+      },{
         icon: 'https://caniuse.com/img/favicon-128.png',
         title: '文明6',
         desc: '可用',
