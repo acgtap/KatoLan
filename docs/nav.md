@@ -13,4 +13,4 @@ import { NAV_DATA } from './nav/data'
 
 以下不完全包含所有支持游戏，理论上支持局域网联机的游戏都可以使用此软件远程联机。
 
-`<MNavLinks v-for="{title, items} in NAV_DATA" :title="title" :items="items"/>`
+<MNavLinks v-for="{title, items} in NAV_DATA" :title="title" :items="items"/>
