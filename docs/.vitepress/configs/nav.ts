@@ -13,6 +13,7 @@ export const nav: DefaultTheme.Config['nav'] = [
   },
   { text: '游戏支持与教程', link: '/nav', activeMatch: '^/nav' },
   { text: '常见问题', link: '/q/index', activeMatch: '^/q' },
+  { text: '官群交流', link: 'https://qm.qq.com/q/jhzFDyBPz4'},
   { text: '赞助支持我们', link: 'https://afdian.net/a/seeyouagain' },
   { text: '我们的愿景', link: '/q/hope', activeMatch: '^/q/hope' },
 ]
