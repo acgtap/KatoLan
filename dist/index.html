@@ -52,6 +52,224 @@
         body.loaded>div.preloader {
             animation: hidePreloader .5s linear .5s forwards;
         }
+
+        /* 新增的样式 */
+        .navbar {
+            box-shadow: 0 2px 10px rgba(0,0,0,0.08);
+            transition: all 0.3s ease;
+        }
+
+        .navbar-brand img {
+            height: 40px;
+            transition: all 0.3s ease;
+        }
+
+        .hero_aEcG {
+            background-attachment: fixed;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .display-4 {
+            font-weight: 700;
+            line-height: 1.2;
+        }
+
+        @media (max-width: 768px) {
+            .display-4 {
+                font-size: 2rem;
+            }
+            
+            .lead {
+                font-size: 1rem;
+            }
+
+            .hero_aEcG {
+                padding-bottom: 100px !important;
+            }
+        }
+
+        .btn {
+            border-radius: 30px;
+            padding: 12px 25px;
+            font-weight: 600;
+            transition: all 0.3s ease;
+        }
+
+        .btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+
+        .card {
+            border: none;
+            transition: all 0.3s ease;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+        }
+
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 25px rgba(0,0,0,0.1);
+        }
+
+        .img-fluid {
+            border-radius: 10px;
+            transition: all 0.3s ease;
+        }
+
+        .img-fluid:hover {
+            transform: scale(1.02);
+        }
+
+        .footer {
+            background: #f8f9fa;
+            padding-top: 3rem;
+        }
+
+        /* 移动端优化 */
+        @media (max-width: 576px) {
+            .container {
+                padding-left: 20px;
+                padding-right: 20px;
+            }
+
+            .card {
+                margin-bottom: 20px;
+            }
+
+            .mt-n7 {
+                margin-top: 0 !important;
+            }
+        }
+
+        /* 首屏样式优化 */
+        .hero-section {
+            min-height: 70vh;
+            display: flex;
+            align-items: center;
+            position: relative;
+           
+        }
+
+        .hero-content {
+            text-align: center;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .hero-badges {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 10px;
+            margin: 20px 0;
+        }
+
+        .hero-badges .badge {
+            padding: 8px 16px;
+            font-size: 14px;
+            border-radius: 20px;
+        }
+
+        .hero-buttons {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            margin-top: 30px;
+        }
+
+        /* 内容板块统一样式 */
+        .content-section {
+            padding: 80px 0;
+        }
+
+        .section-title {
+            text-align: center;
+            margin-bottom: 60px;
+        }
+
+        .section-title h2 {
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin-bottom: 20px;
+        }
+
+        .feature-card {
+            height: 100%;
+            padding: 30px;
+            text-align: center;
+            transition: all 0.3s ease;
+        }
+
+        .feature-card:hover {
+            transform: translateY(-10px);
+        }
+
+        .feature-icon {
+            width: 80px;
+            height: 80px;
+            margin: 0 auto 20px;
+        }
+
+        @media (max-width: 768px) {
+            .hero-section {
+                padding: 60px 0;
+            }
+
+            .hero-content {
+                padding: 0 20px;
+            }
+
+            .hero-buttons {
+                flex-direction: column;
+                gap: 10px;
+            }
+
+            .hero-buttons .btn {
+                width: 100%;
+            }
+        }
+
+        /* Badge 统一样式 */
+        .badge-circle {
+            width: 2.5rem;
+            height: 2.5rem;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1rem;
+        }
+
+        .feature-list {
+            margin-top: 2rem;
+        }
+
+        .feature-list li {
+            margin-bottom: 1rem;
+        }
+
+        .feature-list .badge-circle {
+            background: rgba(55, 125, 255, 0.1);
+            color: #377dff;
+        }
+
+        .feature-list .badge-circle.badge-primary {
+            background: rgba(55, 125, 255, 0.1);
+            color: #377dff;
+        }
+
+        .feature-list .badge-circle.badge-success {
+            background: rgba(0, 201, 167, 0.1);
+            color: #00c9a7;
+        }
+
+        .feature-list .badge-circle.badge-info {
+            background: rgba(0, 193, 237, 0.1);
+            color: #00c1ed;
+        }
     </style>
     <script>
         window.addEventListener("DOMContentLoaded", function() {
@@ -65,7 +283,14 @@
     <!-- <link rel="stylesheet" href="assets/libs/@fortawesome/fontawesome-free/css/all.min.css"> -->
     <!-- Quick CSS -->
     <link rel="stylesheet" href="assets/css/quick-website.css" id="stylesheet">
+    <!-- 在 head 标签内添加 jQuery 和 Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    
+<script src="https://cdn.staticfile.net/bootstrap/4.6.0/js/bootstrap.bundle.min.js"></script>
+    <!-- 在 head 中添加 Font Awesome CSS -->
+   <link href="https://cdn.bootcdn.net/ajax/libs/font-awesome/5.15.0/css/all.min.css" rel="stylesheet">
 </head>
+
 
 <body>
     <!-- Preloader -->
@@ -91,7 +316,7 @@
     </div>
 
     <!-- Navbar -->
-    <nav class="navbar navbar-expand-lg navbar-light bg-white">
+    <nav class="navbar navbar-expand-lg navbar-light bg-white sticky-top">
         <div class="container">
             <!-- Brand -->
             <a class="navbar-brand" href="index.html">
@@ -121,78 +346,51 @@
                     </li>
                 </ul>
                 <!-- Button -->
-                <a class="navbar-btn btn btn-sm btn-primary d-none d-lg-inline-block ml-3" target="_blank" href="https://wwk.lanzoul.com/b023t8qmb">
+                <!-- <a class="navbar-btn btn btn-sm btn-primary d-none d-lg-inline-block ml-3" target="_blank" href="https://wwk.lanzoul.com/b023t8qmb">
                     马上下载
-                </a>
+                </a> -->
                 
             </div>
         </div>
     </nav>
     <!-- Main content -->
-    <section class="hero_aEcG slice py-7" style="padding-top: 0px!important;padding-bottom: 220px!important;
-    -webkit-animation: 2s cubic-bezier(.215,.61,.355,1) forwards b;
-    animation: 2s cubic-bezier(.215,.61,.355,1) forwards b;
-    background: linear-gradient(-90deg,#6d6d6d25 1px,transparent 0),linear-gradient(#6d6d6d25 1px,transparent 0),linear-gradient(-90deg,#6d6d6d25 1px,transparent 0),linear-gradient(#6d6d6d25 1px,transparent 0),linear-gradient(transparent 6px,transparent 0,transparent 156px,transparent 0),linear-gradient(-90deg,#6d6d6d25 1px,transparent 0),linear-gradient(-90deg,transparent 6px,transparent 0,transparent 156px,transparent 0),linear-gradient(#6d6d6d25 1px,transparent 0),0 0;
-    background-size: 32px 32px,32px 32px,256px 256px,256px 256px,256px 256px,256px 256px,256px 256px,256px 256px;
-    ">
-    <style>.hero_aEcG:after {
-        background: linear-gradient(transparent,#fafbfe);
-        content: "";
-        inset: 70% 0 0;
-        position: absolute;
-    }
-    .hero_aEcG:after {
-    background: linear-gradient(transparent,#fafbfe);
-}
-.tcenter {
-    text-align: center;
-}
-</style>
+    <section class="hero-section hero_aEcG">
         <div class="container">
-            <div class="row row-grid align-items-center">
-                <div class="col-12 col-md-5 col-lg-6 order-md-2 text-center">
-                    <!-- Image -->
-                    <figure class="w-100">
-                        <img alt="Image placeholder" style="transform: scale(0.7);border-radius: 10px;box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.5); " src="https://img.katomegumi.net/file/20c2130377fdb7ab5fb92.png" class="img-fluid mw-md-120">
-                    </figure>
+            <div class="hero-content">
+                <h1 class="display-4 mb-4">
+                    <strong class="text-primary" style="font-size: clamp(40px, 5vw, 60px);">🎮KatoLan</strong>
+                    <br/>
+                    <span style="font-size: clamp(24px, 3vw, 32px);">快速与朋友异地联机游戏玩到嗨！</span>
+                </h1>
+                <p class="lead text-muted">
+                    KatoLan是一个支持P2P、中转的免费的<strong>虚拟局域网游戏联机工具</strong>，
+                    <br class="d-none d-md-block">
+                    将多台远程计算机连接到单一本地网络，远程联机游戏新选择！
+                </p>
+                <div class="hero-badges">
+                    <span class="badge badge-primary">最新版本：v0.9.2（仅12MB大小）</span>
+                    <span class="badge badge-info">官群：741616947</span>
+                    <span class="badge badge-warning">下载密码: 9btg</span>
                 </div>
-                <div class="col-12 col-md-7 col-lg-6 order-md-1 pr-md-5">
-                    <!-- Heading -->
-                    <h1 class="display-4 text-center text-md-left mb-3">
-                        <strong class="text-primary" style="    font-size: 60px;">🎮KatoLan</strong><br/>快速与朋友异地联机游戏玩到嗨！
-                    </h1>
-                    <!-- Text -->
-                    <p class="lead text-center text-md-left text-muted">
-                        KatoLan是一个支持P2P、中转的免费的<strong>虚拟局域网游戏联机工具</strong>，将多台远程计算机连接到单一本地网络，远程联机游戏新选择！<br/>最新版本：v0.9.2（仅12MB大小）<br/>官群：741616947<br/>
-                        <strong>下载密码: 9btg</strong>
-                    </p>
-                    <!-- Buttons -->
-                    <div class="text-center text-md-left mt-5">
-                        <a href="https://wwk.lanzoul.com/b023t8qmb"  class="btn btn-primary btn-icon" target="_blank">
-                            <span class="btn-inner--text">立即下载</span>
-                            <span class="btn-inner--icon"><i data-feather="chevron-right"></i></span>
-                        </a>
-                        <a href="https://docs.qq.com/doc/DQU9vckdUZ21oeFpU" class="btn btn-neutral btn-icon d-none d-lg-inline-block" target="_blank">文档</a>
-                    </div>
+                <div class="hero-buttons">
+                    <a href="https://wwk.lanzoul.com/b023t8qmb" class="btn btn-lg btn-primary" target="_blank">
+                        立即下载
+                        <i class="fas fa-arrow-right ml-2"></i>
+                    </a>
+                    <a href="https://docs.qq.com/doc/DQU9vckdUZ21oeFpU" class="btn btn-lg btn-outline-primary" target="_blank">
+                        查看文档
+                    </a>
                 </div>
             </div>
         </div>
     </section>
-    <section class="slice slice-lg pt-lg-6 pb-0 pb-lg-6 bg-section-secondary">
+    <section class="content-section bg-section-secondary">
         <div class="container">
-            <!-- Title -->
-            <!-- Section title -->
-            <div class="row mb-5 justify-content-center text-center">
-                <div class="col-lg-6">
-                    
-                    <h2 class=" mt-4">让游戏联机加速变得更简单</h2>
-                    <div class="mt-2">
-                        <p class="lead lh-180">Make online game acceleration easier.</p>
-                    </div>
-                </div>
+            <div class="section-title">
+                <h2>让游戏联机加速变得更简单</h2>
+                <p class="lead">Make online game acceleration easier.</p>
             </div>
-            <!-- Card -->
-            <div class="row mt-5">
+            <div class="row">
                 <div class="col-md-4">
                     <div class="card">
                         <div class="card-body pb-5">
@@ -229,44 +427,222 @@
             </div>
         </div>
     </section>
-    <section class="slice slice-lg">
+    <section class="content-section">
         <div class="container">
-            <!-- <div class="py-6"><div class="row row-grid justify-content-between align-items-center"><iframe src="//player.bilibili.com/player.html?aid=1150247143&bvid=BV1qZ421z7ap&cid=1428876912&p=1" scrolling="no" border="0" frameborder="no" framespacing="0" allowfullscreen="true"> </iframe></div></div> -->
-            <div class="py-6">
-                <div class="row row-grid justify-content-between align-items-center">
-                    <div class="col-lg-5 order-lg-2">
-                        <h5 class="h3">电竞级网络，稳定游戏体验</h5>
-                        <p class="lead my-4">
-                            高质量线路，帮助你畅玩游戏<br/>
-                            综合提升 70%、延迟 40ms、丢包 0%
-
-                        </p>
-                        
-                    </div>
-                    <div class="col-lg-6 order-lg-1">
-                        <div class="card mb-0 mr-lg-5">
-                            <div class="card-body p-2">
-                                <img alt="Image placeholder" src="./2.jpg" class="img-fluid shadow rounded">
+            <div class="row align-items-center mb-5">
+                <div class="col-lg-5">
+                    <h5 class="h3">简洁美观，一看就会</h5>
+                    <p class="lead my-4">
+                        精心设计的界面布局，清晰直观<br/>
+                        无需繁琐设置，三步轻松联机<br/>
+                        朋友无需注册，填房间名即可加入
+                    </p>
+                    <ul class="list-unstyled mt-4">
+                        <li class="py-2">
+                            <div class="d-flex align-items-center">
+                                <div>
+                                    <div class="badge badge-circle badge-primary mr-3">
+                                        <i class="fas fa-check"></i>
+                                    </div>
+                                </div>
+                                <div>
+                                    <h6 class="mb-0">简单易用的界面设计</h6>
+                                </div>
                             </div>
+                        </li>
+                        <li class="py-2">
+                            <div class="d-flex align-items-center">
+                                <div>
+                                    <div class="badge badge-circle badge-primary mr-3">
+                                        <i class="fas fa-check"></i>
+                                    </div>
+                                </div>
+                                <div>
+                                    <h6 class="mb-0">无需注册和复杂配置</h6>
+                                </div>
+                            </div>
+                        </li>
+                        <li class="py-2">
+                            <div class="d-flex align-items-center">
+                                <div>
+                                    <div class="badge badge-circle badge-primary mr-3">
+                                        <i class="fas fa-check"></i>
+                                    </div>
+                                </div>
+                                <div>
+                                    <h6 class="mb-0">一键连接，即刻开玩</h6>
+                                </div>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+                <div class="col-lg-6">
+                    <div class="card mb-0 ml-lg-5">
+                        <div class="card-body p-2">
+                            <img alt="简洁界面" src="https://img.katomegumi.net/file/20c2130377fdb7ab5fb92.png" class="img-fluid shadow rounded">
                         </div>
                     </div>
                 </div>
             </div>
-            <div class="py-6">
-                <div class="row row-grid justify-content-between align-items-center">
-                    <div class="col-lg-5">
-                        <h5 class="h3">全新联机游戏玩法</h5>
-                        <p class="lead my-4">
-                            自动创建虚拟局域网，异地玩家也能联机游戏，让你的游戏体验更加完美！<br/>
-                            自动打洞创建更优质的P2P连接，延迟进一步降低！
-                        </p>
-                        
-                    </div>
-                    <div class="col-lg-6">
-                        <div class="card mb-0 ml-lg-5">
-                            <div class="card-body p-2">
-                                <img alt="Image placeholder" src="https://img.katomegumi.net/file/f3689a00ce74fa71797d8.png" class="img-fluid shadow rounded">
+            <div class="row align-items-center mb-5">
+                <div class="col-lg-5 order-lg-2">
+                    <h5 class="h3">电竞级网络，稳定游戏体验</h5>
+                    <p class="lead my-4">
+                        多线高带宽线路<br/>
+                        高质量线路，帮助你畅玩游戏<br/>
+                        综合提升 70%、延迟 40ms、丢包 0%
+                    </p>
+                    <ul class="list-unstyled feature-list">
+                        <li class="py-2">
+                            <div class="d-flex align-items-center">
+                                <div>
+                                    <div class="badge badge-circle badge-primary mr-3">
+                                        <i class="fas fa-bolt"></i>
+                                    </div>
+                                </div>
+                                <div>
+                                    <h6 class="mb-0">高速稳定的网络连接</h6>
+                                </div>
                             </div>
+                        </li>
+                        <li class="py-2">
+                            <div class="d-flex align-items-center">
+                                <div>
+                                    <div class="badge badge-circle badge-primary mr-3">
+                                        <i class="fas fa-shield-alt"></i>
+                                    </div>
+                                </div>
+                                <div>
+                                    <h6 class="mb-0">零丢包保证</h6>
+                                </div>
+                            </div>
+                        </li>
+                        <li class="py-2">
+                            <div class="d-flex align-items-center">
+                                <div>
+                                    <div class="badge badge-circle badge-primary mr-3">
+                                        <i class="fas fa-tachometer-alt"></i>
+                                    </div>
+                                </div>
+                                <div>
+                                    <h6 class="mb-0">低延迟体验</h6>
+                                </div>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+                <div class="col-lg-6 order-lg-1">
+                    <div class="card mb-0 mr-lg-5">
+                        <div class="card-body p-2">
+                            <img alt="Image placeholder" src="./2.jpg" class="img-fluid shadow rounded">
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row align-items-center mb-5">
+                <div class="col-lg-5">
+                    <h5 class="h3">不限制人数高速联机</h5>
+                    <p class="lead my-4">
+                        自动创建虚拟局域网，异地玩家也能联机游戏，让你的游戏体验更加完美！<br/>
+                        自动打洞创建更优质的P2P连接，延迟进一步降低！<br/>
+                        不限制人数、网速、类型联机
+                    </p>
+                    <ul class="list-unstyled feature-list">
+                        <li class="py-2">
+                            <div class="d-flex align-items-center">
+                                <div>
+                                    <div class="badge badge-circle badge-info mr-3">
+                                        <i class="fas fa-users"></i>
+                                    </div>
+                                </div>
+                                <div>
+                                    <h6 class="mb-0">不限制玩家人数</h6>
+                                </div>
+                            </div>
+                        </li>
+                        <li class="py-2">
+                            <div class="d-flex align-items-center">
+                                <div>
+                                    <div class="badge badge-circle badge-info mr-3">
+                                        <i class="fas fa-network-wired"></i>
+                                    </div>
+                                </div>
+                                <div>
+                                    <h6 class="mb-0">P2P自动打洞</h6>
+                                </div>
+                            </div>
+                        </li>
+                        <li class="py-2">
+                            <div class="d-flex align-items-center">
+                                <div>
+                                    <div class="badge badge-circle badge-info mr-3">
+                                        <i class="fas fa-gamepad"></i>
+                                    </div>
+                                </div>
+                                <div>
+                                    <h6 class="mb-0">支持所有类型游戏</h6>
+                                </div>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+                <div class="col-lg-6">
+                    <div class="card mb-0 ml-lg-5">
+                        <div class="card-body p-2">
+                            <img alt="Image placeholder" src="https://img.katomegumi.net/file/f3689a00ce74fa71797d8.png" class="img-fluid shadow rounded">
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row align-items-center mb-5">
+                <div class="col-lg-5 order-lg-2">
+                    <h5 class="h3">自建服务器节点</h5>
+                    <p class="lead my-4">
+                        支持自建服务器节点，无需朋友添加，更稳定更便宜！
+                    </p>
+                    <ul class="list-unstyled feature-list">
+                        <li class="py-2">
+                            <div class="d-flex align-items-center">
+                                <div>
+                                    <div class="badge badge-circle badge-success mr-3">
+                                        <i class="fas fa-check"></i>
+                                    </div>
+                                </div>
+                                <div>
+                                    <h6 class="mb-0">更低延迟，更稳定的连接</h6>
+                                </div>
+                            </div>
+                        </li>
+                        <li class="py-2">
+                            <div class="d-flex align-items-center">
+                                <div>
+                                    <div class="badge badge-circle badge-success mr-3">
+                                        <i class="fas fa-check"></i>
+                                    </div>
+                                </div>
+                                <div>
+                                    <h6 class="mb-0">无需朋友添加，即可直接连接</h6>
+                                </div>
+                            </div>
+                        </li>
+                        <li class="py-2">
+                            <div class="d-flex align-items-center">
+                                <div>
+                                    <div class="badge badge-circle badge-success mr-3">
+                                        <i class="fas fa-check"></i>
+                                    </div>
+                                </div>
+                                <div>
+                                    <h6 class="mb-0">更经济实惠的价格</h6>
+                                </div>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+                <div class="col-lg-6 order-lg-1">
+                    <div class="card mb-0 mr-lg-5">
+                        <div class="card-body p-2">
+                            <img alt="自建服务器节点" src="https://tc.vlogidc.cn/img/2025/03/05/67c7c9fa10f50.png" class="img-fluid shadow rounded">
                         </div>
                     </div>
                 </div>
@@ -353,67 +729,60 @@
     
     
     <footer class="position-relative" id="footer-main">
-        <div class="footer ">
-            
-            <!-- Footer -->
+        <div class="footer">
             <div class="container pt-4">
                 <div class="row">
                     <div class="col-lg-4 mb-5 mb-lg-0">
-                        <!-- Theme's logo -->
-                        <a href="index.html">
-                            <img src="https://counter.katomegumi.net/get/@katolan" alt="katolan" id="footer-logo"/>
+                        <a href="index.html" class="d-block mb-3">
+                            <img src="./favicon.ico" alt="KatoLan" style="height: 40px;">
                         </a>
-                        <!-- Webpixels' mission -->
-                        <p class="mt-4 text-sm opacity-8 pr-lg-4">Katomegumi.net</p>
-                        <!-- Social -->
-                        <!-- <ul class="nav mt-4">
-                            <li class="nav-item">
-                                <a class="nav-link pl-0" href="https://dribbble.com/webpixels" target="_blank">
-                                    <i class="fab fa-dribbble"></i>
-                                </a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link" href="https://github.com/webpixels" target="_blank">
-                                    <i class="fab fa-github"></i>
-                                </a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link" href="https://www.instagram.com/webpxs" target="_blank">
-                                    <i class="fab fa-instagram"></i>
-                                </a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link" href="https://www.facebook.com/webpixels" target="_blank">
-                                    <i class="fab fa-facebook"></i>
-                                </a>
-                            </li>
-                        </ul> -->
+                        <p class="mt-3 text-sm opacity-8">
+                            KatoLan - 让游戏联机变得更简单
+                            <br>
+                            免费异地组网联机工具
+                        </p>
+                        <img src="https://counter.katomegumi.net/get/@katolan" alt="katolan" class="mt-3"/>
                     </div>
-
+                    <div class="col-lg-2 col-6 mb-5 mb-lg-0">
+                        <h6 class="heading mb-3">快速链接</h6>
+                        <ul class="list-unstyled">
+                            <li><a href="index.html">首页</a></li>
+                            <li><a href="https://docs.qq.com/doc/DQU9vckdUZ21oeFpU">文档</a></li>
+                            <li><a href="payed.html">感谢</a></li>
+                        </ul>
+                    </div>
+                    <div class="col-lg-2 col-6 mb-5 mb-lg-0">
+                        <h6 class="heading mb-3">社区</h6>
+                        <ul class="list-unstyled">
+                            <li><a href="#">官方群</a></li>
+                            <li><a href="#">问题反馈</a></li>
+                            <li><a href="#">建议提交</a></li>
+                        </ul>
+                    </div>
+                    <div class="col-lg-4 col-md-6 mb-5 mb-lg-0">
+                        <h6 class="heading mb-3">联系我们</h6>
+                        <p class="text-sm opacity-8">
+                            有任何问题或建议，欢迎随时联系我们
+                        </p>
+                        <a href="http://qm.qq.com/cgi-bin/qm/qr?_wv=1027&k=I_-arUNUYkqURts3vwRmAT44H2O9EQoA" class="btn btn-sm btn-primary mt-3">
+                            加入官方群
+                        </a>
+                    </div>
                 </div>
                 <hr class="divider divider-fade divider-dark my-4">
                 <div class="row align-items-center justify-content-md-between pb-4">
                     <div class="col-md-6">
                         <div class="copyright text-sm font-weight-bold text-center text-md-left">
-                            &copy; 2023 <a href="https://www.katomegumi.net" class="font-weight-bold" target="_blank">Katomegumi Inc.</a> All rights reserved
+                            &copy; 2024 <a href="https://www.katomegumi.net" class="font-weight-bold" target="_blank">Katomegumi Inc.</a> All rights reserved
                         </div>
                     </div>
                     <div class="col-md-6">
                         <ul class="nav justify-content-center justify-content-md-end mt-3 mt-md-0">
                             <li class="nav-item">
-                                <a class="nav-link" href="#">
-                                    Terms
-                                </a>
+                                <a class="nav-link" href="#">隐私政策</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link" href="#">
-                                    Privacy
-                                </a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link" href="#">
-                                    Cookies
-                                </a>
+                                <a class="nav-link" href="#">服务条款</a>
                             </li>
                         </ul>
                     </div>
