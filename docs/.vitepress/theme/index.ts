@@ -52,8 +52,7 @@ export default {
        * https://github.com/vuejs/vitepress/blob/main/src/client/theme-default/Layout.vue
        */
       'nav-bar-title-after': () => h(MNavVisitor),
-      'doc-after': () => h(MDocFooter),
-      'aside-bottom': () => h(MAsideSponsors)
+      'doc-after': () => h(MDocFooter)
     })
   },
   enhanceApp({ app, router }: EnhanceAppContext) {
