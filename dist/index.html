@@ -268,6 +268,186 @@
             background: rgba(0, 193, 237, 0.1);
             color: #00c1ed;
         }
+
+        /* 社区介绍板块样式 - 简约版本 */
+        .community-section {
+            background: #f8f9fa;
+            padding: 80px 0;
+            position: relative;
+        }
+
+        .community-header {
+            text-align: center;
+            margin-bottom: 60px;
+        }
+
+        .community-icon {
+            display: inline-block;
+            width: 60px;
+            height: 60px;
+            background: #377dff;
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 20px;
+        }
+
+        .community-icon i {
+            font-size: 24px;
+            color: white;
+        }
+
+        .community-title {
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin-bottom: 16px;
+            color: #2d3748;
+        }
+
+        .community-subtitle {
+            font-size: 1.1rem;
+            color: #718096;
+            max-width: 600px;
+            margin: 0 auto;
+            line-height: 1.6;
+        }
+
+        .community-platforms {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            margin-bottom: 60px;
+        }
+
+        .platform-card {
+            background: white;
+            padding: 30px 25px;
+            border-radius: 12px;
+            text-align: center;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.06);
+            border: 1px solid #e2e8f0;
+            transition: all 0.3s ease;
+        }
+
+        .platform-card:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
+            border-color: #377dff;
+        }
+
+        .platform-icon {
+            width: 50px;
+            height: 50px;
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 20px;
+            font-size: 20px;
+            color: white;
+        }
+
+        .platform-card h3 {
+            font-size: 1.3rem;
+            font-weight: 600;
+            margin-bottom: 12px;
+            color: #2d3748;
+        }
+
+        .platform-card p {
+            color: #718096;
+            line-height: 1.6;
+            font-size: 0.95rem;
+            margin-bottom: 20px;
+        }
+
+        .platform-link {
+            display: inline-block;
+            padding: 10px 20px;
+            background: #377dff;
+            border-radius: 8px;
+            color: white;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            font-size: 0.9rem;
+            font-weight: 500;
+        }
+
+        .platform-link:hover {
+            background: #2c5aa0;
+            color: white;
+            text-decoration: none;
+            transform: scale(1.05);
+        }
+
+        .community-stats {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 30px;
+            text-align: center;
+            background: white;
+            padding: 40px 30px;
+            border-radius: 12px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.06);
+            border: 1px solid #e2e8f0;
+        }
+
+        .stat-item {
+            padding: 10px;
+        }
+
+        .stat-number {
+            font-size: 2.2rem;
+            font-weight: 700;
+            color: #377dff;
+            margin-bottom: 8px;
+        }
+
+        .stat-label {
+            font-size: 0.9rem;
+            color: #718096;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            font-weight: 500;
+        }
+
+        /* 平台特定颜色 */
+        .qq-icon { background: #1296db; }
+        .bilibili-icon { background: #ff6699; }
+        .blog-icon { background: #4caf50; }
+        .csdn-icon { background: #ff6600; }
+        .docs-icon { background: #6c757d; }
+        .sponsor-icon { background: #e91e63; }
+
+        @media (max-width: 768px) {
+            .community-section {
+                padding: 60px 0;
+            }
+            
+            .community-title {
+                font-size: 2rem;
+            }
+            
+            .community-platforms {
+                grid-template-columns: 1fr;
+                gap: 20px;
+            }
+            
+            .community-stats {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 20px;
+                padding: 30px 20px;
+            }
+            
+            .stat-number {
+                font-size: 1.8rem;
+            }
+
+            .platform-card {
+                padding: 25px 20px;
+            }
+        }
     </style>
     <script>
         window.addEventListener("DOMContentLoaded", function() {
@@ -284,9 +464,9 @@
     <!-- 在 head 标签内添加 jQuery 和 Bootstrap JS -->
     <script src="https://cdn.staticfile.net/jquery/3.6.0/jquery.min.js"></script>
     
-<script src="https://cdn.staticfile.net/bootstrap/4.6.0/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdn.staticfile.net/bootstrap/4.6.0/js/bootstrap.bundle.min.js"></script>
     <!-- 在 head 中添加 Font Awesome CSS -->
-   <link href="https://cdn.bootcdn.net/ajax/libs/font-awesome/5.15.0/css/all.min.css" rel="stylesheet">
+    <link href="https://cdn.bootcdn.net/ajax/libs/font-awesome/5.15.0/css/all.min.css" rel="stylesheet">
 </head>
 
 
@@ -369,7 +549,7 @@
                     将多台远程计算机连接到单一本地网络，远程联机游戏新选择！
                 </p>
                 <div class="hero-badges">
-                    <span class="badge badge-primary">最新版本：v0.9.2（仅12MB大小）</span>
+                    <span class="badge badge-primary">最新版本：v1.0.5（仅12MB大小）</span>
                     <span class="badge badge-info">官群：741616947</span>
                     <span class="badge badge-warning">下载密码: 9btg</span>
                 </div>
@@ -650,13 +830,117 @@
             </div>
         </div>
     </section>
+    <section class="community-section">
+        <div class="container">
+            <div class="community-header">
+                <div class="community-icon">
+                    <i class="fas fa-users"></i>
+                </div>
+                <h2 class="community-title">加入好朋友联机工具社区</h2>
+                <p class="community-subtitle">与全球玩家一起交流学习，分享游戏联机经验，获取最新资讯和技术支持</p>
+            </div>
+            
+            <div class="community-platforms">
+                <div class="platform-card">
+                    <div class="platform-icon qq-icon">
+                        <i class="fab fa-qq"></i>
+                    </div>
+                    <h3>官方QQ群</h3>
+                    <p>群号：741616947<br/>实时答疑，问题反馈，版本更新通知</p>
+                    <a href="http://qm.qq.com/cgi-bin/qm/qr?_wv=1027&k=I_-arUNUYkqURts3vwRmAT44H2O9EQoA&authKey=w19mK3S6ftOLQjiLnxjOiOkTP0uHSk9c33zqrj9b%2BliDev0H42O%2B7WZCROCftet5&noverify=0&group_code=741616947" 
+                       target="_blank" class="platform-link">
+                        立即加入
+                    </a>
+                </div>
+                
+                <div class="platform-card">
+                    <div class="platform-icon bilibili-icon" style="color: white;padding: 14px;">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><path d="M488.6 104.1C505.3 122.2 513 143.8 511.9 169.8V372.2C511.5 398.6 502.7 420.3 485.4 437.3C468.2 454.3 446.3 463.2 419.9 464H92C65.6 463.2 43.8 454.2 26.7 436.8C9.7 419.4 .8 396.5 0 368.2V169.8C.8 143.8 9.7 122.2 26.7 104.1C43.8 87.8 65.6 78.8 92 78H121.4L96.1 52.2C90.3 46.5 87.4 39.2 87.4 30.4C87.4 21.6 90.3 14.3 96.1 8.6C101.8 2.9 109.1 0 117.9 0C126.7 0 134 2.9 139.8 8.6L213.1 78H301.1L375.6 8.6C381.7 2.9 389.2 0 398 0C406.8 0 414.1 2.9 419.9 8.6C425.6 14.3 428.5 21.6 428.5 30.4C428.5 39.2 425.6 46.5 419.9 52.2L394.6 78L423.9 78C450.3 78.8 471.9 87.8 488.6 104.1H488.6zM449.8 173.8C449.4 164.2 446.1 156.4 439.1 150.3C433.9 144.2 425.1 140.9 416.4 140.5H96.1C86.5 140.9 78.6 144.2 72.5 150.3C66.3 156.4 63.1 164.2 62.7 173.8V368.2C62.7 377.4 66 385.2 72.5 391.7C79 398.2 86.9 401.5 96.1 401.5H416.4C425.6 401.5 433.4 398.2 439.7 391.7C446 385.2 449.4 377.4 449.8 368.2L449.8 173.8zM185.5 216.5C191.8 222.8 195.2 230.6 195.6 239.7V273C195.2 282.2 191.9 289.9 185.8 296.2C179.6 302.5 171.8 305.7 162.2 305.7C152.6 305.7 144.7 302.5 138.6 296.2C132.5 289.9 129.2 282.2 128.8 273V239.7C129.2 230.6 132.6 222.8 138.9 216.5C145.2 210.2 152.1 206.9 162.2 206.5C171.4 206.9 179.2 210.2 185.5 216.5H185.5zM377 216.5C383.3 222.8 386.7 230.6 387.1 239.7V273C386.7 282.2 383.4 289.9 377.3 296.2C371.2 302.5 363.3 305.7 353.7 305.7C344.1 305.7 336.3 302.5 330.1 296.2C323.1 289.9 320.7 282.2 320.4 273V239.7C320.7 230.6 324.1 222.8 330.4 216.5C336.7 210.2 344.5 206.9 353.7 206.5C362.9 206.9 370.7 210.2 377 216.5H377z"/></svg>
+                    </div>
+                    <h3>官方B站</h3>
+                    <p>樱桃花下的小猫<br/>视频教程，使用指南，更新日志</p>
+                    <a href="https://space.bilibili.com/1163442661?spm_id_from=333.337.0.0" 
+                       target="_blank" class="platform-link">
+                        关注我们
+                    </a>
+                </div>
+                
+                <div class="platform-card">
+                    <div class="platform-icon blog-icon">
+                        <i class="fas fa-blog"></i>
+                    </div>
+                    <h3>官方博客</h3>
+                    <p>樱花下的小猫<br/>技术文章，深度教程，开发日志</p>
+                    <a href="https://blog.hpylan.com/" 
+                       target="_blank" class="platform-link">
+                        访问博客
+                    </a>
+                </div>
+                
+                <div class="platform-card">
+                    <div class="platform-icon csdn-icon" style="padding: 12px;color: white;">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><path d="M91.7 96C106.3 86.8 116 70.5 116 52C116 23.3 92.7 0 64 0S12 23.3 12 52c0 16.7 7.8 31.5 20 41l0 3 0 48 0 256 0 48 0 64 48 0 0-64 389.6 0c14.6 0 26.4-11.8 26.4-26.4c0-3.7-.8-7.3-2.3-10.7L432 272l61.7-138.9c1.5-3.4 2.3-7 2.3-10.7c0-14.6-11.8-26.4-26.4-26.4L91.7 96zM80 400l0-256 356.4 0L388.1 252.5c-5.5 12.4-5.5 26.6 0 39L436.4 400 80 400z"/></svg>
+                    </div>
+                    <h3>CSDN社区</h3>
+                    <p>樱桃花下的小猫<br/>技术分享，问题解答，经验交流</p>
+                    <a href="https://blog.csdn.net/m0_71727150" 
+                       target="_blank" class="platform-link">
+                        技术交流
+                    </a>
+                </div>
+                
+                <div class="platform-card">
+                    <div class="platform-icon docs-icon">
+                        <i class="fas fa-file-alt"></i>
+                    </div>
+                    <h3>帮助文档</h3>
+                    <p>详细使用教程<br/>常见问题解答，故障排除指南</p>
+                    <a href="/docs/q/" 
+                       target="_blank" class="platform-link">
+                        查看文档
+                    </a>
+                </div>
+                
+                <div class="platform-card">
+                    <div class="platform-icon sponsor-icon">
+                        <i class="fas fa-heart"></i>
+                    </div>
+                    <h3>赞助支持</h3>
+                    <p>支持项目发展<br/>获得更好的服务和优先支持</p>
+                    <a href="https://afdian.com/a/seeyouagain" 
+                       target="_blank" class="platform-link">
+                        赞助我们
+                    </a>
+                </div>
+            </div>
+            
+            <div class="community-stats">
+                <div class="stat-item">
+                    <div class="stat-number">10K+</div>
+                    <div class="stat-label">活跃用户</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-number">1000+</div>
+                    <div class="stat-label">成功联机</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-number">24/7</div>
+                    <div class="stat-label">在线支持</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-number">10+</div>
+                    <div class="stat-label">丰富文档</div>
+                </div>
+            </div>
+        </div>
+    </section>
     <section class="slice slice-lg bg-section-dark pt-5 pt-lg-8">
         <!-- SVG separator -->
-        <div class="shape-container shape-line shape-position-top shape-orientation-inverse">
+        <!-- <div class="shape-container shape-line shape-position-top shape-orientation-inverse">
             <svg width="2560px" height="100px" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" preserveAspectRatio="none" x="0px" y="0px" viewBox="0 0 2560 100" style="enable-background:new 0 0 2560 100;" xml:space="preserve" class="">
                 <polygon points="2560 0 2560 100 0 100"></polygon>
             </svg>
-        </div>
+        </div> -->
         <!-- Container -->
         <div class="container position-relative zindex-100">
             <div class="col">
@@ -756,9 +1040,10 @@
                     <div class="col-lg-2 col-6 mb-5 mb-lg-0">
                         <h6 class="heading mb-3">社区</h6>
                         <ul class="list-unstyled">
-                            <li><a href="http://qm.qq.com/cgi-bin/qm/qr?_wv=1027&k=I_-arUNUYkqURts3vwRmAT44H2O9EQoA&authKey=w19mK3S6ftOLQjiLnxjOiOkTP0uHSk9c33zqrj9b%2BliDev0H42O%2B7WZCROCftet5&noverify=0&group_code=741616947">官方QQ群</a></li>
-                            <li><a href="https://space.bilibili.com/1163442661?spm_id_from=333.337.0.0">官方B站：樱桃花下的小猫</a></li>
-                            <li><a href="https://blog.hpylan.com/">官方博客：樱花下的小猫</a></li>
+                            <li><a target="_blank" href="http://qm.qq.com/cgi-bin/qm/qr?_wv=1027&k=I_-arUNUYkqURts3vwRmAT44H2O9EQoA&authKey=w19mK3S6ftOLQjiLnxjOiOkTP0uHSk9c33zqrj9b%2BliDev0H42O%2B7WZCROCftet5&noverify=0&group_code=741616947">官方QQ群</a></li>
+                            <li><a target="_blank" href="https://space.bilibili.com/1163442661?spm_id_from=333.337.0.0">官方B站：樱桃花下的小猫</a></li>
+                            <li><a target="_blank" href="https://blog.hpylan.com/">官方博客：樱花下的小猫</a></li>
+                            <li><a target="_blank" href="https://blog.csdn.net/m0_71727150">官方CSDN：樱桃花下的小猫</a></li>
                         </ul>
                     </div>
                     <div class="col-lg-4 col-md-6 mb-5 mb-lg-0">
