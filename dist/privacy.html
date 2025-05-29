@@ -1,0 +1,366 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="Webpixels">
+    <title>KatoLan好朋友联机工具 隐私协议和用户协议 - 免费异地组网联机工具</title>
+    <meta name="description" content="KatoLan隐私协议和用户协议，了解您的数据如何被处理以及软件的使用条款">
+    <meta name="keywords" content="隐私协议,用户协议,KatoLan,虚拟局域网,异地组网,免费联机工具">
+    <meta name="theme-color" content="#3eaf7c">
+    <!-- Preloader -->
+    <style>
+        @keyframes hidePreloader {
+            0% {
+                width: 100%;
+                height: 100%;
+            }
+
+            100% {
+                width: 0;
+                height: 0;
+            }
+        }
+
+        body>div.preloader {
+            position: fixed;
+            background: white;
+            width: 100%;
+            height: 100%;
+            z-index: 1071;
+            opacity: 0;
+            transition: opacity .5s ease;
+            overflow: hidden;
+            pointer-events: none;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        body:not(.loaded)>div.preloader {
+            opacity: 1;
+        }
+
+        body:not(.loaded) {
+            overflow: hidden;
+        }
+
+        body.loaded>div.preloader {
+            animation: hidePreloader .5s linear .5s forwards;
+        }
+    </style>
+    <script>
+        window.addEventListener("DOMContentLoaded", function() {
+            setTimeout(function() {
+                document.querySelector('body').classList.add('loaded');
+            }, 100);
+        });
+
+    </script>
+    <!-- Favicon -->
+    <link rel="shortcut icon" href="favicon.ico" type="image/x-icon" />
+    <link rel="stylesheet" href="assets/libs/@fortawesome/fontawesome-free/css/all.min.css">
+    <!-- Quick CSS -->
+    <link rel="stylesheet" href="assets/css/quick-website.css" id="stylesheet">
+</head>
+
+<body>
+    <!-- Preloader -->
+    <div class="preloader">
+        <div class="spinner-border text-primary" role="status">
+            <span class="sr-only">Loading...</span>
+        </div>
+    </div>
+    <div class="modal fade" tabindex="-1" role="dialog" id="modal-cookies" data-backdrop="false" aria-labelledby="modal-cookies" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-aside left-4 right-4 bottom-4">
+            <div class="modal-content bg-dark-dark">
+                <div class="modal-body">
+                    <!-- Text -->
+                    <p class="text-sm text-white mb-3">
+                        We use cookies so that our themes work for you. By using our website, you agree to our use of cookies.
+                    </p>
+                    <!-- Buttons -->
+                    <a href="pages/utility/terms.html" class="btn btn-sm btn-white" target="_blank">Learn more</a>
+                    <button type="button" class="btn btn-sm btn-primary mr-2" data-dismiss="modal">OK</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-lg navbar-light bg-white">
+        <div class="container">
+            <!-- Brand -->
+            <a class="navbar-brand" href="index.html">
+                <img alt="Image placeholder" src="./favicon.ico" id="navbar-logo">
+            </a>
+            <!-- Toggler -->
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <!-- Collapse -->
+            <div class="collapse navbar-collapse" id="navbarCollapse">
+                <ul class="navbar-nav mt-4 mt-lg-0 ml-auto">
+                    <li class="nav-item ">
+                        <a class="nav-link" href="index.html">首页</a>
+                    </li>
+                    <li class="nav-item ">
+                        <a class="nav-link" href="/docs/q/" target="_blank">帮助文档</a>
+                    </li>
+                    <li class="nav-item dropdown dropdown-animate" data-toggle="hover">
+                        <a class="nav-link" href="https://space.bilibili.com/1163442661?spm_id_from=333.337.0.0" target="_blank">官方B站</a>
+                    </li>
+                    <li class="nav-item dropdown dropdown-animate" data-toggle="hover">
+                        <a class="nav-link" href="https://blog.hpylan.com/" target="_blank">官方博客</a>
+                    </li>
+                    <li class="nav-item ">
+                        <a class="nav-link" href="https://afdian.com/a/seeyouagain" target="_blank">赞助</a>
+                    </li>
+                    <li class="nav-item ">
+                        <a class="nav-link" href="http://qm.qq.com/cgi-bin/qm/qr?_wv=1027&k=I_-arUNUYkqURts3vwRmAT44H2O9EQoA&authKey=w19mK3S6ftOLQjiLnxjOiOkTP0uHSk9c33zqrj9b%2BliDev0H42O%2B7WZCROCftet5&noverify=0&group_code=741616947" target="_blank">官群答疑</a>
+                    </li>
+                </ul>
+                <!-- Button -->
+                <a class="navbar-btn btn btn-sm btn-primary d-none d-lg-inline-block ml-3" target="_blank" href="download.html">
+                    马上下载
+                </a>
+                <!-- Mobile button -->
+                <div class="d-lg-none text-center">
+                    <a href="https://webpixels.io/themes/quick-website-ui-kit" class="btn btn-block btn-sm btn-warning">See more details</a>
+                </div>
+            </div>
+        </div>
+    </nav>
+    <!-- Main content -->
+   
+    <section class="slice bg-section pt-5 pt-lg-8" style="padding-top: 0!important;">
+        <!-- Container -->
+        <div class="container position-relative zindex-100">
+            <div class="col">
+                <div class="card shadow-lg border-0 mb-4">
+                    <div class="card-body px-5 py-5">
+                        <div class="mb-5 text-center">
+                            <h1 class="h2 mb-2">KatoLan 隐私协议与用户协议</h1>
+                            <p class="text-muted">最后更新日期：2025年5月29日</p>
+                        </div>
+                        
+                        <div class="mb-5">
+                            <h2 class="h4">1. 引言</h2>
+                            <p>感谢您选择使用KatoLan（以下简称"本软件"）。本软件是一款异地组网联机工具，由Katomegumi Inc.（以下简称"我们"）提供。本隐私协议和用户协议旨在帮助您了解我们如何收集、使用和保护您的个人信息，以及使用本软件的相关条款和条件。</p>
+                            <p>请在使用本软件前仔细阅读本协议。一旦您安装、使用本软件，即表示您已同意本协议的全部内容。</p>
+                        </div>
+                        
+                        <div class="mb-5">
+                            <h2 class="h4">2. 信息收集与使用</h2>
+                            <p>为了提供更好的服务，我们可能会收集以下信息：</p>
+                            <ul>
+                                <li><strong>设备信息</strong>：包括您的计算机硬件信息、操作系统版本、网络环境等技术信息。</li>
+                                <li><strong>网络信息</strong>：包括您的IP地址、MAC地址、网络适配器信息等，这些信息用于建立虚拟局域网连接。</li>
+                                <li><strong>使用数据</strong>：我们可能会收集您使用本软件的频率、时长、功能使用情况等匿名统计数据，以帮助我们改进产品。</li>
+                            </ul>
+                            <p>我们承诺：</p>
+                            <ul>
+                                <li>不会收集与您身份直接相关的个人信息，如姓名、身份证号、银行账号等。</li>
+                                <li>不会出售、出租或以其他方式向第三方提供您的个人信息。</li>
+                                <li>采取合理措施保护您的信息安全。</li>
+                            </ul>
+                        </div>
+                        
+                        <div class="mb-5">
+                            <h2 class="h4">3. 网络操作与系统权限</h2>
+                            <p><strong>防火墙操作</strong>：本软件需要修改系统防火墙设置以允许游戏和应用程序通过虚拟网络进行通信。这可能包括：</p>
+                            <ul>
+                                <li>创建新的防火墙规则</li>
+                                <li>修改现有防火墙规则</li>
+                                <li>为特定端口和协议开放通信权限</li>
+                            </ul>
+                            
+                            <p><strong>广播数据</strong>：本软件会在虚拟网络中广播游戏数据包，以实现局域网游戏的发现和连接功能。这些数据可能包括：</p>
+                            <ul>
+                                <li>游戏服务器信息</li>
+                                <li>连接参数</li>
+                                <li>网络状态信息</li>
+                            </ul>
+                            
+                            <p><strong>网络驱动安装</strong>：本软件可能需要安装虚拟网络驱动程序，以创建虚拟局域网环境。</p>
+                            
+                            <p><strong>管理员权限</strong>：由于需要修改系统网络设置和防火墙规则，本软件可能需要以管理员权限运行。</p>
+                        </div>
+                        
+                        <div class="mb-5">
+                            <h2 class="h4">4. 付费与退款政策</h2>
+                            <p><strong>基本版本</strong>：KatoLan提供免费的基础功能，足以满足大多数用户的需求。</p>
+                            
+                            <p><strong>高级版本</strong>：我们提供付费的高级版本，具有更多功能和更好的性能：</p>
+                            <ul>
+                                <li>一次付费，永久使用：购买高级版后，您可以永久（在运营范围内时间）使用该版本的所有功能。</li>
+                                <li>周期订阅：你可以周期使用该版本的所有功能。</li>
+                                <li>更新政策：付费用户可以免费获得所购买版本的所有更新。大版本升级可能需要额外付费。</li>
+                            </ul>
+                            
+                            <p><strong>退款政策</strong>：</p>
+                            <ul>
+                                <li>在购买后2天内，如果软件无法正常运行且我们的技术支持无法解决问题，您可以申请全额退款。</li>
+                                <li>超过2天或已正常使用软件的情况下，我们通常不提供退款。</li>
+                                <li>退款申请需提供购买凭证和详细的问题描述。</li>
+                            </ul>
+                        </div>
+                        
+                        <div class="mb-5">
+                            <h2 class="h4">5. 免责声明</h2>
+                            <p>尽管我们努力确保软件的稳定性和安全性，但我们无法保证软件在所有环境下都能完美运行。使用本软件时，请注意以下事项：</p>
+                            <ul>
+                                <li>本软件仅作为网络工具使用，用户应遵守当地法律法规，不得用于任何非法用途。</li>
+                                <li>我们不对因使用本软件导致的任何直接或间接损失负责，包括但不限于数据丢失、系统崩溃等。</li>
+                                <li>用户应自行负责保护个人数据安全，包括定期备份重要数据。</li>
+                                <li>本软件可能会因网络环境、系统兼容性等因素影响性能，我们不保证在所有情况下都能达到预期效果。</li>
+                            </ul>
+                        </div>
+                        
+                        <div class="mb-5">
+                            <h2 class="h4">6. 协议变更</h2>
+                            <p>我们可能会不时更新本协议，更新后的协议将在软件内或官方网站上发布。重大变更时，我们会通过软件内通知或官网公告等方式提醒您。继续使用本软件将视为您接受修改后的协议。</p>
+                        </div>
+                        
+                        <div class="mb-5">
+                            <h2 class="h4">7. 联系我们</h2>
+                            <p>如果您对本协议有任何疑问或建议，或需要行使您的隐私权利，请通过以下方式联系我们：</p>
+                            <ul>
+                                <li>官方QQ群：741616947</li>
+                                <li>QQ:1461787516</li>
+                                <li>官方网站：<a href="https://lan.katomegumi.net">https://lan.katomegumi.net</a></li>
+                            </ul>
+                        </div>
+                        
+                        <div class="text-center mt-5">
+                            
+                            <p class="text-muted">KatoLan团队将持续致力于改善产品体验，保护用户隐私安全。</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    
+    <footer class="position-relative" id="footer-main">
+        <div class="footer ">
+            
+            <!-- Footer -->
+            <div class="container pt-4">
+                <div class="row">
+                    <div class="col-lg-4 mb-5 mb-lg-0">
+                        <!-- Theme's logo -->
+                        <a href="index.html">
+                            <img src="https://counter.katomegumi.net/get/@katolan" alt="katolan" id="footer-logo"/>
+                        </a>
+                        <!-- Webpixels' mission -->
+                        <p class="mt-4 text-sm opacity-8 pr-lg-4">Katomegumi.net</p>
+                        <!-- Social -->
+                        <!-- <ul class="nav mt-4">
+                            <li class="nav-item">
+                                <a class="nav-link pl-0" href="https://dribbble.com/webpixels" target="_blank">
+                                    <i class="fab fa-dribbble"></i>
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="https://github.com/webpixels" target="_blank">
+                                    <i class="fab fa-github"></i>
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="https://www.instagram.com/webpxs" target="_blank">
+                                    <i class="fab fa-instagram"></i>
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="https://www.facebook.com/webpixels" target="_blank">
+                                    <i class="fab fa-facebook"></i>
+                                </a>
+                            </li>
+                        </ul> -->
+                    </div>
+                    <div class="col-lg-2 col-6 col-sm-4 ml-lg-auto mb-5 mb-lg-0">
+                        <h6 class="heading mb-3">我们</h6>
+                        <ul class="list-unstyled">
+                            <li><a href="https://afdian.net/album/d554e472cbf911eeb15052540025c377">更新日志</a></li>
+                            <li><a href="#">官方QQ群</a></li>
+                            <li><a href="#">公告</a></li>
+                        </ul>
+                    </div>
+                    <div class="col-lg-2 col-6 col-sm-4 mb-5 mb-lg-0">
+                        <h6 class="heading mb-3">关于我们</h6>
+                        <ul class="list-unstyled">
+                            <li><a href="#">服务</a></li>
+                            <li><a href="#">赞助</a></li>
+                            <li><a href="#">更新日志</a></li>
+                            <li><a href="#">加入我们</a></li>
+                        </ul>
+                    </div>
+                    <div class="col-lg-2 col-6 col-sm-4 mb-5 mb-lg-0">
+                        <h6 class="heading mb-3">友情链接</h6>
+                        <ul class="list-unstyled">
+                            <li><a href="https://ai.katomegumi.net">AI的调教手册</a></li>
+                            <li><a href="https://www.bilibili.com">bilibili</a></li>
+                            <li><a href="https://www.radmin-lan.cn/">radmin-lan</a></li>
+                        </ul>
+                    </div>
+                </div>
+                <hr class="divider divider-fade divider-dark my-4">
+                <div class="row align-items-center justify-content-md-between pb-4">
+                    <div class="col-md-6">
+                        <div class="copyright text-sm font-weight-bold text-center text-md-left">
+                            &copy; 2023 <a href="https://www.katomegumi.net" class="font-weight-bold" target="_blank">Katomegumi Inc.</a> All rights reserved
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <ul class="nav justify-content-center justify-content-md-end mt-3 mt-md-0">
+                            <li class="nav-item">
+                                <a class="nav-link" href="#">
+                                    Terms
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="#">
+                                    Privacy
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="#">
+                                    Cookies
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+    <!-- Core JS  -->
+    <!-- <script src="assets/libs/jquery/dist/jquery.min.js"></script>
+    <script src="assets/libs/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="assets/libs/svg-injector/dist/svg-injector.min.js"></script>
+    <script src="assets/libs/feather-icons/dist/feather.min.js"></script>
+    <!-- Quick JS -->
+    <!-- <script src="assets/js/quick-website.js"></script> -->
+    <!-- Feather Icons -->
+    <!-- <script>
+        feather.replace({
+            'width': '1em',
+            'height': '1em'
+        })
+    </script> --> 
+    <!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-WJ9JQ9N0NK"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-WJ9JQ9N0NK');
+</script>
+</body>
+
+</html>
