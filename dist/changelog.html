@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="author" content="Katomegumi">
+    <title>更新日志 - KatoLan 好朋友联机工具</title>
+    <meta name="description" content="KatoLan 更新日志">
+    <meta name="theme-color" content="#3eaf7c">
+    <style>
+        @keyframes hidePreloader {
+            0% { width: 100%; height: 100%; }
+            100% { width: 0; height: 0; }
+        }
+        body>div.preloader { position: fixed; background: white; width: 100%; height: 100%; z-index: 1071; opacity: 0; transition: opacity .5s ease; overflow: hidden; pointer-events: none; display: flex; align-items: center; justify-content: center; }
+        body:not(.loaded)>div.preloader { opacity: 1; }
+        body:not(.loaded) { overflow: hidden; }
+        body.loaded>div.preloader { animation: hidePreloader .5s linear .5s forwards; }
+
+        .navbar { box-shadow: 0 2px 10px rgba(0,0,0,0.08); transition: all 0.3s ease; }
+        .navbar-brand img { height: 40px; transition: all 0.3s ease; }
+
+        .hero-section { min-height: 40vh; display: flex; align-items: center; position: relative; padding: 40px 0; background: #f8fafc; }
+        .hero-content { text-align: center; max-width: 820px; margin: 0 auto; }
+
+        /* 更新日志紧凑样式 */
+        .changelog-section { padding: 40px 0 60px; }
+        .changelog-card { border: 1px solid #e9ecef; border-radius: 12px; box-shadow: 0 2px 10px rgba(0,0,0,0.04); }
+        .changelog-header { padding: 16px 20px; border-bottom: 1px solid #f1f3f5; display: flex; align-items: center; justify-content: space-between; }
+        .changelog-list { list-style: none; margin: 0; padding: 0; }
+        .changelog-item { display: flex; gap: 12px; align-items: flex-start; padding: 10px 16px; border-bottom: 1px dashed #f1f3f5; }
+        .changelog-item:last-child { border-bottom: none; }
+        .changelog-version { flex: 0 0 70px; font-weight: 700; color: #377dff; font-size: 0.95rem; line-height: 1.6; }
+        .changelog-desc { flex: 1; color: #4a5568; font-size: 0.95rem; line-height: 1.6; }
+        .badge-sm { font-size: 0.75rem; padding: 6px 10px; border-radius: 20px; }
+
+        @media (max-width: 576px) {
+            .changelog-version { flex: 0 0 58px; font-size: 0.9rem; }
+            .changelog-item { padding: 8px 12px; }
+            .hero-section { padding: 28px 0; }
+        }
+    </style>
+    <script>
+        window.addEventListener("DOMContentLoaded", function() {
+            setTimeout(function() {
+                document.querySelector('body').classList.add('loaded');
+            }, 100);
+        });
+    </script>
+    <link rel="shortcut icon" href="favicon.ico" type="image/x-icon" />
+    <link rel="stylesheet" href="assets/css/quick-website.css" id="stylesheet">
+    <script src="https://cdn.staticfile.net/jquery/3.6.0/jquery.min.js"></script>
+    <script src="https://cdn.staticfile.net/bootstrap/4.6.0/js/bootstrap.bundle.min.js"></script>
+    <link href="https://cdn.bootcdn.net/ajax/libs/font-awesome/5.15.0/css/all.min.css" rel="stylesheet">
+</head>
+
+<body>
+    <div class="preloader">
+        <div class="spinner-border text-primary" role="status">
+            <span class="sr-only">Loading...</span>
+        </div>
+    </div>
+
+    <nav class="navbar navbar-expand-lg navbar-light bg-white sticky-top">
+        <div class="container">
+            <a class="navbar-brand" href="index.html">
+                <img alt="KatoLan" src="./favicon.ico">
+            </a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarCollapse">
+                <ul class="navbar-nav mt-4 mt-lg-0 ml-auto">
+                    <li class="nav-item "><a class="nav-link" href="index.html">首页</a></li>
+                    <li class="nav-item "><a class="nav-link" href="/docs/q/" target="_blank">帮助文档</a></li>
+                    <li class="nav-item "><a class="nav-link" href="https://space.bilibili.com/1163442661?spm_id_from=333.337.0.0" target="_blank">官方B站</a></li>
+                    <li class="nav-item "><a class="nav-link" href="https://blog.hpylan.com/" target="_blank">官方博客</a></li>
+                    <li class="nav-item "><a class="nav-link" href="./privacy.html" target="_blank">隐私协议</a></li>
+                    <li class="nav-item "><a class="nav-link" href="http://qm.qq.com/cgi-bin/qm/qr?_wv=1027&k=I_-arUNUYkqURts3vwRmAT44H2O9EQoA&authKey=w19mK3S6ftOLQjiLnxjOiOkTP0uHSk9c33zqrj9b%2BliDev0H42O%2B7WZCROCftet5&noverify=0&group_code=741616947" target="_blank">官群答疑</a></li>
+                    <li class="nav-item "><a class="nav-link" href="https://www.wanjiadongli.com/?inviteCode=hpylan" target="_blank">模组、修改器一键使用</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <section class="hero-section">
+        <div class="container">
+            <div class="hero-content">
+                <h1 class="display-4 mb-3"><strong class="text-primary">更新日志</strong></h1>
+                <p class="lead text-muted mb-0">了解 KatoLan 的每一次改进与修复</p>
+                <div class="hero-buttons mt-3" style="display:flex; justify-content:center; gap:10px;">
+                    <a href="https://wwk.lanzoul.com/b023t8qmb" class="btn btn-sm btn-primary" target="_blank">立即下载</a>
+                    <a href="index.html" class="btn btn-sm btn-outline-primary">返回首页</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="changelog-section bg-section-secondary">
+        <div class="container">
+            <div class="card changelog-card">
+                <div class="changelog-header">
+                    <div>
+                        <span class="badge badge-primary badge-sm">最新</span>
+                        <span class="ml-2 text-muted">持续更新与维护</span>
+                    </div>
+                    <small class="text-muted">v1.2.2</small>
+                </div>
+                <ul class="changelog-list">
+                    <li class="changelog-item"><div class="changelog-version">1.2.2</div><div class="changelog-desc">修复免费服务器无法使用</div></li>
+                    <li class="changelog-item"><div class="changelog-version">1.2.1</div><div class="changelog-desc">修复无法赞助的问题</div></li>
+                    <li class="changelog-item"><div class="changelog-version">1.2.0</div><div class="changelog-desc">增加增强模式（增强模式使用更现代的组网方式，各节点组成联盟提高稳定性）</div></li>
+                    <li class="changelog-item"><div class="changelog-version">1.1.6</div><div class="changelog-desc">增加房间解散所有人必须退出</div></li>
+                    <li class="changelog-item"><div class="changelog-version">1.1.5</div><div class="changelog-desc">部分 bug 修复</div></li>
+                    <li class="changelog-item"><div class="changelog-version">1.1.4</div><div class="changelog-desc">服务器人数使用统计</div></li>
+                    <li class="changelog-item"><div class="changelog-version">1.1.3</div><div class="changelog-desc">跃点工具部分编码错误修复</div></li>
+                    <li class="changelog-item"><div class="changelog-version">1.1.2</div><div class="changelog-desc">房间列表</div></li>
+                    <li class="changelog-item"><div class="changelog-version">1.1.1</div><div class="changelog-desc">网卡跃点数修改工具（提升网卡优先级来提高房间发现概率）</div></li>
+                    <li class="changelog-item"><div class="changelog-version">1.1.0</div><div class="changelog-desc">增加无法安装驱动时手动安装驱动弹窗</div></li>
+                    <li class="changelog-item"><div class="changelog-version">1.0.9</div><div class="changelog-desc">修复文件确实情况</div></li>
+                    <li class="changelog-item"><div class="changelog-version">1.0.7</div><div class="changelog-desc">自动将软件导入白名单</div></li>
+                    <li class="changelog-item"><div class="changelog-version">1.0.6</div><div class="changelog-desc">驱动自动卸载与安装，性能统计</div></li>
+                    <li class="changelog-item"><div class="changelog-version">1.0.5</div><div class="changelog-desc">修复登录接口获取的问题</div></li>
+                    <li class="changelog-item"><div class="changelog-version">1.0.2</div><div class="changelog-desc">修复支付不到账问题</div></li>
+                    <li class="changelog-item"><div class="changelog-version">0.9.9</div><div class="changelog-desc">降低人数更新频率来降低服务器消耗</div></li>
+                    <li class="changelog-item"><div class="changelog-version">0.9.8</div><div class="changelog-desc">修复掉线处理 增加房间踢人</div></li>
+                    <li class="changelog-item"><div class="changelog-version">0.9.7</div><div class="changelog-desc">修复 pro 无法立即加载的问题，增加右键菜单</div></li>
+                    <li class="changelog-item"><div class="changelog-version">0.9.6</div><div class="changelog-desc">修改赞助样式，修改房间在线模式，增加在线服务 修改样式引擎</div></li>
+                    <li class="changelog-item"><div class="changelog-version">0.9.5</div><div class="changelog-desc">增加赞助选项，完善新版本</div></li>
+                    <li class="changelog-item"><div class="changelog-version">0.9.4</div><div class="changelog-desc">使用新的主页样式，不再使用以前样式</div></li>
+                    <li class="changelog-item"><div class="changelog-version">0.9.3</div><div class="changelog-desc">支付系统调整</div></li>
+                    <li class="changelog-item"><div class="changelog-version">0.9.2</div><div class="changelog-desc">编辑服务器列表功能，更好处理服务器编辑</div></li>
+                    <li class="changelog-item"><div class="changelog-version">0.9.1</div><div class="changelog-desc">对部分系统 ping 异常的修复</div></li>
+                    <li class="changelog-item"><div class="changelog-version">0.9.0</div><div class="changelog-desc">新的界面与新的部分调整，修改样式</div></li>
+                    <li class="changelog-item"><div class="changelog-version">0.7.3</div><div class="changelog-desc">服务器加载链接修改</div></li>
+                    <li class="changelog-item"><div class="changelog-version">0.7.1</div><div class="changelog-desc">背景字段优化，部分文案修改</div></li>
+                    <li class="changelog-item"><div class="changelog-version">0.7.0</div><div class="changelog-desc">新的游戏启动和 ping 测试功能，加入 msvc.dll</div></li>
+                    <li class="changelog-item"><div class="changelog-version">0.6.0</div><div class="changelog-desc">软件提示优化</div></li>
+                    <li class="changelog-item"><div class="changelog-version">0.5.0</div><div class="changelog-desc">默认关闭中转</div></li>
+                    <li class="changelog-item"><div class="changelog-version">0.4.5</div><div class="changelog-desc">增加 nat 检查</div></li>
+                    <li class="changelog-item"><div class="changelog-version">0.4.2</div><div class="changelog-desc">对中转参数调整</div></li>
+                    <li class="changelog-item"><div class="changelog-version">0.4.1</div><div class="changelog-desc">自动修改跃点数</div></li>
+                    <li class="changelog-item"><div class="changelog-version">0.4.0</div><div class="changelog-desc">增加主机名显示</div></li>
+                    <li class="changelog-item"><div class="changelog-version">0.3.6</div><div class="changelog-desc">房间界面改善</div></li>
+                    <li class="changelog-item"><div class="changelog-version">0.3.0</div><div class="changelog-desc">更新部分文本，修复 vc 库缺失，修复窗口意外变小恢复</div></li>
+                    <li class="changelog-item"><div class="changelog-version">0.2.5</div><div class="changelog-desc">对更新进行优化，优化部分逻辑</div></li>
+                    <li class="changelog-item"><div class="changelog-version">0.2.1</div><div class="changelog-desc">p2p 描述，证书自动安装</div></li>
+                    <li class="changelog-item"><div class="changelog-version">0.2.0</div><div class="changelog-desc">修复设置</div></li>
+                    <li class="changelog-item"><div class="changelog-version">0.1.9</div><div class="changelog-desc">增加更多描述文本显示</div></li>
+                    <li class="changelog-item"><div class="changelog-version">0.1.8</div><div class="changelog-desc">增加 n2n 是否强制关闭的开关</div></li>
+                    <li class="changelog-item"><div class="changelog-version">0.1.7</div><div class="changelog-desc">更换名称为惠惠联机工具，更改 logo 以及标题 katolan 联机平台</div></li>
+                    <li class="changelog-item"><div class="changelog-version">0.1.5</div><div class="changelog-desc">房间变得更大，删除多余库</div></li>
+                    <li class="changelog-item"><div class="changelog-version">0.1.4</div><div class="changelog-desc">再次强调关闭时进程结束，提供修改背景</div></li>
+                    <li class="changelog-item"><div class="changelog-version">0.1.3</div><div class="changelog-desc">修复 ping 重复问题</div></li>
+                    <li class="changelog-item"><div class="changelog-version">0.1.2</div><div class="changelog-desc">更改更新方式</div></li>
+                    <li class="changelog-item"><div class="changelog-version">0.1.1</div><div class="changelog-desc">修复断开缓慢</div></li>
+                    <li class="changelog-item"><div class="changelog-version">0.1.0</div><div class="changelog-desc">处理未连接成功实践</div></li>
+                    <li class="changelog-item"><div class="changelog-version">0.0.9</div><div class="changelog-desc">集成统计组件</div></li>
+                    <li class="changelog-item"><div class="changelog-version">0.0.0-0.0.8</div><div class="changelog-desc">原始最初版本 梦开始的地方</div></li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <footer class="position-relative" id="footer-main">
+        <div class="footer">
+            <div class="container pt-4">
+                <div class="row">
+                    <div class="col-lg-4 mb-5 mb-lg-0">
+                        <a href="index.html" class="d-block mb-3">
+                            <img src="./favicon.ico" alt="KatoLan" style="height: 40px;">
+                        </a>
+                        <p class="mt-3 text-sm opacity-8">
+                            KatoLan - 让游戏联机变得更简单<br>免费异地组网联机工具
+                        </p>
+                        <img src="https://counter.katomegumi.net/get/@katolan" alt="katolan" class="mt-3"/>
+                    </div>
+                    <div class="col-lg-2 col-6 mb-5 mb-lg-0">
+                        <h6 class="heading mb-3">友情链接</h6>
+                        <ul class="list-unstyled">
+                            <li><a href="https://www.wanjiadongli.com/?inviteCode=hpylan">游戏mod</a></li>
+                            <li><a href="https://docs.qq.com/doc/DQU9vckdUZ21oeFpU">腾讯文档</a></li>
+                            <li><a href="/docs/q/" target="_blank">帮助文档</a></li>
+                        </ul>
+                    </div>
+                    <div class="col-lg-2 col-6 mb-5 mb-lg-0">
+                        <h6 class="heading mb-3">社区</h6>
+                        <ul class="list-unstyled">
+                            <li><a target="_blank" href="http://qm.qq.com/cgi-bin/qm/qr?_wv=1027&k=I_-arUNUYkqURts3vwRmAT44H2O9EQoA&authKey=w19mK3S6ftOLQjiLnxjOiOkTP0uHSk9c33zqrj9b%2BliDev0H42O%2B7WZCROCftet5&noverify=0&group_code=741616947">官方QQ群</a></li>
+                            <li><a target="_blank" href="https://space.bilibili.com/1163442661?spm_id_from=333.337.0.0">官方B站：樱桃花下的小猫</a></li>
+                            <li><a target="_blank" href="https://blog.hpylan.com/">官方博客：樱花下的小猫</a></li>
+                            <li><a target="_blank" href="https://blog.csdn.net/m0_71727150">官方CSDN：樱桃花下的小猫</a></li>
+                        </ul>
+                    </div>
+                    <div class="col-lg-4 col-md-6 mb-5 mb-lg-0">
+                        <h6 class="heading mb-3">联系我们</h6>
+                        <p class="text-sm opacity-8">有任何问题或建议，欢迎随时联系我们</p>
+                        <a href="http://qm.qq.com/cgi-bin/qm/qr?_wv=1027&k=I_-arUNUYkqURts3vwRmAT44H2O9EQoA" class="btn btn-sm btn-primary mt-3">加入官方群</a>
+                    </div>
+                </div>
+                <hr class="divider divider-fade divider-dark my-4">
+                <div class="row align-items-center justify-content-md-between pb-4">
+                    <div class="col-md-6">
+                        <div class="copyright text-sm font-weight-bold text-center text-md-left">
+                            &copy; 2024 <a href="https://www.katomegumi.net" class="font-weight-bold" target="_blank">Katomegumi Inc.</a> All rights reserved
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <ul class="nav justify-content-center justify-content-md-end mt-3 mt-md-0">
+                            <li class="nav-item"><a class="nav-link" target="_blank" href="./privacy.html">隐私政策</a></li>
+                            <li class="nav-item"><a class="nav-link" target="_blank" href="./privacy.html">服务条款</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+</body>
+
+</html>
+
+
