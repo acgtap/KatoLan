@@ -1,0 +1,1091 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+    <meta charset="utf-8">
+    <title>KatoLan 好朋友联机工具 - 真免费、真简单、真好用</title>
+    <meta name="from" content="KatoLan Official Website">
+    <meta name="renderer" content="webkit|ie-comp|ie-stand">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="keywords" content="好朋友联机工具,KatoLan,虚拟局域网,异地组网,免费联机工具,远程联机,局域网联机,游戏联机,MC联机">
+    <meta name="description" content="KatoLan 好朋友联机工具，是一款免费的虚拟局域网游戏联机工具。支持P2P、中转连接，将多台远程计算机连接到单一本地网络，满足远程游戏联机需求。凭借高速直连和超低延迟，提供流畅的联机体验，支持自建服务器节点，不限制玩家人数，让用户可以快乐游戏。">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0,minimum-scale=1.0,maximum-scale=1.0, user-scalable=no,minimal-ui,user-scalable=0,viewport-fit=cover">
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <link rel="shortcut icon" href="favicon.ico" type="image/x-icon" />
+    
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: '#09090a',
+                        secondary: '#2f2f30',
+                        accent: '#377dff',
+                        success: '#00c9a7',
+                        warning: '#ffc107',
+                        info: '#00c1ed',
+                        gray: {
+                            50: '#f8f9fa',
+                            100: '#f1f3f4',
+                            200: '#e8eaed',
+                            300: '#dadce0',
+                            400: '#bdc1c6',
+                            500: '#9aa0a6',
+                            600: '#80868b',
+                            700: '#5f6368',
+                            800: '#3c4043',
+                            900: '#202124'
+                        }
+                    },
+                    fontFamily: {
+                        sans: ['-apple-system', 'BlinkMacSystemFont', 'PingFang SC', 'Hiragino Sans GB', 'Helvetica Neue', 'STHeiti', 'Microsoft Yahei', 'Tahoma', 'sans-serif']
+                    },
+                    animation: {
+                        'fade-in-up': 'fadeInUp 1s ease-out',
+                        'fade-in-down': 'fadeInDown 1s ease-out',
+                        'slide-in-left': 'slideInLeft 1s ease-out',
+                        'slide-in-right': 'slideInRight 1s ease-out',
+                        'float': 'float 6s ease-in-out infinite',
+                        'pulse-slow': 'pulse 3s ease-in-out infinite',
+                        'scroll': 'scroll 40s linear infinite',
+                        'shimmer': 'shimmer 2s ease-in-out infinite'
+                    },
+                    keyframes: {
+                        fadeInUp: {
+                            '0%': { opacity: '0', transform: 'translateY(30px)' },
+                            '100%': { opacity: '1', transform: 'translateY(0)' }
+                        },
+                        fadeInDown: {
+                            '0%': { opacity: '0', transform: 'translateY(-30px)' },
+                            '100%': { opacity: '1', transform: 'translateY(0)' }
+                        },
+                        slideInLeft: {
+                            '0%': { opacity: '0', transform: 'translateX(-50px)' },
+                            '100%': { opacity: '1', transform: 'translateX(0)' }
+                        },
+                        slideInRight: {
+                            '0%': { opacity: '0', transform: 'translateX(50px)' },
+                            '100%': { opacity: '1', transform: 'translateX(0)' }
+                        },
+                        float: {
+                            '0%, 100%': { transform: 'translateY(0px)' },
+                            '50%': { transform: 'translateY(-20px)' }
+                        },
+                        scroll: {
+                            '0%': { transform: 'translateX(0)' },
+                            '100%': { transform: 'translateX(-50%)' }
+                        },
+                        shimmer: {
+                            '0%': { left: '-100%' },
+                            '100%': { left: '100%' }
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        /* 自定义样式补充 */
+        .animate-delay-200 { animation-delay: 0.2s; }
+        .animate-delay-400 { animation-delay: 0.4s; }
+        .animate-delay-600 { animation-delay: 0.6s; }
+        .animate-delay-800 { animation-delay: 0.8s; }
+        .animate-delay-1000 { animation-delay: 1s; }
+        
+        .parallax-element {
+            will-change: transform;
+        }
+        
+        .scroll-smooth {
+            scroll-behavior: smooth;
+        }
+        
+        .backdrop-blur-sm {
+            backdrop-filter: blur(4px);
+        }
+        
+        .text-shadow {
+            text-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+        
+        .hover-lift {
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        
+        .hover-lift:hover {
+            transform: translateY(-8px);
+        }
+        
+        .btn-shimmer {
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .btn-shimmer::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
+            transition: left 0.5s ease;
+        }
+        
+        .btn-shimmer:hover::before {
+            left: 100%;
+        }
+        
+        .gradient-text {
+            background: linear-gradient(135deg, #377dff 0%, #00c9a7 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        
+        .glass-effect {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+        
+        .scroll-container::before,
+        .scroll-container::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            width: 60px;
+            height: 100%;
+            z-index: 10;
+            pointer-events: none;
+        }
+        
+        .scroll-container::before {
+            left: 0;
+            background: linear-gradient(90deg, #fff 0%, transparent 100%);
+        }
+        
+        .scroll-container::after {
+            right: 0;
+            background: linear-gradient(270deg, #fff 0%, transparent 100%);
+        }
+        
+        .review-scroll:hover {
+            animation-play-state: paused;
+        }
+        
+        /* 自定义滚动条 */
+        ::-webkit-scrollbar {
+            width: 6px;
+        }
+        
+        ::-webkit-scrollbar-track {
+            background: #f1f1f1;
+        }
+        
+        ::-webkit-scrollbar-thumb {
+            background: #c1c1c1;
+            border-radius: 3px;
+        }
+        
+        ::-webkit-scrollbar-thumb:hover {
+            background: #a8a8a8;
+        }
+        
+        /* 选中文本样式 */
+        ::selection {
+            background: rgba(55, 125, 255, 0.2);
+            color: #09090a;
+        }
+        
+        ::-moz-selection {
+            background: rgba(55, 125, 255, 0.2);
+            color: #09090a;
+        }
+    </style>
+</head>
+<body class="font-sans antialiased bg-gray-50 scroll-smooth">
+    <!-- SVG图标定义 -->
+    <svg aria-hidden="true" width="0" height="0" class="absolute">
+        <symbol fill="none" viewBox="0 0 20 21" id="icon_check" xmlns="http://www.w3.org/2000/svg">
+            <path fill-rule="evenodd" clip-rule="evenodd" d="M17.256 5.776a.833.833 0 0 1 0 1.179L8.089 16.12a.833.833 0 0 1-1.178 0l-4.167-4.166a.833.833 0 1 1 1.179-1.179L7.5 14.354l8.577-8.578a.833.833 0 0 1 1.179 0Z" fill="#00c9a7"></path>
+        </symbol>
+        <symbol fill="currentColor" viewBox="0 0 24 25" id="icon_arrow_right" xmlns="http://www.w3.org/2000/svg">
+            <path fill-rule="evenodd" clip-rule="evenodd" d="M17 18.582a1 1 0 0 1-1-1V9.996L7.707 18.29a1 1 0 0 1-1.414-1.414l8.293-8.293H7a1 1 0 0 1 0-2h10a1 1 0 0 1 1 1v10a1 1 0 0 1-1 1Z"></path>
+        </symbol>
+        <symbol viewBox="0 0 24 24" id="icon_download" xmlns="http://www.w3.org/2000/svg">
+            <path fill="currentColor" d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5h3V8h4v4h3l-5 5z"/>
+        </symbol>
+    </svg>
+
+    <!-- 导航栏 -->
+    <nav class="sticky top-0 z-50 bg-white/95 backdrop-blur-sm border-b border-gray-200/50 transition-all duration-300">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-16">
+                <!-- Logo -->
+                <div class="flex items-center">
+                    <a href="index.html" class="flex items-center space-x-2">
+                        <img src="./favicon.ico" alt="KatoLan" class="h-8 w-8 transition-transform duration-300 hover:scale-110">
+                        <span class="text-xl font-bold text-primary hidden sm:block">KatoLan</span>
+                    </a>
+                </div>
+                
+                <!-- 导航菜单 -->
+                <div class="hidden md:flex items-center space-x-8">
+                    <a href="index.html" class="text-primary hover:text-secondary transition-colors duration-300 font-medium">首页</a>
+                    <a href="/docs/q/" target="_blank" class="text-primary hover:text-secondary transition-colors duration-300 font-medium">帮助文档</a>
+                    <a href="https://space.bilibili.com/1163442661" target="_blank" class="text-primary hover:text-secondary transition-colors duration-300 font-medium">官方B站</a>
+                    <a href="https://blog.hpylan.com/" target="_blank" class="text-primary hover:text-secondary transition-colors duration-300 font-medium">官方博客</a>
+                    <a href="http://qm.qq.com/cgi-bin/qm/qr?_wv=1027&k=I_-arUNUYkqURts3vwRmAT44H2O9EQoA" target="_blank" class="text-primary hover:text-secondary transition-colors duration-300 font-medium">官群答疑</a>
+                </div>
+                
+                <!-- 下载按钮 -->
+                <div class="flex items-center space-x-4">
+                    <a href="https://wwk.lanzoul.com/b023t8qmb" target="_blank" 
+                       class="bg-primary hover:bg-secondary text-white px-6 py-2 rounded-lg font-semibold transition-all duration-300 btn-shimmer hover:shadow-lg transform hover:-translate-y-0.5">
+                        下载
+                    </a>
+                    
+                    <!-- 移动端菜单按钮 -->
+                    <button class="md:hidden p-2 rounded-lg hover:bg-gray-100 transition-colors duration-300" id="mobile-menu-btn">
+                        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+                        </svg>
+                    </button>
+                </div>
+            </div>
+        </div>
+        
+        <!-- 移动端菜单 -->
+        <div class="md:hidden hidden bg-white border-t border-gray-200" id="mobile-menu">
+            <div class="px-4 py-2 space-y-1">
+                <a href="index.html" class="block px-3 py-2 text-primary hover:bg-gray-50 rounded-lg transition-colors duration-300">首页</a>
+                <a href="/docs/q/" target="_blank" class="block px-3 py-2 text-primary hover:bg-gray-50 rounded-lg transition-colors duration-300">帮助文档</a>
+                <a href="https://space.bilibili.com/1163442661" target="_blank" class="block px-3 py-2 text-primary hover:bg-gray-50 rounded-lg transition-colors duration-300">官方B站</a>
+                <a href="https://blog.hpylan.com/" target="_blank" class="block px-3 py-2 text-primary hover:bg-gray-50 rounded-lg transition-colors duration-300">官方博客</a>
+                <a href="http://qm.qq.com/cgi-bin/qm/qr?_wv=1027&k=I_-arUNUYkqURts3vwRmAT44H2O9EQoA" target="_blank" class="block px-3 py-2 text-primary hover:bg-gray-50 rounded-lg transition-colors duration-300">官群答疑</a>
+            </div>
+        </div>
+    </nav>
+    <!-- Hero区域 -->
+    <section class="relative overflow-hidden bg-gradient-to-b from-gray-50 to-white py-20 lg:py-28">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center max-w-4xl mx-auto">
+                <!-- 主标题 -->
+                <h1 class="text-4xl sm:text-5xl lg:text-6xl font-bold text-primary mb-6 animate-fade-in-up text-shadow">
+                    好朋友联机工具
+                </h1>
+                
+                <!-- 副标题 -->
+                <p class="text-xl sm:text-2xl text-gray-600 mb-8 animate-fade-in-up animate-delay-200">
+                    快速与朋友异地联机游戏，超低延迟虚拟局域网联机工具
+                </p>
+                
+                <!-- 主要下载按钮 -->
+                <div class="mb-8 animate-fade-in-up animate-delay-400">
+                    <button onclick="window.open('https://wwk.lanzoul.com/b023t8qmb','_blank')" 
+                            class="bg-primary hover:bg-secondary text-white px-8 py-4 rounded-xl text-lg font-semibold transition-all duration-300 btn-shimmer hover:shadow-xl transform hover:-translate-y-1 inline-flex items-center space-x-2">
+                        <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
+                            <use xlink:href="#icon_download"></use>
+                        </svg>
+                        <span>立即下载 v1.4.0</span>
+                    </button>
+                </div>
+                
+                <!-- 下载信息徽章 -->
+                <div class="flex flex-wrap justify-center gap-3 mb-12 animate-fade-in-up animate-delay-600">
+                    <span class="bg-accent/10 text-accent px-4 py-2 rounded-full text-sm font-medium border border-accent/20">
+                        下载密码: 9btg
+                    </span>
+                    <span class="bg-info/10 text-info px-4 py-2 rounded-full text-sm font-medium border border-info/20">
+                        官群：741616947
+                    </span>
+                    <span class="bg-warning/10 text-warning px-4 py-2 rounded-full text-sm font-medium border border-warning/20">
+                        最新版本：v1.2.2（仅12MB大小）
+                    </span>
+                </div>
+            </div>
+        </div>
+        
+        <!-- 背景装饰 -->
+        <div class="absolute inset-0 overflow-hidden pointer-events-none">
+            <div class="absolute -top-40 -right-40 w-80 h-80 bg-accent/5 rounded-full blur-3xl"></div>
+            <div class="absolute -bottom-40 -left-40 w-80 h-80 bg-success/5 rounded-full blur-3xl"></div>
+        </div>
+    </section>
+
+    <!-- KV展示区 -->
+    <section class="relative py-16 lg:py-20 bg-gray-50 overflow-hidden">
+        <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="relative z-10 animate-fade-in-up animate-delay-800">
+                <div class="">
+                    <img src="https://uapis.cn/static/uploads/9b68796eb2_0BgDcXS52bYf.webp" 
+                         alt="KatoLan界面展示" 
+                         class="w-full  object-contain bg-white rounded-2xl shadow-2xl p-3 sm:p-6 transform hover:scale-102 transition-transform duration-500">
+                </div>
+            </div>
+        </div>
+        
+        <!-- 浮动装饰元素 -->
+        <div class="absolute inset-0 pointer-events-none">
+            <img src="https://uuyc.res.netease.com/pc/gw/20241129172408/img/image-star_4d761f6c.png" 
+                 alt="装饰" 
+                 class="parallax-element absolute top-1/4 left-[5%] w-16 h-16 opacity-60 animate-float"
+                 data-speed="10">
+            <!-- <img src="https://uuyc.res.netease.com/pc/gw/20241129172408/img/image-4k_96c90559.png" 
+                 alt="免费" 
+                 class="parallax-element absolute top-1/3 right-[8%] w-12 h-12 opacity-60 animate-float"
+                 data-speed="35"
+                 style="animation-delay: 0.5s;"> -->
+            <!-- <img src="https://uuyc.res.netease.com/pc/gw/20241129172408/img/image-free_8eb03d6f.png" 
+                 alt="简单" 
+                 class="parallax-element absolute bottom-1/4 left-[10%] w-14 h-14 opacity-60 animate-float"
+                 data-speed="30"
+                 style="animation-delay: 1s;"> -->
+            <img src="https://uuyc.res.netease.com/pc/gw/20241129172408/img/image-like_4171794a.png" 
+                 alt="好用" 
+                 class="parallax-element absolute bottom-1/3 right-[5%] w-18 h-18 opacity-60 animate-float"
+                 data-speed="40"
+                 style="animation-delay: 1.5s;">
+            <img src="https://uuyc.res.netease.com/pc/gw/20241129172408/img/image-light_c20aaa84.png" 
+                 alt="超低延迟" 
+                 class="parallax-element absolute top-1/2 left-[3%] w-20 h-20 opacity-60 animate-float"
+                 data-speed="8"
+                 style="animation-delay: 2s;">
+        </div>
+        
+        <!-- 背景渐变 -->
+        <div class="absolute inset-0 bg-gradient-to-br from-accent/5 via-transparent to-success/5"></div>
+    </section>
+    <!-- 功能特色区 -->
+    <section class="py-20 lg:py-28 bg-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid lg:grid-cols-3 gap-8 lg:gap-12">
+                <!-- 远程游戏联机 -->
+                <div class="group hover-lift bg-gray-50 rounded-2xl p-8 border border-gray-100 hover:border-accent/30 hover:shadow-xl transition-all duration-500 animate-fade-in-up">
+                    <div class="flex items-center mb-6">
+                        <img src="https://uuyc.res.netease.com/pc/gw/20241129172408/img/icon_game_e399e299.png" 
+                             alt="远程游戏" 
+                             class="w-12 h-12 mr-4 group-hover:scale-110 transition-transform duration-300">
+                        <h3 class="text-xl font-bold text-primary">远程游戏联机</h3>
+                    </div>
+                    
+                    <h2 class="text-3xl lg:text-4xl font-bold text-primary mb-6 leading-tight">
+                        免费易用<span class="text-gray-400">，</span><br>
+                        不限人数联机
+                    </h2>
+                    
+                    <ul class="space-y-4 mb-8">
+                        <li class="flex items-start space-x-3">
+                            <svg class="w-5 h-5 text-success mt-0.5 flex-shrink-0" fill="currentColor" viewBox="0 0 20 21">
+                                <use xlink:href="#icon_check"></use>
+                            </svg>
+                            <span class="text-gray-600">超低延迟，丝滑畅玩游戏</span>
+                        </li>
+                        <li class="flex items-start space-x-3">
+                            <svg class="w-5 h-5 text-success mt-0.5 flex-shrink-0" fill="currentColor" viewBox="0 0 20 21">
+                                <use xlink:href="#icon_check"></use>
+                            </svg>
+                            <span class="text-gray-600">P2P自动打洞，延迟更低</span>
+                        </li>
+                        <li class="flex items-start space-x-3">
+                            <svg class="w-5 h-5 text-success mt-0.5 flex-shrink-0" fill="currentColor" viewBox="0 0 20 21">
+                                <use xlink:href="#icon_check"></use>
+                            </svg>
+                            <span class="text-gray-600">不限制玩家人数</span>
+                        </li>
+                        <li class="flex items-start space-x-3">
+                            <svg class="w-5 h-5 text-success mt-0.5 flex-shrink-0" fill="currentColor" viewBox="0 0 20 21">
+                                <use xlink:href="#icon_check"></use>
+                            </svg>
+                            <span class="text-gray-600">支持所有局域网游戏</span>
+                        </li>
+                    </ul>
+                    
+                    <a href="https://tc.vlogidc.cn/img/2025/03/12/67d14937d7105.webp" 
+                       target="_blank" 
+                       class="inline-flex items-center text-accent hover:text-accent/80 font-semibold transition-colors duration-300 group">
+                        查看更多
+                        <svg class="w-4 h-4 ml-2 group-hover:translate-x-1 transition-transform duration-300" fill="currentColor" viewBox="0 0 24 25">
+                            <use xlink:href="#icon_arrow_right"></use>
+                        </svg>
+                    </a>
+                </div>
+
+                <!-- 简单易用 -->
+                <div class="group hover-lift bg-gray-50 rounded-2xl p-8 border border-gray-100 hover:border-accent/30 hover:shadow-xl transition-all duration-500 animate-fade-in-up animate-delay-200">
+                    <div class="flex items-center mb-6">
+                        <img src="https://uuyc.res.netease.com/pc/gw/20241129172408/img/icon_pc_dbfebff4.png" 
+                             alt="简单易用" 
+                             class="w-12 h-12 mr-4 group-hover:scale-110 transition-transform duration-300">
+                        <h3 class="text-xl font-bold text-primary">简单易用</h3>
+                    </div>
+                    
+                    <h2 class="text-3xl lg:text-4xl font-bold text-primary mb-6 leading-tight">
+                        一看就会<span class="text-gray-400">，</span><br>
+                        三步轻松联机
+                    </h2>
+                    
+                    <ul class="space-y-4 mb-8">
+                        <li class="flex items-start space-x-3">
+                            <svg class="w-5 h-5 text-success mt-0.5 flex-shrink-0" fill="currentColor" viewBox="0 0 20 21">
+                                <use xlink:href="#icon_check"></use>
+                            </svg>
+                            <span class="text-gray-600">精心设计的界面布局</span>
+                        </li>
+                        <li class="flex items-start space-x-3">
+                            <svg class="w-5 h-5 text-success mt-0.5 flex-shrink-0" fill="currentColor" viewBox="0 0 20 21">
+                                <use xlink:href="#icon_check"></use>
+                            </svg>
+                            <span class="text-gray-600">无需注册和复杂配置</span>
+                        </li>
+                        <li class="flex items-start space-x-3">
+                            <svg class="w-5 h-5 text-success mt-0.5 flex-shrink-0" fill="currentColor" viewBox="0 0 20 21">
+                                <use xlink:href="#icon_check"></use>
+                            </svg>
+                            <span class="text-gray-600">朋友填房间名即可加入</span>
+                        </li>
+                        <li class="flex items-start space-x-3">
+                            <svg class="w-5 h-5 text-success mt-0.5 flex-shrink-0" fill="currentColor" viewBox="0 0 20 21">
+                                <use xlink:href="#icon_check"></use>
+                            </svg>
+                            <span class="text-gray-600">一键连接，即刻开玩</span>
+                        </li>
+                    </ul>
+                    
+                    <a href="https://tc.vlogidc.cn/img/2025/03/12/67d147034c87a.webp" 
+                       target="_blank" 
+                       class="inline-flex items-center text-accent hover:text-accent/80 font-semibold transition-colors duration-300 group">
+                        查看更多
+                        <svg class="w-4 h-4 ml-2 group-hover:translate-x-1 transition-transform duration-300" fill="currentColor" viewBox="0 0 24 25">
+                            <use xlink:href="#icon_arrow_right"></use>
+                        </svg>
+                    </a>
+                </div>
+
+                <!-- 自建节点 -->
+                <div class="group hover-lift bg-gray-50 rounded-2xl p-8 border border-gray-100 hover:border-accent/30 hover:shadow-xl transition-all duration-500 animate-fade-in-up animate-delay-400">
+                    <div class="flex items-center mb-6">
+                        <img src="https://uuyc.res.netease.com/pc/gw/20241129172408/img/icon_help_d9da100f.png" 
+                             alt="自建节点" 
+                             class="w-12 h-12 mr-4 group-hover:scale-110 transition-transform duration-300">
+                        <h3 class="text-xl font-bold text-primary">自建节点</h3>
+                    </div>
+                    
+                    <h2 class="text-3xl lg:text-4xl font-bold text-primary mb-6 leading-tight">
+                        更稳定<span class="text-gray-400">，</span><br>
+                        更经济实惠
+                    </h2>
+                    
+                    <ul class="space-y-4 mb-8">
+                        <li class="flex items-start space-x-3">
+                            <svg class="w-5 h-5 text-success mt-0.5 flex-shrink-0" fill="currentColor" viewBox="0 0 20 21">
+                                <use xlink:href="#icon_check"></use>
+                            </svg>
+                            <span class="text-gray-600">支持自建服务器节点</span>
+                        </li>
+                        <li class="flex items-start space-x-3">
+                            <svg class="w-5 h-5 text-success mt-0.5 flex-shrink-0" fill="currentColor" viewBox="0 0 20 21">
+                                <use xlink:href="#icon_check"></use>
+                            </svg>
+                            <span class="text-gray-600">更低延迟，更稳定连接</span>
+                        </li>
+                        <li class="flex items-start space-x-3">
+                            <svg class="w-5 h-5 text-success mt-0.5 flex-shrink-0" fill="currentColor" viewBox="0 0 20 21">
+                                <use xlink:href="#icon_check"></use>
+                            </svg>
+                            <span class="text-gray-600">无需朋友添加节点</span>
+                        </li>
+                        <li class="flex items-start space-x-3">
+                            <svg class="w-5 h-5 text-success mt-0.5 flex-shrink-0" fill="currentColor" viewBox="0 0 20 21">
+                                <use xlink:href="#icon_check"></use>
+                            </svg>
+                            <span class="text-gray-600">更经济实惠的价格</span>
+                        </li>
+                    </ul>
+                    
+                    <a href="https://tc.vlogidc.cn/img/2025/03/05/67c7c9fa10f50.png" 
+                       target="_blank" 
+                       class="inline-flex items-center text-accent hover:text-accent/80 font-semibold transition-colors duration-300 group">
+                        查看更多
+                        <svg class="w-4 h-4 ml-2 group-hover:translate-x-1 transition-transform duration-300" fill="currentColor" viewBox="0 0 24 25">
+                            <use xlink:href="#icon_arrow_right"></use>
+                        </svg>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- 功能展示区 -->
+    <section class="relative py-20 lg:py-28 bg-gray-50 overflow-hidden">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <!-- 标题 -->
+            <div class="text-center mb-16 animate-fade-in-up">
+                <h2 class="text-4xl lg:text-5xl font-bold text-primary mb-4">功能强大，完全免费</h2>
+                <p class="text-xl text-gray-600">Make online game acceleration easier.</p>
+            </div>
+            
+            <!-- 功能平铺展示 -->
+            <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
+                <!-- 简洁美观界面 -->
+                <div class="bg-white rounded-2xl p-6 shadow-lg hover:shadow-xl transition-all duration-300 hover:-translate-y-2 animate-fade-in-up">
+                    <div class="w-12 h-12 bg-gradient-to-br from-blue-500 to-blue-600 rounded-xl flex items-center justify-center mb-4">
+                        <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9.75 17L9 20l-1 1h8l-1-1-.75-3M3 13h18M5 17h14a2 2 0 002-2V5a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"></path>
+                        </svg>
+                    </div>
+                    <h3 class="text-xl font-bold text-primary mb-2">简洁美观界面</h3>
+                    <p class="text-gray-600 text-sm leading-relaxed">清晰直观的界面设计，一看就会操作，新手也能快速上手使用</p>
+                </div>
+                
+                <!-- 电竞级网络 -->
+                <div class="bg-white rounded-2xl p-6 shadow-lg hover:shadow-xl transition-all duration-300 hover:-translate-y-2 animate-fade-in-up animate-delay-200">
+                    <div class="w-12 h-12 bg-gradient-to-br from-green-500 to-green-600 rounded-xl flex items-center justify-center mb-4">
+                        <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"></path>
+                        </svg>
+                    </div>
+                    <h3 class="text-xl font-bold text-primary mb-2">电竞级网络</h3>
+                    <p class="text-gray-600 text-sm leading-relaxed">高速稳定的网络连接，零丢包保证，为游戏提供最佳网络环境</p>
+                </div>
+                
+                <!-- P2P自动打洞 -->
+                <div class="bg-white rounded-2xl p-6 shadow-lg hover:shadow-xl transition-all duration-300 hover:-translate-y-2 animate-fade-in-up animate-delay-400">
+                    <div class="w-12 h-12 bg-gradient-to-br from-purple-500 to-purple-600 rounded-xl flex items-center justify-center mb-4">
+                        <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8.111 16.404a5.5 5.5 0 017.778 0M12 20h.01m-7.08-7.071c3.904-3.905 10.236-3.905 14.141 0M1.394 9.393c5.857-5.857 15.355-5.857 21.213 0"></path>
+                        </svg>
+                    </div>
+                    <h3 class="text-xl font-bold text-primary mb-2">P2P自动打洞</h3>
+                    <p class="text-gray-600 text-sm leading-relaxed">智能P2P连接技术，自动优化网络路径，大幅降低延迟</p>
+                </div>
+                
+                <!-- 自建服务器节点 -->
+                <div class="bg-white rounded-2xl p-6 shadow-lg hover:shadow-xl transition-all duration-300 hover:-translate-y-2 animate-fade-in-up animate-delay-600">
+                    <div class="w-12 h-12 bg-gradient-to-br from-orange-500 to-orange-600 rounded-xl flex items-center justify-center mb-4">
+                        <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 12h14M5 12a2 2 0 01-2-2V6a2 2 0 012-2h14a2 2 0 012 2v4a2 2 0 01-2 2M5 12a2 2 0 00-2 2v4a2 2 0 002 2h14a2 2 0 002-2v-4a2 2 0 00-2-2m-2-4h.01M17 16h.01"></path>
+                        </svg>
+                    </div>
+                    <h3 class="text-xl font-bold text-primary mb-2">自建服务器节点</h3>
+                    <p class="text-gray-600 text-sm leading-relaxed">支持自建服务器节点，更稳定的连接，更经济实惠的价格</p>
+                </div>
+                
+                <!-- 不限制人数 -->
+                <div class="bg-white rounded-2xl p-6 shadow-lg hover:shadow-xl transition-all duration-300 hover:-translate-y-2 animate-fade-in-up animate-delay-800">
+                    <div class="w-12 h-12 bg-gradient-to-br from-red-500 to-red-600 rounded-xl flex items-center justify-center mb-4">
+                        <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z"></path>
+                        </svg>
+                    </div>
+                    <h3 class="text-xl font-bold text-primary mb-2">不限制人数</h3>
+                    <p class="text-gray-600 text-sm leading-relaxed">支持无限制玩家数量联机，和更多朋友一起畅玩游戏</p>
+                </div>
+                
+                <!-- 支持所有游戏 -->
+                <div class="bg-white rounded-2xl p-6 shadow-lg hover:shadow-xl transition-all duration-300 hover:-translate-y-2 animate-fade-in-up animate-delay-1000">
+                    <div class="w-12 h-12 bg-gradient-to-br from-indigo-500 to-indigo-600 rounded-xl flex items-center justify-center mb-4">
+                        <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11.049 2.927c.3-.921 1.603-.921 1.902 0l1.519 4.674a1 1 0 00.95.69h4.915c.969 0 1.371 1.24.588 1.81l-3.976 2.888a1 1 0 00-.363 1.118l1.518 4.674c.3.922-.755 1.688-1.538 1.118l-3.976-2.888a1 1 0 00-1.176 0l-3.976 2.888c-.783.57-1.838-.197-1.538-1.118l1.518-4.674a1 1 0 00-.363-1.118l-3.976-2.888c-.784-.57-.38-1.81.588-1.81h4.914a1 1 0 00.951-.69l1.519-4.674z"></path>
+                        </svg>
+                    </div>
+                    <h3 class="text-xl font-bold text-primary mb-2">支持所有游戏</h3>
+                    <p class="text-gray-600 text-sm leading-relaxed">兼容所有局域网游戏，MC、泰拉瑞亚、饥荒等热门游戏</p>
+                </div>
+                
+                <!-- 一键连接 -->
+                <div class="bg-white rounded-2xl p-6 shadow-lg hover:shadow-xl transition-all duration-300 hover:-translate-y-2 animate-fade-in-up animate-delay-1200">
+                    <div class="w-12 h-12 bg-gradient-to-br from-teal-500 to-teal-600 rounded-xl flex items-center justify-center mb-4">
+                        <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15.232 5.232l3.536 3.536m-2.036-5.036a2.5 2.5 0 113.536 3.536L6.5 21.036H3v-3.572L16.732 3.732z"></path>
+                        </svg>
+                    </div>
+                    <h3 class="text-xl font-bold text-primary mb-2">一键连接</h3>
+                    <p class="text-gray-600 text-sm leading-relaxed">无需复杂配置，填写房间名即可快速连接，即刻开始游戏</p>
+                </div>
+                
+                <!-- 完全免费 -->
+                <div class="bg-white rounded-2xl p-6 shadow-lg hover:shadow-xl transition-all duration-300 hover:-translate-y-2 animate-fade-in-up animate-delay-1400">
+                    <div class="w-12 h-12 bg-gradient-to-br from-pink-500 to-pink-600 rounded-xl flex items-center justify-center mb-4">
+                        <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                        </svg>
+                    </div>
+                    <h3 class="text-xl font-bold text-primary mb-2">完全免费</h3>
+                    <p class="text-gray-600 text-sm leading-relaxed">所有功能完全免费使用，无隐藏费用，无使用限制</p>
+                </div>
+            </div>
+        </div>
+        
+        <!-- 背景装饰 -->
+        <div class="absolute inset-0 pointer-events-none">
+            <div class="absolute top-1/4 left-0 w-72 h-72 bg-gradient-to-r from-accent/10 to-transparent rounded-full blur-3xl"></div>
+            <div class="absolute bottom-1/4 right-0 w-72 h-72 bg-gradient-to-l from-success/10 to-transparent rounded-full blur-3xl"></div>
+        </div>
+    </section>
+
+    <!-- 用户评价区 -->
+    <section class="py-20 lg:py-28 bg-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <!-- 标题 -->
+            <div class="text-center mb-16 animate-fade-in-up">
+                <h2 class="text-4xl lg:text-5xl font-bold text-primary mb-4">用户好评，真的好用</h2>
+                <p class="text-xl text-gray-600">来自真实用户的使用体验分享</p>
+            </div>
+            
+            <!-- 评论滚动容器 -->
+            <div class="relative overflow-hidden scroll-container">
+                <div class="flex space-x-6 animate-scroll review-scroll">
+                    <!-- 评论卡片 -->
+                    <div class="flex-shrink-0 w-80 bg-gray-50 rounded-2xl p-6 border border-gray-100 hover:shadow-lg transition-shadow duration-300">
+                        <div class="flex items-center mb-4">
+                            <img src="https://uuyc.res.netease.com/pc/gw/20241129172408/img/user_01_6f608628.png" 
+                                 alt="用户头像" 
+                                 class="w-12 h-12 rounded-full mr-4 border-2 border-white shadow-md">
+                            <div>
+                                <div class="font-semibold text-primary">游戏玩家A</div>
+                                <div class="flex space-x-1">
+                                    <span class="text-yellow-400">★★★★★</span>
+                                </div>
+                            </div>
+                        </div>
+                        <p class="text-gray-600 leading-relaxed">KatoLan真的太好用了！和朋友联机玩MC，延迟很低，连接也很稳定。界面简洁，操作简单，强烈推荐！</p>
+                    </div>
+                    
+                    <div class="flex-shrink-0 w-80 bg-gray-50 rounded-2xl p-6 border border-gray-100 hover:shadow-lg transition-shadow duration-300">
+                        <div class="flex items-center mb-4">
+                            <img src="https://uuyc.res.netease.com/pc/gw/20241129172408/img/user_02_94cba906.png" 
+                                 alt="用户头像" 
+                                 class="w-12 h-12 rounded-full mr-4 border-2 border-white shadow-md">
+                            <div>
+                                <div class="font-semibold text-primary">联机达人</div>
+                                <div class="flex space-x-1">
+                                    <span class="text-yellow-400">★★★★★</span>
+                                </div>
+                            </div>
+                        </div>
+                        <p class="text-gray-600 leading-relaxed">用过很多联机工具，KatoLan是最简单的一个。不需要注册，朋友直接填房间名就能加入，太方便了！</p>
+                    </div>
+                    
+                    <div class="flex-shrink-0 w-80 bg-gray-50 rounded-2xl p-6 border border-gray-100 hover:shadow-lg transition-shadow duration-300">
+                        <div class="flex items-center mb-4">
+                            <img src="https://uuyc.res.netease.com/pc/gw/20241129172408/img/user_03_ba82ec47.png" 
+                                 alt="用户头像" 
+                                 class="w-12 h-12 rounded-full mr-4 border-2 border-white shadow-md">
+                            <div>
+                                <div class="font-semibold text-primary">MC玩家</div>
+                                <div class="flex space-x-1">
+                                    <span class="text-yellow-400">★★★★★</span>
+                                </div>
+                            </div>
+                        </div>
+                        <p class="text-gray-600 leading-relaxed">P2P打洞功能很赞，延迟比中转低很多。而且完全免费，不限人数，良心软件！</p>
+                    </div>
+                    
+                    <div class="flex-shrink-0 w-80 bg-gray-50 rounded-2xl p-6 border border-gray-100 hover:shadow-lg transition-shadow duration-300">
+                        <div class="flex items-center mb-4">
+                            <img src="https://uuyc.res.netease.com/pc/gw/20241129172408/img/user_04_84ac986b.png" 
+                                 alt="用户头像" 
+                                 class="w-12 h-12 rounded-full mr-4 border-2 border-white shadow-md">
+                            <div>
+                                <div class="font-semibold text-primary">学生党</div>
+                                <div class="flex space-x-1">
+                                    <span class="text-yellow-400">★★★★★</span>
+                                </div>
+                            </div>
+                        </div>
+                        <p class="text-gray-600 leading-relaxed">作为学生党，强烈推荐KatoLan！界面友好，新手也能快速上手。和室友联机玩游戏非常便捷，简直是宿舍神器！</p>
+                    </div>
+                    
+                    <div class="flex-shrink-0 w-80 bg-gray-50 rounded-2xl p-6 border border-gray-100 hover:shadow-lg transition-shadow duration-300">
+                        <div class="flex items-center mb-4">
+                            <img src="https://uuyc.res.netease.com/pc/gw/20241129172408/img/user_05_3f5278db.png" 
+                                 alt="用户头像" 
+                                 class="w-12 h-12 rounded-full mr-4 border-2 border-white shadow-md">
+                            <div>
+                                <div class="font-semibold text-primary">技术爱好者</div>
+                                <div class="flex space-x-1">
+                                    <span class="text-yellow-400">★★★★★</span>
+                                </div>
+                            </div>
+                        </div>
+                        <p class="text-gray-600 leading-relaxed">KatoLan非常好用。近些年用过最好用的联机工具了没有之一！延迟低，很流畅，支持自建节点，技术很赞！</p>
+                    </div>
+                    
+                    <!-- 重复评论以实现无缝滚动 -->
+                    <div class="flex-shrink-0 w-80 bg-gray-50 rounded-2xl p-6 border border-gray-100 hover:shadow-lg transition-shadow duration-300">
+                        <div class="flex items-center mb-4">
+                            <img src="https://uuyc.res.netease.com/pc/gw/20241129172408/img/user_01_6f608628.png" 
+                                 alt="用户头像" 
+                                 class="w-12 h-12 rounded-full mr-4 border-2 border-white shadow-md">
+                            <div>
+                                <div class="font-semibold text-primary">游戏玩家A</div>
+                                <div class="flex space-x-1">
+                                    <span class="text-yellow-400">★★★★★</span>
+                                </div>
+                            </div>
+                        </div>
+                        <p class="text-gray-600 leading-relaxed">KatoLan真的太好用了！和朋友联机玩MC，延迟很低，连接也很稳定。界面简洁，操作简单，强烈推荐！</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- 社区介绍区 -->
+    <section class="py-20 lg:py-28 bg-gray-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <!-- 标题 -->
+            <div class="text-center mb-16 animate-fade-in-up">
+                <div class="inline-flex items-center justify-center w-16 h-16 bg-gradient-to-br from-accent to-success rounded-2xl mb-6 shadow-lg">
+                    <svg class="w-8 h-8 text-white" fill="currentColor" viewBox="0 0 24 24">
+                        <path d="M16 4c0-1.11.89-2 2-2s2 .89 2 2-.89 2-2 2-2-.89-2-2zM4 18v-4h2v4h2v2H4c-1.1 0-2-.9-2-2zm14-3.5c-.83 0-1.5.67-1.5 1.5s.67 1.5 1.5 1.5 1.5-.67 1.5-1.5-.67-1.5-1.5-1.5zm3.5 3.5c0 1.1-.9 2-2 2h-4v-2h4v-4h2v4zm-12-9c.83 0 1.5-.67 1.5-1.5S9.83 7 9 7s-1.5.67-1.5 1.5S8.17 10 9 10zm-5 8c0-1.1.9-2 2-2h4v2H6v4H4v-4z"/>
+                    </svg>
+                </div>
+                <h2 class="text-4xl lg:text-5xl font-bold text-primary mb-4">加入好朋友联机工具Katolan社区</h2>
+                <p class="text-xl text-gray-600 max-w-3xl mx-auto">与全球玩家一起交流学习，分享游戏联机经验，获取最新资讯和技术支持</p>
+            </div>
+            
+            <!-- 社区平台 -->
+            <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-6 mb-16">
+                <div class="group hover-lift bg-white rounded-2xl p-6 text-center border border-gray-100 hover:border-accent/30 hover:shadow-xl transition-all duration-500 animate-fade-in-up">
+                    <div class="inline-flex items-center justify-center w-16 h-16 bg-blue-500 rounded-2xl mb-4 group-hover:scale-110 transition-transform duration-300">
+                        <span class="text-white text-2xl font-bold">QQ</span>
+                    </div>
+                    <h3 class="text-xl font-bold text-primary mb-2">官方QQ群</h3>
+                    <p class="text-gray-600 mb-4 text-sm leading-relaxed">群号：741616947<br/>实时答疑，问题反馈，版本更新通知</p>
+                    <a href="http://qm.qq.com/cgi-bin/qm/qr?_wv=1027&k=I_-arUNUYkqURts3vwRmAT44H2O9EQoA" 
+                       target="_blank" 
+                       class="inline-block bg-primary hover:bg-secondary text-white px-6 py-2 rounded-lg font-semibold transition-all duration-300 btn-shimmer">
+                        立即加入
+                    </a>
+                </div>
+                
+                <div class="group hover-lift bg-white rounded-2xl p-6 text-center border border-gray-100 hover:border-accent/30 hover:shadow-xl transition-all duration-500 animate-fade-in-up animate-delay-200">
+                    <div class="inline-flex items-center justify-center w-16 h-16 bg-pink-500 rounded-2xl mb-4 group-hover:scale-110 transition-transform duration-300">
+                        <span class="text-white text-2xl font-bold">B</span>
+                    </div>
+                    <h3 class="text-xl font-bold text-primary mb-2">官方B站</h3>
+                    <p class="text-gray-600 mb-4 text-sm leading-relaxed">@樱桃花下的小猫<br/>视频教程，使用指南，更新日志</p>
+                    <a href="https://space.bilibili.com/1163442661" 
+                       target="_blank" 
+                       class="inline-block bg-primary hover:bg-secondary text-white px-6 py-2 rounded-lg font-semibold transition-all duration-300 btn-shimmer">
+                        关注我们
+                    </a>
+                </div>
+                
+                <div class="group hover-lift bg-white rounded-2xl p-6 text-center border border-gray-100 hover:border-accent/30 hover:shadow-xl transition-all duration-500 animate-fade-in-up animate-delay-400">
+                    <div class="inline-flex items-center justify-center w-16 h-16 bg-green-500 rounded-2xl mb-4 group-hover:scale-110 transition-transform duration-300">
+                        <span class="text-white text-2xl">📝</span>
+                    </div>
+                    <h3 class="text-xl font-bold text-primary mb-2">官方博客</h3>
+                    <p class="text-gray-600 mb-4 text-sm leading-relaxed">@樱花下的小猫<br/>技术文章，深度教程，开发日志</p>
+                    <a href="https://blog.hpylan.com/" 
+                       target="_blank" 
+                       class="inline-block bg-primary hover:bg-secondary text-white px-6 py-2 rounded-lg font-semibold transition-all duration-300 btn-shimmer">
+                        访问博客
+                    </a>
+                </div>
+                
+                <div class="group hover-lift bg-white rounded-2xl p-6 text-center border border-gray-100 hover:border-accent/30 hover:shadow-xl transition-all duration-500 animate-fade-in-up animate-delay-600">
+                    <div class="inline-flex items-center justify-center w-16 h-16 bg-gray-600 rounded-2xl mb-4 group-hover:scale-110 transition-transform duration-300">
+                        <span class="text-white text-2xl">📖</span>
+                    </div>
+                    <h3 class="text-xl font-bold text-primary mb-2">帮助文档</h3>
+                    <p class="text-gray-600 mb-4 text-sm leading-relaxed">详细使用教程<br/>常见问题解答，故障排除指南</p>
+                    <a href="/docs/q/" 
+                       target="_blank" 
+                       class="inline-block bg-primary hover:bg-secondary text-white px-6 py-2 rounded-lg font-semibold transition-all duration-300 btn-shimmer">
+                        查看文档
+                    </a>
+                </div>
+            </div>
+            
+            <!-- 统计数据 -->
+            <div class="bg-gradient-to-br from-white to-gray-50 rounded-3xl p-8 border border-gray-100 shadow-lg">
+                <div class="grid grid-cols-2 lg:grid-cols-4 gap-8 text-center">
+                    <div class="animate-fade-in-up">
+                        <div class="text-4xl lg:text-5xl font-bold text-accent mb-2 counter" data-target="10000">0</div>
+                        <div class="text-sm font-semibold text-gray-600 uppercase tracking-wider">活跃用户</div>
+                    </div>
+                    <div class="animate-fade-in-up animate-delay-200">
+                        <div class="text-4xl lg:text-5xl font-bold text-accent mb-2 counter" data-target="1000">0</div>
+                        <div class="text-sm font-semibold text-gray-600 uppercase tracking-wider">成功联机</div>
+                    </div>
+                    <div class="animate-fade-in-up animate-delay-400">
+                        <div class="text-4xl lg:text-5xl font-bold text-accent mb-2">24/7</div>
+                        <div class="text-sm font-semibold text-gray-600 uppercase tracking-wider">在线支持</div>
+                    </div>
+                    <div class="animate-fade-in-up animate-delay-600">
+                        <div class="text-4xl lg:text-5xl font-bold text-accent mb-2">100%</div>
+                        <div class="text-sm font-semibold text-gray-600 uppercase tracking-wider">完全免费</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+    <!-- Footer -->
+    <footer class="bg-gray-900 text-gray-300">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
+            <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-8 mb-12">
+                <!-- 关于KatoLan -->
+                <div class="animate-fade-in-up">
+                    <div class="flex items-center space-x-2 mb-4">
+                        <img src="./favicon.ico" alt="KatoLan" class="h-8 w-8">
+                        <span class="text-xl font-bold text-white">好朋友联机工具</span>
+                    </div>
+                    <p class="text-gray-400 leading-relaxed mb-4">KatoLan 好朋友联机工具，让游戏联机变得更简单。免费、易用、稳定。好朋友联机工具（KatoLan）是一个支持P2P、中转的免费的虚拟局域网游戏联机工具，
+将多台远程计算机连接到单一本地网络，远程联机游戏新选择！</p>
+                    <!-- <div class="flex items-center space-x-2 text-sm text-gray-500">
+                        <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24">
+                            <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5h3V8h4v4h3l-5 5z"/>
+                        </svg>
+                        <span>访问统计: </span>
+                        <img src="https://counter.katomegumi.net/get/@katolan" alt="访问统计" class="h-4">
+                    </div> -->
+                </div>
+                
+                <!-- 友情链接 -->
+                <div class="animate-fade-in-up animate-delay-200">
+                    <h6 class="text-white font-semibold mb-4">友情链接</h6>
+                    <ul class="space-y-3">
+                        <li><a href="https://www.wanjiadongli.com/?inviteCode=hpylan" target="_blank" class="hover:text-white transition-colors duration-300">游戏mod</a></li>
+                        <li><a href="/docs/q/" target="_blank" class="hover:text-white transition-colors duration-300">帮助文档</a></li>
+                        <li><a href="/changelog.html" target="_blank" class="hover:text-white transition-colors duration-300">更新日志</a></li>
+                        <li><a href="./privacy.html" target="_blank" class="hover:text-white transition-colors duration-300">隐私协议</a></li>
+                    </ul>
+                </div>
+                
+                <!-- 社区 -->
+                <div class="animate-fade-in-up animate-delay-400">
+                    <h6 class="text-white font-semibold mb-4">社区</h6>
+                    <ul class="space-y-3">
+                        <li><a href="http://qm.qq.com/cgi-bin/qm/qr?_wv=1027&k=I_-arUNUYkqURts3vwRmAT44H2O9EQoA" target="_blank" class="hover:text-white transition-colors duration-300">官方QQ群</a></li>
+                        <li><a href="https://space.bilibili.com/1163442661" target="_blank" class="hover:text-white transition-colors duration-300">官方B站</a></li>
+                        <li><a href="https://blog.hpylan.com/" target="_blank" class="hover:text-white transition-colors duration-300">官方博客</a></li>
+                        <li><a href="https://blog.csdn.net/m0_71727150" target="_blank" class="hover:text-white transition-colors duration-300">官方CSDN</a></li>
+                    </ul>
+                </div>
+                
+                <!-- 联系我们 -->
+                <div class="animate-fade-in-up animate-delay-600">
+                    <h6 class="text-white font-semibold mb-4">联系我们</h6>
+                    <p class="text-gray-400 leading-relaxed mb-4">有任何问题或建议，欢迎随时联系我们</p>
+                    <a href="http://qm.qq.com/cgi-bin/qm/qr?_wv=1027&k=I_-arUNUYkqURts3vwRmAT44H2O9EQoA" 
+                       target="_blank" 
+                       class="inline-block bg-accent hover:bg-accent/80 text-white px-6 py-2 rounded-lg font-semibold transition-all duration-300 btn-shimmer">
+                        加入官方群
+                    </a>
+                    <p class="text-gray-400 leading-relaxed mb-4">商务合作QQ：1461787516</p>
+                </div>
+            </div>
+            
+            <!-- 底部版权 -->
+            <div class="border-t border-gray-800 pt-8 text-center">
+                <p class="text-gray-400">
+                    &copy; 2024 <a href="https://www.katomegumi.net" target="_blank" class="text-white hover:text-accent transition-colors duration-300">Katomegumi Inc.</a> All rights reserved
+                </p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- 返回顶部按钮 -->
+    <button id="back-to-top" 
+            class="fixed bottom-8 right-8 bg-accent hover:bg-accent/80 text-white p-3 rounded-full shadow-lg opacity-0 invisible transition-all duration-300 z-50 hover:scale-110">
+        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 10l7-7m0 0l7 7m-7-7v18"></path>
+        </svg>
+    </button>
+    <script>
+        // DOM加载完成后执行
+        document.addEventListener('DOMContentLoaded', function() {
+            // 移动端菜单切换
+            const mobileMenuBtn = document.getElementById('mobile-menu-btn');
+            const mobileMenu = document.getElementById('mobile-menu');
+            
+            mobileMenuBtn.addEventListener('click', function() {
+                mobileMenu.classList.toggle('hidden');
+            });
+            
+            // 视差滚动效果
+            let ticking = false;
+            function updateParallax() {
+                const scrolled = window.pageYOffset;
+                const parallaxElements = document.querySelectorAll('.parallax-element');
+                
+                parallaxElements.forEach(function(element) {
+                    const speed = element.getAttribute('data-speed') || 10;
+                    const yPos = -(scrolled * speed / 100);
+                    element.style.transform = `translateY(${yPos}px)`;
+                });
+                
+                ticking = false;
+            }
+            
+            function requestTick() {
+                if (!ticking) {
+                    requestAnimationFrame(updateParallax);
+                    ticking = true;
+                }
+            }
+            
+            window.addEventListener('scroll', requestTick);
+            
+
+            
+            // 滚动动画观察器
+            const observerOptions = {
+                threshold: 0.1,
+                rootMargin: '0px 0px -50px 0px'
+            };
+            
+            const observer = new IntersectionObserver(function(entries) {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('animate-fade-in-up');
+                    }
+                });
+            }, observerOptions);
+            
+            // 观察所有需要动画的元素
+            const animatedElements = document.querySelectorAll('[class*="animate-fade-in"]');
+            animatedElements.forEach(el => observer.observe(el));
+            
+            // 数字计数动画
+            const counters = document.querySelectorAll('.counter');
+            const counterObserver = new IntersectionObserver(function(entries) {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        const target = entry.target;
+                        const finalNumber = parseInt(target.getAttribute('data-target'));
+                        let current = 0;
+                        const increment = finalNumber / 100;
+                        
+                        const timer = setInterval(() => {
+                            current += increment;
+                            if (current >= finalNumber) {
+                                current = finalNumber;
+                                clearInterval(timer);
+                            }
+                            
+                            let displayNumber = Math.floor(current);
+                            if (displayNumber >= 1000) {
+                                displayNumber = Math.floor(displayNumber / 1000) + 'K+';
+                            } else {
+                                displayNumber = displayNumber + '+';
+                            }
+                            
+                            target.textContent = displayNumber;
+                        }, 20);
+                        
+                        counterObserver.unobserve(target);
+                    }
+                });
+            }, observerOptions);
+            
+            counters.forEach(counter => counterObserver.observe(counter));
+            
+            // 返回顶部按钮
+            const backToTopBtn = document.getElementById('back-to-top');
+            
+            window.addEventListener('scroll', function() {
+                if (window.pageYOffset > 300) {
+                    backToTopBtn.classList.remove('opacity-0', 'invisible');
+                    backToTopBtn.classList.add('opacity-100', 'visible');
+                } else {
+                    backToTopBtn.classList.add('opacity-0', 'invisible');
+                    backToTopBtn.classList.remove('opacity-100', 'visible');
+                }
+            });
+            
+            backToTopBtn.addEventListener('click', function() {
+                window.scrollTo({
+                    top: 0,
+                    behavior: 'smooth'
+                });
+            });
+            
+            // 按钮点击波纹效果
+            const buttons = document.querySelectorAll('.btn-shimmer');
+            buttons.forEach(button => {
+                button.addEventListener('click', function(e) {
+                    const ripple = document.createElement('span');
+                    const rect = this.getBoundingClientRect();
+                    const size = Math.max(rect.width, rect.height);
+                    const x = e.clientX - rect.left - size / 2;
+                    const y = e.clientY - rect.top - size / 2;
+                    
+                    ripple.style.cssText = `
+                        position: absolute;
+                        border-radius: 50%;
+                        background: rgba(255,255,255,0.3);
+                        transform: scale(0);
+                        animation: ripple 0.6s linear;
+                        left: ${x}px;
+                        top: ${y}px;
+                        width: ${size}px;
+                        height: ${size}px;
+                        pointer-events: none;
+                        z-index: 10;
+                    `;
+                    
+                    this.style.position = 'relative';
+                    this.style.overflow = 'hidden';
+                    this.appendChild(ripple);
+                    
+                    setTimeout(() => {
+                        ripple.remove();
+                    }, 600);
+                });
+            });
+            
+            // 添加波纹动画样式
+            const style = document.createElement('style');
+            style.textContent = `
+                @keyframes ripple {
+                    to {
+                        transform: scale(4);
+                        opacity: 0;
+                    }
+                }
+            `;
+            document.head.appendChild(style);
+            
+            // 平滑滚动到锚点
+            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+                anchor.addEventListener('click', function (e) {
+                    e.preventDefault();
+                    const target = document.querySelector(this.getAttribute('href'));
+                    if (target) {
+                        target.scrollIntoView({
+                            behavior: 'smooth',
+                            block: 'start'
+                        });
+                    }
+                });
+            });
+            
+            // 导航栏滚动效果
+            const navbar = document.querySelector('nav');
+            let lastScrollY = window.scrollY;
+            
+            window.addEventListener('scroll', () => {
+                const currentScrollY = window.scrollY;
+                
+                if (currentScrollY > 100) {
+                    navbar.classList.add('shadow-lg');
+                } else {
+                    navbar.classList.remove('shadow-lg');
+                }
+                
+                lastScrollY = currentScrollY;
+            });
+            
+
+        });
+    </script>
+</body>
+</html>
