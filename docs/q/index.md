@@ -17,7 +17,7 @@ description: 收录了一些联机工具的一些常见问题
 
 ### 1、下载软件、安装软件过程相关问题/防火墙及实时保护关闭教程？
 
-<img src="https://free.picui.cn/free/2025/07/20/687cb10d472ea.png" style="width:50%;height:50%">
+<img src="/docs/q/img/1.png" style="width:50%;height:50%">
 
 - **软件官网**：[Katola 好朋友联机工具](https://www.hpylan.com/)
 - **教程链接**：[katolan 好朋友联机工具保姆级下载流程（下载前必看）](https://blog.csdn.net/m0_71727150/article/details/148081847?)
@@ -25,11 +25,11 @@ description: 收录了一些联机工具的一些常见问题
 
 ### 2、安装中止/启动无响应白屏/Webview2 出现问题？
 
-<img src="https://free.picui.cn/free/2025/07/18/687a0ec8dbf0d.jpg" alt="Description" style="width:50%;height:50%;">
+<img src="/docs/q/img/3.png" alt="Description" style="width:50%;height:50%;">
 
 - 软件使用 Edge 默认浏览器框架，不能禁用 edge 浏览器。
 - 软件目前**不支持 win7 系统**，会提示应用程序无法正常启动。
-  <img src="https://free.picui.cn/free/2025/08/01/688cd2415db90.jpg" alt="Description" style="width:50%;height:50%;">
+  <img src="/docs/q/img/5.png" alt="Description" style="width:50%;height:50%;">
 
 - 使用 **webview2 修复工具修复**，点击“删除并重装”按钮等待下载运行完毕后即可。
 - **webview2 下载地址**：<https://wwfj.lanzoul.com/b0sxlfdri> 密码:biar
@@ -39,7 +39,7 @@ description: 收录了一些联机工具的一些常见问题
 
 ### 3、重装软件时出现无法打开要写入的文件/无法卸载？
 
-<img src="https://free.picui.cn/free/2025/08/02/688cf518ed45e.png" alt="Description" style="width:50%;height:50%;">
+<img src="/docs/q/img/9.png" alt="Description" style="width:50%;height:50%;">
 
 出现该问题通常为重新安装软件时，软件某个文件处于打开状态无法覆盖安装。
 
@@ -49,7 +49,7 @@ description: 收录了一些联机工具的一些常见问题
 
 ### 4、获取登录地址失败/无法登录，服务器异常？
 
-<img src="https://free.picui.cn/free/2025/08/01/688ce10c39b03.png" style="width:50%;heigth:50%">
+<img src="/docs/q/img/8.png" style="width:50%;heigth:50%">
 
 - 软件界面出现获取登录地址失败为**QQ 登录节点失效**，出现这种情况多半为**上游服务商服务器故障或升级**，通常情况一小时内解决，可以加入官方 QQ 群获取最新消息。
 - 如果能**加载出登录网页**但是提示服务器异常，通常为网络问题，建议多刷新几次或者换个网络。
@@ -82,7 +82,7 @@ NAT 穿透是如何工作的：[nat 穿透工作原理](https://tailscale.com/bl
 
 ### 6、显示驱动未安装尝试以管理员权限运行本软件/卡在正在连接中安装驱动/正在卸载驱动？
 
-<img src="https://free.picui.cn/free/2025/07/20/687cb3e85eb33.jpg" style="width:50%;heigth:50%">
+<img src="/docs/q/img/4.png" style="width:50%;heigth:50%">
 
 ##### 驱动未安装尝试以管理员权限运行本软件?
 
@@ -92,13 +92,13 @@ NAT 穿透是如何工作的：[nat 穿透工作原理](https://tailscale.com/bl
 
 ##### 卡在正在连接中安装驱动/正在卸载驱动/一直提示等待手动安装驱动?
 
-<img src="https://free.picui.cn/free/2025/08/02/688cefff19153.png" style="width:50%;heigth:50%">
+<img src="/docs/q/img/11.png" style="width:50%;heigth:50%">
 
 - 检查**电脑防火墙、杀毒软件、实时保护**是否关闭（上面有详细教程）
 - 检查安全中心病毒防护的**保护历史记录**里面被隔离的文件，找到和联机工具相关的文件，选择还原！(如果没有则需要进行手动下载)
-  <img src="https://free.picui.cn/free/2025/08/01/688cd9292cc7a.png" alt="Description" style="width:50%;height:50%;">
+  <img src="/docs/q/img/7.png" alt="Description" style="width:50%;height:50%;">
 
-- 官群群文件最后一个驱动文件（tap-windows-9.24.7）重新手动下载安装
+- 官群(741616947)群文件最后一个驱动文件（tap-windows-9.24.7）重新手动下载安装
 - 如果依然不行，可以下载 [网卡代码修复工具](https://cn-sy1.rains3.com/accelerator/tools/%E7%BD%91%E5%8D%A1%E4%BB%A3%E7%A0%8156%E4%BF%AE%E5%A4%8D%E5%B7%A5%E5%85%B7.exe) （声明：此软件来自互联网，由网友分享），右键以管理员身份运行，并点击“修复”后重启电脑试试。
 
 **`还是不行，可能系统网络组件问题，加入官方群反馈获得更多帮助`**
@@ -109,15 +109,15 @@ NAT 穿透是如何工作的：[nat 穿透工作原理](https://tailscale.com/bl
 
 - **重启电脑、游戏**，一定要先进联机工具房间再进游戏，或者换人创建房间，相互试试。
 - 依然不行可能是**网卡跃点问题**（文明 6 看网卡跃点数，注意网卡优先级），在软件创建好的房间里可**手动设置网卡跃点数**。
-  <img src="https://free.picui.cn/free/2025/08/02/688ce5873fd5a.png" alt="Description" style="width:50%;height:50%;">
+  <img src="/docs/q/img/6.png" alt="Description" style="width:50%;height:50%;">
   将**软件 TAP 网卡跃点数设置为 1**，如果显示未能连接也可以将已连接的网卡跃点数往后设置，保证 TAP 网卡的优先级
 - 可能您的网络情况不适合 N2N 连接，可以尝试将设置中的强制中转打开通过服务器中转进行联机。
-  <img src="https://free.picui.cn/free/2025/08/22/68a88cd25d480.png" alt="Description" style="width:50%;height:50%;">
+  <img src="/docs/q/img/p2p中转.png" alt="Description" style="width:50%;height:50%;">
+- 如果你使用的是增强模式可以尝试禁用 p2p 并打开 kcp 代理以降低网络波动。
+  <img src="/docs/q/img/增强中转.png" alt="Description" style="width:50%;height:50%;">
 - 如果依然找不到好友创建好的房间，如果是学习版可以考虑重新下载游戏。
 
 ##### **卡在正在连接玩家？**
-
-<img src="https://free.picui.cn/free/2025/10/07/68e53590e1e4e.jpg" alt="Description" style="width:50%;height:50%;">
 
 - 首先尝试将**mod 全部禁用试试，有点 mod 会导致加入房间出错**，如果解决就慢慢开启 mod 尝试。
 - 有时候是因为你的网络环境不好，可以尝试**换个网络环境**
@@ -128,6 +128,7 @@ NAT 穿透是如何工作的：[nat 穿透工作原理](https://tailscale.com/bl
 
 - 如果是特定多少回合后开始掉，检查启用的 mod 是否支持多人游戏或者和好友的 mod 是否一致，建议将 mod 都关闭了再次尝试。
 - 最后考虑网络问题，使用软件增强模式，设置里打开 kcp 代理。
+  <img src="/docs/q/img/增强中转.png" alt="Description" style="width:50%;height:50%;">
 - 实在不行联系客服获得远程协助。
 
 `还有问题可以加入官方群反馈`
