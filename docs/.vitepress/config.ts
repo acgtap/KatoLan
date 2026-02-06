@@ -41,8 +41,8 @@ export default defineConfig({
     socialLinks: [{ icon: 'github', link: 'https://github.com/acgtap' }],
 
     footer: {
-      message: 'with Katomegumi by ❤️‍🔥',
-      copyright: 'Copyright © 2018-present katolan',
+      message: 'with KatoTeam by ❤️‍🔥',
+      copyright: 'Copyright KatoTeam.',
     },
 
     darkModeSwitchLabel: '外观',

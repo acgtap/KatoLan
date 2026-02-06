@@ -19,17 +19,14 @@ features:
   - icon: 🎮
     title: 联机游戏
     details: 与朋友远程虚拟局域网游戏，适配大量联机游戏<br/>不再为小伙伴不会而烦恼
-    link: /use/index
     linkText: 如何联机
   - icon: 💡
     title: 快速简洁
     details: 只需一分钟下载安装即可开始与你的朋友远程虚拟局域网联机！<br/>无需繁琐配置！
-    link: /use/index
     linkText: 加密方式
   - icon: 📖
     title: 万物互联
     details: 从任何地方访问您的计算机、NAS、家庭自动化、IP 摄像机、业余无线电或其他设备<br/>方便地共享文件和数据，设备组网必备！
-    link: /use/index
     linkText: 快速开始
   - icon: 🧰
     title: 让游戏加速变得更简单
