@@ -1,1105 +1,883 @@
 <!DOCTYPE html>
-<html lang="en">
-
+<html lang="zh-CN">
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <meta name="author" content="Webpixels">
-    <title>KatoLan 免费异地组网联机工具，快速、简洁、方便与朋友异地联机游戏！超简单的虚拟局域网！ </title>
+    <title>好朋友联机工具 - 免费异地组网联机工具，快速、简洁、方便与朋友异地联机游戏！超简单的虚拟局域网！</title>
     <meta name="description" content="免费异地组网联机工具，快速、简洁、方便与朋友异地联机游戏！">
-    <meta name="keywords" content="好朋友联机工具,虚拟局域网,异地组网,免费联机工具,远程联机,局域网联机,游戏联机,MC联机">
-    <meta name="author" content="Katomegumi Inc">
-    <meta name="theme-color" content="#3eaf7c">
-    <!-- Preloader -->
+    <meta name="keywords" content="好朋友联机工具,虚拟局域网,异地组网,免费联机工具,远程联机,局域网联机,游戏联机,MC联机,联机工具,katolan">
+    <meta name="author" content="KatoLan">
+    <meta name="theme-color" content="#000000">
+    <link rel="shortcut icon" href="favicon.ico" type="image/x-icon" />
+    
+    <!-- Tailwind CSS -->
+    <script src="tailwindcss.js"></script>
+    
+    <!-- Font Awesome -->
+    <link href="https://cdn.bootcdn.net/ajax/libs/font-awesome/6.5.0/css/all.min.css" rel="stylesheet">
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    
     <style>
-        @keyframes hidePreloader {
-            0% {
-                width: 100%;
-                height: 100%;
-            }
-
-            100% {
-                width: 0;
-                height: 0;
-            }
+        * {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
         }
-
-        body>div.preloader {
-            position: fixed;
-            background: white;
-            width: 100%;
-            height: 100%;
-            z-index: 1071;
-            opacity: 0;
-            transition: opacity .5s ease;
-            overflow: hidden;
-            pointer-events: none;
-            display: flex;
-            align-items: center;
-            justify-content: center;
+        
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
         }
-
-        body:not(.loaded)>div.preloader {
-            opacity: 1;
+        
+        .animate-fade-in {
+            animation: fadeIn 0.6s ease-out forwards;
         }
-
-        body:not(.loaded) {
-            overflow: hidden;
-        }
-
-        body.loaded>div.preloader {
-            animation: hidePreloader .5s linear .5s forwards;
-        }
-
-        /* 新增的样式 */
-        .navbar {
-            box-shadow: 0 2px 10px rgba(0,0,0,0.08);
-            transition: all 0.3s ease;
-        }
-
-        .navbar-brand img {
-            height: 40px;
-            transition: all 0.3s ease;
-        }
-
-        .hero_aEcG {
-            background-attachment: fixed;
-            position: relative;
-            overflow: hidden;
-        }
-
-        .display-4 {
-            font-weight: 700;
-            line-height: 1.2;
-        }
-
-        @media (max-width: 768px) {
-            .display-4 {
-                font-size: 2rem;
-            }
-            
-            .lead {
-                font-size: 1rem;
-            }
-
-            .hero_aEcG {
-                padding-bottom: 100px !important;
-            }
-        }
-
-        .btn {
-            border-radius: 30px;
-            padding: 10px 20px;
-            font-weight: 600;
-            transition: all 0.3s ease;
-        }
-
-        /* Compact button styling for hero section */
-        .hero-buttons .btn {
-            padding: 8px 18px;
-            line-height: 1.3;
-        }
-
-        .btn:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
-        }
-
-        .card {
-            border: none;
-            transition: all 0.3s ease;
-            border-radius: 15px;
-            overflow: hidden;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
-        }
-
-        .card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 8px 25px rgba(0,0,0,0.1);
-        }
-
-        .img-fluid {
-            border-radius: 10px;
-            transition: all 0.3s ease;
-        }
-
-        .img-fluid:hover {
-            transform: scale(1.02);
-        }
-
-        .footer {
-            background: #f8f9fa;
-            padding-top: 3rem;
-        }
-
-        /* 移动端优化 */
-        @media (max-width: 576px) {
-            .container {
-                padding-left: 20px;
-                padding-right: 20px;
-            }
-
-            .card {
-                margin-bottom: 20px;
-            }
-
-            .mt-n7 {
-                margin-top: 0 !important;
-            }
-        }
-
-        /* 首屏样式优化 */
-        .hero-section {
-            min-height: 70vh;
-            display: flex;
-            align-items: center;
-            position: relative;
-           
-        }
-
-        .hero-content {
-            text-align: center;
-            max-width: 800px;
-            margin: 0 auto;
-        }
-
-        .hero-badges {
-            display: flex;
-            flex-wrap: wrap;
-            justify-content: center;
-            gap: 10px;
-            margin: 20px 0;
-        }
-
-        .hero-badges .badge {
-            padding: 8px 16px;
-            font-size: 14px;
-            border-radius: 20px;
-        }
-
-        .hero-buttons {
-            display: flex;
-            justify-content: center;
-            gap: 15px;
-            margin-top: 30px;
-        }
-
-        /* 内容板块统一样式 */
-        .content-section {
-            padding: 80px 0;
-        }
-
-        .section-title {
-            text-align: center;
-            margin-bottom: 60px;
-        }
-
-        .section-title h2 {
-            font-size: 2.5rem;
-            font-weight: 700;
-            margin-bottom: 20px;
-        }
-
-        .feature-card {
-            height: 100%;
-            padding: 30px;
-            text-align: center;
-            transition: all 0.3s ease;
-        }
-
-        .feature-card:hover {
-            transform: translateY(-10px);
-        }
-
-        .feature-icon {
-            width: 80px;
-            height: 80px;
-            margin: 0 auto 20px;
-        }
-
-        @media (max-width: 768px) {
-            .hero-section {
-                padding: 60px 0;
-            }
-
-            .hero-content {
-                padding: 0 20px;
-            }
-
-            .hero-buttons {
-                flex-direction: column;
-                gap: 10px;
-            }
-
-            .hero-buttons .btn {
-                width: 100%;
-            }
-        }
-
-        /* Version label for buttons */
-        .version-label {
-            font-size: 0.65em;
-            font-weight: 400;
-            margin-top: 2px;
-            display: block;
-            line-height: 1.2;
-        }
-
-        /* Badge 统一样式 */
-        .badge-circle {
-            width: 2.5rem;
-            height: 2.5rem;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 1rem;
-        }
-
-        .feature-list {
-            margin-top: 2rem;
-        }
-
-        .feature-list li {
-            margin-bottom: 1rem;
-        }
-
-        .feature-list .badge-circle {
-            background: rgba(55, 125, 255, 0.1);
-            color: #377dff;
-        }
-
-        .feature-list .badge-circle.badge-primary {
-            background: rgba(55, 125, 255, 0.1);
-            color: #377dff;
-        }
-
-        .feature-list .badge-circle.badge-success {
-            background: rgba(0, 201, 167, 0.1);
-            color: #00c9a7;
-        }
-
-        .feature-list .badge-circle.badge-info {
-            background: rgba(0, 193, 237, 0.1);
-            color: #00c1ed;
-        }
-
-        /* 社区介绍板块样式 - 简约版本 */
-        .community-section {
-            background: #f8f9fa;
-            padding: 80px 0;
-            position: relative;
-        }
-
-        .community-header {
-            text-align: center;
-            margin-bottom: 60px;
-        }
-
-        .community-icon {
-            display: inline-block;
-            width: 60px;
-            height: 60px;
-            background: #377dff;
-            border-radius: 12px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            margin: 0 auto 20px;
-        }
-
-        .community-icon i {
-            font-size: 24px;
-            color: white;
-        }
-
-        .community-title {
-            font-size: 2.5rem;
-            font-weight: 700;
-            margin-bottom: 16px;
-            color: #2d3748;
-        }
-
-        .community-subtitle {
-            font-size: 1.1rem;
-            color: #718096;
-            max-width: 600px;
-            margin: 0 auto;
-            line-height: 1.6;
-        }
-
-        .community-platforms {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 30px;
-            margin-bottom: 60px;
-        }
-
-        .platform-card {
-            background: white;
-            padding: 30px 25px;
-            border-radius: 12px;
-            text-align: center;
-            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.06);
-            border: 1px solid #e2e8f0;
-            transition: all 0.3s ease;
-        }
-
-        .platform-card:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
-            border-color: #377dff;
-        }
-
-        .platform-icon {
-            width: 50px;
-            height: 50px;
-            border-radius: 10px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            margin: 0 auto 20px;
-            font-size: 20px;
-            color: white;
-        }
-
-        .platform-card h3 {
-            font-size: 1.3rem;
-            font-weight: 600;
-            margin-bottom: 12px;
-            color: #2d3748;
-        }
-
-        .platform-card p {
-            color: #718096;
-            line-height: 1.6;
-            font-size: 0.95rem;
-            margin-bottom: 20px;
-        }
-
-        .platform-link {
-            display: inline-block;
-            padding: 10px 20px;
-            background: #377dff;
-            border-radius: 8px;
-            color: white;
-            text-decoration: none;
-            transition: all 0.3s ease;
-            font-size: 0.9rem;
-            font-weight: 500;
-        }
-
-        .platform-link:hover {
-            background: #2c5aa0;
-            color: white;
-            text-decoration: none;
-            transform: scale(1.05);
-        }
-
-        .community-stats {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-            gap: 30px;
-            text-align: center;
-            background: white;
-            padding: 40px 30px;
-            border-radius: 12px;
-            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.06);
-            border: 1px solid #e2e8f0;
-        }
-
-        .stat-item {
-            padding: 10px;
-        }
-
-        .stat-number {
-            font-size: 2.2rem;
-            font-weight: 700;
-            color: #377dff;
-            margin-bottom: 8px;
-        }
-
-        .stat-label {
-            font-size: 0.9rem;
-            color: #718096;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-            font-weight: 500;
-        }
-
-        /* 平台特定颜色 */
-        .qq-icon { background: #1296db; }
-        .bilibili-icon { background: #ff6699; }
-        .blog-icon { background: #4caf50; }
-        .csdn-icon { background: #ff6600; }
-        .docs-icon { background: #6c757d; }
-        .sponsor-icon { background: #e91e63; }
-
-        @media (max-width: 768px) {
-            .community-section {
-                padding: 60px 0;
-            }
-            
-            .community-title {
-                font-size: 2rem;
-            }
-            
-            .community-platforms {
-                grid-template-columns: 1fr;
-                gap: 20px;
-            }
-            
-            .community-stats {
-                grid-template-columns: repeat(2, 1fr);
-                gap: 20px;
-                padding: 30px 20px;
-            }
-            
-            .stat-number {
-                font-size: 1.8rem;
-            }
-
-            .platform-card {
-                padding: 25px 20px;
-            }
+        
+        .animate-delay-1 { animation-delay: 0.1s; opacity: 0; }
+        .animate-delay-2 { animation-delay: 0.2s; opacity: 0; }
+        .animate-delay-3 { animation-delay: 0.3s; opacity: 0; }
+        
+        .gradient-text {
+            background: linear-gradient(135deg, #000000 0%, #434343 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
         }
     </style>
-    <script>
-        window.addEventListener("DOMContentLoaded", function() {
-            setTimeout(function() {
-                document.querySelector('body').classList.add('loaded');
-            }, 100);
-        });
-    </script>
-    <!-- Favicon -->
-    <link rel="shortcut icon" href="favicon.ico" type="image/x-icon" />
-    <!-- <link rel="stylesheet" href="assets/libs/@fortawesome/fontawesome-free/css/all.min.css"> -->
-    <!-- Quick CSS -->
-    <link rel="stylesheet" href="assets/css/quick-website.css" id="stylesheet">
-    <!-- 在 head 标签内添加 jQuery 和 Bootstrap JS -->
-    <script src="https://cdn.staticfile.net/jquery/3.6.0/jquery.min.js"></script>
-    
-    <script src="https://cdn.staticfile.net/bootstrap/4.6.0/js/bootstrap.bundle.min.js"></script>
-    <!-- 在 head 中添加 Font Awesome CSS -->
-    <link href="https://cdn.bootcdn.net/ajax/libs/font-awesome/5.15.0/css/all.min.css" rel="stylesheet">
 </head>
 
-
-<body>
-    <!-- Preloader -->
-    <div class="preloader">
-        <div class="spinner-border text-primary" role="status">
-            <span class="sr-only">Loading...</span>
-        </div>
-    </div>
-    <div class="modal fade" tabindex="-1" role="dialog" id="modal-cookies" data-backdrop="false" aria-labelledby="modal-cookies" aria-hidden="true">
-        <div class="modal-dialog modal-dialog-aside left-4 right-4 bottom-4">
-            <div class="modal-content bg-dark-dark">
-                <div class="modal-body">
-                    <!-- Text -->
-                    <p class="text-sm text-white mb-3">
-                        We use cookies so that our themes work for you. By using our website, you agree to our use of cookies.
-                    </p>
-                    <!-- Buttons -->
-                    <a href="pages/utility/terms.html" class="btn btn-sm btn-white" target="_blank">Learn more</a>
-                    <button type="button" class="btn btn-sm btn-primary mr-2" data-dismiss="modal">OK</button>
+<body class="bg-white text-gray-900 antialiased">
+    
+    <!-- Navigation -->
+    <nav class="fixed top-0 left-0 right-0 z-50 bg-white/80 backdrop-blur-md border-b border-gray-200">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-16">
+                <!-- Logo -->
+                <div class="flex items-center">
+                    <a href="index.html" class="flex items-center space-x-2">
+                        <img src="https://uapis.cn/static/uploads/9c321f0cf6_CPiR27AdEtYV.webp" alt="KatoLan" class="h-12 w-12">
+                        <span class="text-xl font-bold text-gray-900">好朋友联机工具</span>
+                    </a>
                 </div>
+                
+                <!-- Desktop Navigation -->
+                <div class="hidden md:flex items-center space-x-8">
+                    <a href="index.html" class="text-sm font-medium text-gray-900 hover:text-gray-600 transition-colors">首页</a>
+                    <a href="/docs/q/" target="_blank" class="text-sm font-medium text-gray-600 hover:text-gray-900 transition-colors">帮助文档</a>
+                    <a href="https://space.bilibili.com/1163442661" target="_blank" class="text-sm font-medium text-gray-600 hover:text-gray-900 transition-colors">官方B站</a>
+                    <a href="https://blog.hpylan.com/" target="_blank" class="text-sm font-medium text-gray-600 hover:text-gray-900 transition-colors">官方博客</a>
+                    <a href="./privacy.html" target="_blank" class="text-sm font-medium text-gray-600 hover:text-gray-900 transition-colors">隐私协议</a>
+                    <a href="http://qm.qq.com/cgi-bin/qm/qr?_wv=1027&k=I_-arUNUYkqURts3vwRmAT44H2O9EQoA&authKey=w19mK3S6ftOLQjiLnxjOiOkTP0uHSk9c33zqrj9b%2BliDev0H42O%2B7WZCROCftet5&noverify=0&group_code=741616947" target="_blank" class="text-sm font-medium text-gray-600 hover:text-gray-900 transition-colors">官群答疑</a>
+             <a href="https://www.wanjiadongli.com/?inviteCode=hpylan" target="_blank" class="text-sm font-medium text-gray-600 hover:text-gray-900 transition-colors">模组、修改器一键使用</a>
+                </div> 
+                
+                <!-- CTA Button -->
+                <div class="hidden md:block">
+                    <a href="https://wwk.lanzoul.com/b023t8qmb" target="_blank" class="inline-flex items-center px-4 py-2 bg-black text-white text-sm font-medium rounded-lg hover:bg-gray-800 transition-all duration-200 hover:shadow-lg">
+                        立即下载
+                        <i class="fas fa-arrow-right ml-2 text-xs"></i>
+                    </a>
+                </div>
+                
+                <!-- Mobile menu button -->
+                <button id="mobile-menu-button" class="md:hidden p-2 rounded-lg hover:bg-gray-100">
+                    <i class="fas fa-bars text-gray-900"></i>
+                </button>
             </div>
         </div>
-    </div>
-
-    <!-- Navbar -->
-    <nav class="navbar navbar-expand-lg navbar-light bg-white sticky-top">
-        <div class="container">
-            <!-- Brand -->
-            <a class="navbar-brand" href="index.html">
-                <img alt="Image placeholder" src="./favicon.ico" id="navbar-logo">
-            </a>
-            <!-- Toggler -->
-            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-            <!-- Collapse -->
-            <div class="collapse navbar-collapse" id="navbarCollapse">
-                <ul class="navbar-nav mt-4 mt-lg-0 ml-auto">
-                    <li class="nav-item ">
-                        <a class="nav-link" href="index.html">首页</a>
-                    </li>
-                    <li class="nav-item ">
-                        <a class="nav-link" href="/docs/q/" target="_blank">帮助文档</a>
-                    </li>
-                    <li class="nav-item dropdown dropdown-animate" data-toggle="hover">
-                        <a class="nav-link" href="https://space.bilibili.com/1163442661?spm_id_from=333.337.0.0" target="_blank">官方B站</a>
-                    </li>
-                    <li class="nav-item dropdown dropdown-animate" data-toggle="hover">
-                        <a class="nav-link" href="https://blog.hpylan.com/" target="_blank">官方博客</a>
-                    </li>
-                    <li class="nav-item ">
-                        <a class="nav-link" href="./privacy.html" target="_blank">隐私协议</a>
-                    </li>
-                    <li class="nav-item ">
-                        <a class="nav-link" href="http://qm.qq.com/cgi-bin/qm/qr?_wv=1027&k=I_-arUNUYkqURts3vwRmAT44H2O9EQoA&authKey=w19mK3S6ftOLQjiLnxjOiOkTP0uHSk9c33zqrj9b%2BliDev0H42O%2B7WZCROCftet5&noverify=0&group_code=741616947" target="_blank">官群答疑</a>
-                    </li>
-                   <li class="nav-item ">
-                        <a class="nav-link" href="https://www.wanjiadongli.com/?inviteCode=hpylan" target="_blank">模组、修改器一键使用</a>
-                    </li>
-                </ul>
-                <!-- Button -->
-                <!-- <a class="navbar-btn btn btn-sm btn-primary d-none d-lg-inline-block ml-3" target="_blank" href="https://wwk.lanzoul.com/b023t8qmb">
-                    马上下载
-                </a> -->
-                
+        
+        <!-- Mobile menu -->
+        <div id="mobile-menu" class="hidden md:hidden border-t border-gray-200 bg-white">
+            <div class="px-4 py-4 space-y-3">
+                <a href="index.html" class="block text-sm font-medium text-gray-900 hover:text-gray-600">首页</a>
+                <a href="/docs/q/" target="_blank" class="block text-sm font-medium text-gray-600 hover:text-gray-900">帮助文档</a>
+                <a href="https://space.bilibili.com/1163442661" target="_blank" class="block text-sm font-medium text-gray-600 hover:text-gray-900">官方B站</a>
+                <a href="https://blog.hpylan.com/" target="_blank" class="block text-sm font-medium text-gray-600 hover:text-gray-900">官方博客</a>
+                <a href="./privacy.html" target="_blank" class="block text-sm font-medium text-gray-600 hover:text-gray-900">隐私协议</a>
+                <a href="http://qm.qq.com/cgi-bin/qm/qr?_wv=1027&k=I_-arUNUYkqURts3vwRmAT44H2O9EQoA&authKey=w19mK3S6ftOLQjiLnxjOiOkTP0uHSk9c33zqrj9b%2BliDev0H42O%2B7WZCROCftet5&noverify=0&group_code=741616947" target="_blank" class="block text-sm font-medium text-gray-600 hover:text-gray-900">官群答疑</a>
+                <a href="https://wwk.lanzoul.com/b023t8qmb" target="_blank" class="block w-full text-center px-4 py-2 bg-black text-white text-sm font-medium rounded-lg hover:bg-gray-800">立即下载</a>
             </div>
         </div>
     </nav>
-    <!-- Main content -->
-    <section class="hero-section hero_aEcG">
-        <div class="container">
-            <div class="hero-content">
-                <h1 class="display-4 mb-4">
-                    <strong class="text-primary" style="font-size: clamp(40px, 5vw, 60px);">🎮好朋友联机工具</strong>
-                    <br/>
-                    <span style="font-size: clamp(24px, 3vw, 32px);">快速与朋友异地联机游戏玩到嗨！</span>
+
+
+    <!-- Hero Section -->
+    <section class="pt-32 pb-20 px-4 sm:px-6 lg:px-8 bg-gradient-to-b from-gray-50 to-white">
+        <div class="max-w-7xl mx-auto">
+            <div class="text-center max-w-4xl mx-auto">
+                <!-- Badge -->
+                <div class="inline-flex items-center px-3 py-1 rounded-full bg-gray-100 text-gray-900 text-xs font-medium mb-6 animate-fade-in">
+                    <span class="w-2 h-2 bg-green-500 rounded-full mr-2 animate-pulse"></span>
+                    最新版本 v1.4.0 · 仅 12MB
+                </div>
+                
+                <!-- Main Heading -->
+                <h1 class="text-5xl sm:text-6xl lg:text-7xl font-bold text-gray-900 mb-6 tracking-tight animate-fade-in animate-delay-1">
+                    
+                    <span class="gradient-text">好朋友联机工具</span>
                 </h1>
-                <p class="lead text-muted">
-                    好朋友联机工具（KatoLan）是一个支持P2P、中转的免费的<strong>虚拟局域网游戏联机工具</strong>，
-                    <br class="d-none d-md-block">
-                    将多台远程计算机连接到单一本地网络，远程联机游戏新选择！
+                
+                <!-- Description -->
+                <p class="text-lg sm:text-xl text-gray-600 mb-8 max-w-2xl mx-auto leading-relaxed animate-fade-in animate-delay-2">
+                    支持 P2P、中转的免费虚拟局域网游戏联机工具
+                    <br class="hidden sm:block"/>
+                    将多台远程计算机连接到单一本地网络，远程联机游戏新选择
                 </p>
-                <div class="hero-badges">
-                    <span class="badge badge-primary">下载密码: 9btg</span>
-                    <span class="badge badge-info">官群：741616947</span>
-                    <span class="badge badge-warning">最新版本：v1.4.0（仅12MB大小）</span>
+                
+                <!-- Info Tags -->
+                <div class="flex flex-wrap justify-center gap-3 mb-10 animate-fade-in animate-delay-3">
+                    <span class="inline-flex items-center px-4 py-2 rounded-lg bg-white border border-gray-200 text-sm font-medium text-gray-700">
+                        <i class="fas fa-key mr-2 text-gray-400"></i>
+                        下载密码: 9btg
+                    </span>
+                    <span class="inline-flex items-center px-4 py-2 rounded-lg bg-white border border-gray-200 text-sm font-medium text-gray-700">
+                        <i class="fab fa-qq mr-2 text-gray-400"></i>
+                        官群: 741616947
+                    </span>
                 </div>
-                <div class="hero-buttons">
-                    <a href="https://wwk.lanzoul.com/b023t8qmb" class="btn btn-lg btn-primary" target="_blank">
+                
+                <!-- CTA Buttons -->
+                <div class="flex flex-col sm:flex-row gap-4 justify-center items-center animate-fade-in animate-delay-3">
+                    <a href="https://wwk.lanzoul.com/b023t8qmb" target="_blank" class="group inline-flex items-center justify-center px-8 py-4 bg-black text-white text-base font-semibold rounded-xl hover:bg-gray-800 transition-all duration-200 hover:shadow-2xl hover:scale-105 w-full sm:w-auto">
                         立即下载
-                        <i class="fas fa-arrow-right ml-2"></i>
-                        <br>
-                        <small class="version-label">稳定版本</small>
+                        <i class="fas fa-arrow-right ml-2 group-hover:translate-x-1 transition-transform"></i>
                     </a>
-                   
-                    <a href="/docs/q/" class="btn btn-lg btn-outline-primary" target="_blank">
+                    <a href="/docs/q/" target="_blank" class="inline-flex items-center justify-center px-8 py-4 bg-white text-gray-900 text-base font-semibold rounded-xl border-2 border-gray-200 hover:border-gray-900 transition-all duration-200 hover:shadow-lg w-full sm:w-auto">
                         查看文档
-                        <br>
-                        <small class="version-label">解决安装使用问题</small>
+                        <i class="fas fa-book ml-2"></i>
                     </a>
                 </div>
-            </div>
-        </div>
-    </section>
-    <section class="content-section bg-section-secondary">
-        <div class="container">
-            <div class="section-title">
-                <h2>让游戏联机加速变得更简单</h2>
-                <p class="lead">Make online game acceleration easier.</p>
-            </div>
-            <div class="row">
-                <div class="col-md-4">
-                    <div class="card">
-                        <div class="card-body pb-5">
-                            <div class="pt-4 pb-5">
-                                <img src="assets/img/svg/illustrations/illustration-5.svg" class="img-fluid img-center" style="height: 150px;" alt="Illustration" />
-                            </div>
-                            <h5 class="h4 lh-130 mb-3 tcenter" >🎮远程局域网联机游戏</h5>
-                            <p class="text-muted mb-0">和您的朋友在互联网上玩您喜爱的局域网 (LAN) 游戏。不限制游戏玩家人数，无需设置，无需端口映射，无需繁琐的操作，一键连接，轻松联机！</p>
+                
+                <!-- Trust Indicators -->
+                <div class="mt-12 pt-8 border-t border-gray-200">
+                    <div class="flex flex-wrap justify-center items-center gap-8 text-sm text-gray-500">
+                        <div class="flex items-center">
+                            <i class="fas fa-check-circle text-green-500 mr-2"></i>
+                            <span>免费节点</span>
                         </div>
-                    </div>
-                </div>
-                <div class="col-md-4">
-                    <div class="card">
-                        <div class="card-body pb-5">
-                            <div class="pt-4 pb-5">
-                                <img src="assets/img/svg/illustrations/illustration-6.svg" class="img-fluid img-center" style="height: 150px;" alt="Illustration" />
-                            </div>
-                            <h5 class="h4 lh-130 mb-3 tcenter">🍺将分散团队连接在一起</h5>
-                            <p class="text-muted mb-0">轻松地将分散团队连接在一起，创建一个紧密结合的网络，无论彼此之间的距离有多远。将允许你无忧无虑随心的团队协作！</p>
+                        <div class="flex items-center">
+                            <i class="fas fa-shield-alt text-green-500 mr-2"></i>
+                            <span>安全可靠</span>
                         </div>
-                    </div>
-                </div>
-                <div class="col-md-4">
-                    <div class="card">
-                        <div class="card-body pb-5">
-                            <div class="pt-4 pb-5">
-                                <img src="assets/img/svg/illustrations/illustration-7.svg" class="img-fluid img-center" style="height: 150px;" alt="Illustration" />
-                            </div>
-                            <h5 class="h4 lh-130 mb-3 tcenter">💻远程工作</h5>
-                            <p class="text-muted mb-0">允许您随时随地在您的远程计算机上进行安全访问和工作，无论是在家中、酒店还是在机场都可以。无论您身在何处，只需按一下鼠标.</p>
+                        <div class="flex items-center">
+                            <i class="fas fa-users text-green-500 mr-2"></i>
+                            <span>10万+ 用户</span>
+                        </div>
+                        <div class="flex items-center">
+                            <i class="fas fa-star text-green-500 mr-2"></i>
+                            <span>4.8 评分</span>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
     </section>
-    <section class="content-section">
-        <div class="container">
-            <div class="row align-items-center mb-5">
-                <div class="col-lg-5">
-                    <h5 class="h3">简洁美观，一看就会</h5>
-                    <p class="lead my-4">
-                        精心设计的界面布局，清晰直观<br/>
-                        无需繁琐设置，三步轻松联机<br/>
-                        朋友无需注册，填房间名即可加入
-                    </p>
-                    <ul class="list-unstyled mt-4">
-                        <li class="py-2">
-                            <div class="d-flex align-items-center">
-                                <div>
-                                    <div class="badge badge-circle badge-primary mr-3">
-                                        <i class="fas fa-check"></i>
-                                    </div>
-                                </div>
-                                <div>
-                                    <h6 class="mb-0">简单易用的界面设计</h6>
-                                </div>
-                            </div>
-                        </li>
-                        <li class="py-2">
-                            <div class="d-flex align-items-center">
-                                <div>
-                                    <div class="badge badge-circle badge-primary mr-3">
-                                        <i class="fas fa-check"></i>
-                                    </div>
-                                </div>
-                                <div>
-                                    <h6 class="mb-0">无需注册和复杂配置</h6>
-                                </div>
-                            </div>
-                        </li>
-                        <li class="py-2">
-                            <div class="d-flex align-items-center">
-                                <div>
-                                    <div class="badge badge-circle badge-primary mr-3">
-                                        <i class="fas fa-check"></i>
-                                    </div>
-                                </div>
-                                <div>
-                                    <h6 class="mb-0">一键连接，即刻开玩</h6>
-                                </div>
-                            </div>
-                        </li>
-                    </ul>
-                </div>
-                <div class="col-lg-6">
-                    <div class="card mb-0 ml-lg-5">
-                        <div class="card-body p-2">
-                            <img alt="简洁界面" src="https://uapis.cn/static/uploads/9b68796eb2_0BgDcXS52bYf.webp" class="img-fluid shadow rounded">
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="row align-items-center mb-5">
-                <div class="col-lg-5 order-lg-2">
-                    <h5 class="h3">电竞级网络，稳定游戏体验</h5>
-                    <p class="lead my-4">
-                        多线高带宽线路<br/>
-                        高质量线路，帮助你畅玩游戏<br/>
-                        综合提升 70%、延迟 40ms、丢包 0%
-                    </p>
-                    <ul class="list-unstyled feature-list">
-                        <li class="py-2">
-                            <div class="d-flex align-items-center">
-                                <div>
-                                    <div class="badge badge-circle badge-primary mr-3">
-                                        <i class="fas fa-bolt"></i>
-                                    </div>
-                                </div>
-                                <div>
-                                    <h6 class="mb-0">高速稳定的网络连接</h6>
-                                </div>
-                            </div>
-                        </li>
-                        <li class="py-2">
-                            <div class="d-flex align-items-center">
-                                <div>
-                                    <div class="badge badge-circle badge-primary mr-3">
-                                        <i class="fas fa-shield-alt"></i>
-                                    </div>
-                                </div>
-                                <div>
-                                    <h6 class="mb-0">零丢包保证</h6>
-                                </div>
-                            </div>
-                        </li>
-                        <li class="py-2">
-                            <div class="d-flex align-items-center">
-                                <div>
-                                    <div class="badge badge-circle badge-primary mr-3">
-                                        <i class="fas fa-tachometer-alt"></i>
-                                    </div>
-                                </div>
-                                <div>
-                                    <h6 class="mb-0">低延迟体验</h6>
-                                </div>
-                            </div>
-                        </li>
-                    </ul>
-                </div>
-                <div class="col-lg-6 order-lg-1">
-                    <div class="card mb-0 mr-lg-5">
-                        <div class="card-body p-2">
-                            <img alt="Image placeholder" src="https://tc.vlogidc.cn/img/2025/03/12/67d147034c87a.webp" class="img-fluid shadow rounded">
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="row align-items-center mb-5">
-                <div class="col-lg-5">
-                    <h5 class="h3">不限制人数高速联机</h5>
-                    <p class="lead my-4">
-                        自动创建虚拟局域网，异地玩家也能联机游戏，让你的游戏体验更加完美！<br/>
-                        自动打洞创建更优质的P2P连接，延迟进一步降低！<br/>
-                        不限制人数、网速、类型联机
-                    </p>
-                    <ul class="list-unstyled feature-list">
-                        <li class="py-2">
-                            <div class="d-flex align-items-center">
-                                <div>
-                                    <div class="badge badge-circle badge-info mr-3">
-                                        <i class="fas fa-users"></i>
-                                    </div>
-                                </div>
-                                <div>
-                                    <h6 class="mb-0">不限制玩家人数</h6>
-                                </div>
-                            </div>
-                        </li>
-                        <li class="py-2">
-                            <div class="d-flex align-items-center">
-                                <div>
-                                    <div class="badge badge-circle badge-info mr-3">
-                                        <i class="fas fa-network-wired"></i>
-                                    </div>
-                                </div>
-                                <div>
-                                    <h6 class="mb-0">P2P自动打洞</h6>
-                                </div>
-                            </div>
-                        </li>
-                        <li class="py-2">
-                            <div class="d-flex align-items-center">
-                                <div>
-                                    <div class="badge badge-circle badge-info mr-3">
-                                        <i class="fas fa-gamepad"></i>
-                                    </div>
-                                </div>
-                                <div>
-                                    <h6 class="mb-0">支持所有类型游戏</h6>
-                                </div>
-                            </div>
-                        </li>
-                    </ul>
-                </div>
-                <div class="col-lg-6">
-                    <div class="card mb-0 ml-lg-5">
-                        <div class="card-body p-2">
-                            <img alt="Image placeholder" src="https://uapis.cn/static/uploads/9bbcc1a399_zQngfQ1in2pY.webp" class="img-fluid shadow rounded">
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="row align-items-center mb-5">
-                <div class="col-lg-5 order-lg-2">
-                    <h5 class="h3">自建服务器节点</h5>
-                    <p class="lead my-4">
-                        支持自建服务器节点，无需朋友添加，更稳定更便宜！
-                    </p>
-                    <ul class="list-unstyled feature-list">
-                        <li class="py-2">
-                            <div class="d-flex align-items-center">
-                                <div>
-                                    <div class="badge badge-circle badge-success mr-3">
-                                        <i class="fas fa-check"></i>
-                                    </div>
-                                </div>
-                                <div>
-                                    <h6 class="mb-0">更低延迟，更稳定的连接</h6>
-                                </div>
-                            </div>
-                        </li>
-                        <li class="py-2">
-                            <div class="d-flex align-items-center">
-                                <div>
-                                    <div class="badge badge-circle badge-success mr-3">
-                                        <i class="fas fa-check"></i>
-                                    </div>
-                                </div>
-                                <div>
-                                    <h6 class="mb-0">无需朋友添加，即可直接连接</h6>
-                                </div>
-                            </div>
-                        </li>
-                        <li class="py-2">
-                            <div class="d-flex align-items-center">
-                                <div>
-                                    <div class="badge badge-circle badge-success mr-3">
-                                        <i class="fas fa-check"></i>
-                                    </div>
-                                </div>
-                                <div>
-                                    <h6 class="mb-0">更经济实惠的价格</h6>
-                                </div>
-                            </div>
-                        </li>
-                    </ul>
-                </div>
-                <div class="col-lg-6 order-lg-1">
-                    <div class="card mb-0 mr-lg-5">
-                        <div class="card-body p-2">
-                            <img alt="自建服务器节点" src="https://uapis.cn/static/uploads/9bbcbf328e_OV65ALkpAdCR.webp" class="img-fluid shadow rounded">
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-    <section class="community-section">
-        <div class="container">
-            <div class="community-header">
-                <div class="community-icon">
-                    <i class="fas fa-users"></i>
-                </div>
-                <h2 class="community-title">加入好朋友联机工具社区</h2>
-                <p class="community-subtitle">与全球玩家一起交流学习，分享游戏联机经验，获取最新资讯和技术支持</p>
+
+    <!-- Features Section -->
+    <section class="py-24 px-4 sm:px-6 lg:px-8 bg-white">
+        <div class="max-w-7xl mx-auto">
+            <!-- Section Header -->
+            <div class="text-center mb-16">
+                <h2 class="text-3xl sm:text-4xl font-bold text-gray-900 mb-4">
+                    让游戏联机加速变得更简单
+                </h2>
+                <p class="text-lg text-gray-600">Make online game acceleration easier</p>
             </div>
             
-            <div class="community-platforms">
-                <div class="platform-card">
-                    <div class="platform-icon qq-icon">
-                        <i class="fab fa-qq"></i>
+            <!-- Feature Cards -->
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <!-- Feature 1 -->
+                <div class="group relative bg-white border border-gray-200 rounded-2xl p-8 hover:border-gray-900 hover:shadow-xl transition-all duration-300">
+                    <div class="mb-6">
+                        <div class="w-14 h-14 bg-gray-100 rounded-xl flex items-center justify-center group-hover:bg-gray-900 transition-colors duration-300">
+                            <i class="fas fa-gamepad text-2xl text-gray-900 group-hover:text-white transition-colors duration-300"></i>
+                        </div>
                     </div>
-                    <h3>官方QQ群</h3>
-                    <p>群号：741616947<br/>实时答疑，问题反馈，版本更新通知</p>
-                    <a href="http://qm.qq.com/cgi-bin/qm/qr?_wv=1027&k=I_-arUNUYkqURts3vwRmAT44H2O9EQoA&authKey=w19mK3S6ftOLQjiLnxjOiOkTP0uHSk9c33zqrj9b%2BliDev0H42O%2B7WZCROCftet5&noverify=0&group_code=741616947" 
-                       target="_blank" class="platform-link">
-                        立即加入
-                    </a>
+                    <h3 class="text-xl font-bold text-gray-900 mb-3">远程局域网联机游戏</h3>
+                    <p class="text-gray-600 leading-relaxed">
+                        和您的朋友在互联网上玩您喜爱的局域网游戏。不限制游戏玩家人数，无需设置，无需端口映射，一键连接，轻松联机
+                    </p>
                 </div>
                 
-                <div class="platform-card">
-                    <div class="platform-icon bilibili-icon" style="color: white;padding: 14px;">
-                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><path d="M488.6 104.1C505.3 122.2 513 143.8 511.9 169.8V372.2C511.5 398.6 502.7 420.3 485.4 437.3C468.2 454.3 446.3 463.2 419.9 464H92C65.6 463.2 43.8 454.2 26.7 436.8C9.7 419.4 .8 396.5 0 368.2V169.8C.8 143.8 9.7 122.2 26.7 104.1C43.8 87.8 65.6 78.8 92 78H121.4L96.1 52.2C90.3 46.5 87.4 39.2 87.4 30.4C87.4 21.6 90.3 14.3 96.1 8.6C101.8 2.9 109.1 0 117.9 0C126.7 0 134 2.9 139.8 8.6L213.1 78H301.1L375.6 8.6C381.7 2.9 389.2 0 398 0C406.8 0 414.1 2.9 419.9 8.6C425.6 14.3 428.5 21.6 428.5 30.4C428.5 39.2 425.6 46.5 419.9 52.2L394.6 78L423.9 78C450.3 78.8 471.9 87.8 488.6 104.1H488.6zM449.8 173.8C449.4 164.2 446.1 156.4 439.1 150.3C433.9 144.2 425.1 140.9 416.4 140.5H96.1C86.5 140.9 78.6 144.2 72.5 150.3C66.3 156.4 63.1 164.2 62.7 173.8V368.2C62.7 377.4 66 385.2 72.5 391.7C79 398.2 86.9 401.5 96.1 401.5H416.4C425.6 401.5 433.4 398.2 439.7 391.7C446 385.2 449.4 377.4 449.8 368.2L449.8 173.8zM185.5 216.5C191.8 222.8 195.2 230.6 195.6 239.7V273C195.2 282.2 191.9 289.9 185.8 296.2C179.6 302.5 171.8 305.7 162.2 305.7C152.6 305.7 144.7 302.5 138.6 296.2C132.5 289.9 129.2 282.2 128.8 273V239.7C129.2 230.6 132.6 222.8 138.9 216.5C145.2 210.2 152.1 206.9 162.2 206.5C171.4 206.9 179.2 210.2 185.5 216.5H185.5zM377 216.5C383.3 222.8 386.7 230.6 387.1 239.7V273C386.7 282.2 383.4 289.9 377.3 296.2C371.2 302.5 363.3 305.7 353.7 305.7C344.1 305.7 336.3 302.5 330.1 296.2C323.1 289.9 320.7 282.2 320.4 273V239.7C320.7 230.6 324.1 222.8 330.4 216.5C336.7 210.2 344.5 206.9 353.7 206.5C362.9 206.9 370.7 210.2 377 216.5H377z"/></svg>
+                <!-- Feature 2 -->
+                <div class="group relative bg-white border border-gray-200 rounded-2xl p-8 hover:border-gray-900 hover:shadow-xl transition-all duration-300">
+                    <div class="mb-6">
+                        <div class="w-14 h-14 bg-gray-100 rounded-xl flex items-center justify-center group-hover:bg-gray-900 transition-colors duration-300">
+                            <i class="fas fa-network-wired text-2xl text-gray-900 group-hover:text-white transition-colors duration-300"></i>
+                        </div>
                     </div>
-                    <h3>官方B站</h3>
-                    <p>@樱桃花下的小猫<br/>视频教程，使用指南，更新日志</p>
-                    <a href="https://space.bilibili.com/1163442661?spm_id_from=333.337.0.0" 
-                       target="_blank" class="platform-link">
-                        关注我们
-                    </a>
+                    <h3 class="text-xl font-bold text-gray-900 mb-3">将分散团队连接在一起</h3>
+                    <p class="text-gray-600 leading-relaxed">
+                        轻松地将分散团队连接在一起，创建一个紧密结合的网络，无论彼此之间的距离有多远。允许你无忧无虑随心的团队协作
+                    </p>
                 </div>
                 
-                <div class="platform-card">
-                    <div class="platform-icon blog-icon">
-                        <i class="fas fa-blog"></i>
+                <!-- Feature 3 -->
+                <div class="group relative bg-white border border-gray-200 rounded-2xl p-8 hover:border-gray-900 hover:shadow-xl transition-all duration-300">
+                    <div class="mb-6">
+                        <div class="w-14 h-14 bg-gray-100 rounded-xl flex items-center justify-center group-hover:bg-gray-900 transition-colors duration-300">
+                            <i class="fas fa-laptop text-2xl text-gray-900 group-hover:text-white transition-colors duration-300"></i>
+                        </div>
                     </div>
-                    <h3>官方博客</h3>
-                    <p>@樱花下的小猫<br/>技术文章，深度教程，开发日志</p>
-                    <a href="https://blog.hpylan.com/" 
-                       target="_blank" class="platform-link">
-                        访问博客
-                    </a>
+                    <h3 class="text-xl font-bold text-gray-900 mb-3">远程工作</h3>
+                    <p class="text-gray-600 leading-relaxed">
+                        允许您随时随地在您的远程计算机上进行安全访问和工作，无论是在家中、酒店还是在机场。无论您身在何处，只需按一下鼠标
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Feature Details Section 1 -->
+    <section class="py-24 px-4 sm:px-6 lg:px-8 bg-gray-50">
+        <div class="max-w-7xl mx-auto">
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+                <!-- Content -->
+                <div class="order-2 lg:order-1">
+                    <h2 class="text-3xl sm:text-4xl font-bold text-gray-900 mb-6">
+                        简洁美观，一看就会
+                    </h2>
+                    <p class="text-lg text-gray-600 mb-8 leading-relaxed">
+                        精心设计的界面布局，清晰直观。无需繁琐设置，三步轻松联机。朋友无需注册，填房间名即可加入。
+                    </p>
+                    
+                    <!-- Feature List -->
+                    <div class="space-y-4">
+                        <div class="flex items-start">
+                            <div class="flex-shrink-0 w-6 h-6 bg-black rounded-full flex items-center justify-center mt-1">
+                                <i class="fas fa-check text-white text-xs"></i>
+                            </div>
+                            <div class="ml-4">
+                                <h4 class="text-base font-semibold text-gray-900 mb-1">简单易用的界面设计</h4>
+                                <p class="text-sm text-gray-600">直观的操作流程，新手也能快速上手</p>
+                            </div>
+                        </div>
+                        
+                        <div class="flex items-start">
+                            <div class="flex-shrink-0 w-6 h-6 bg-black rounded-full flex items-center justify-center mt-1">
+                                <i class="fas fa-check text-white text-xs"></i>
+                            </div>
+                            <div class="ml-4">
+                                <h4 class="text-base font-semibold text-gray-900 mb-1">无需注册和复杂配置</h4>
+                                <p class="text-sm text-gray-600">零门槛使用，即开即用</p>
+                            </div>
+                        </div>
+                        
+                        <div class="flex items-start">
+                            <div class="flex-shrink-0 w-6 h-6 bg-black rounded-full flex items-center justify-center mt-1">
+                                <i class="fas fa-check text-white text-xs"></i>
+                            </div>
+                            <div class="ml-4">
+                                <h4 class="text-base font-semibold text-gray-900 mb-1">一键连接，即刻开玩</h4>
+                                <p class="text-sm text-gray-600">快速建立连接，畅享游戏乐趣</p>
+                            </div>
+                        </div>
+                    </div>
                 </div>
                 
-                <div class="platform-card">
-                    <div class="platform-icon csdn-icon" style="padding: 12px;color: white;">
-                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><path d="M91.7 96C106.3 86.8 116 70.5 116 52C116 23.3 92.7 0 64 0S12 23.3 12 52c0 16.7 7.8 31.5 20 41l0 3 0 48 0 256 0 48 0 64 48 0 0-64 389.6 0c14.6 0 26.4-11.8 26.4-26.4c0-3.7-.8-7.3-2.3-10.7L432 272l61.7-138.9c1.5-3.4 2.3-7 2.3-10.7c0-14.6-11.8-26.4-26.4-26.4L91.7 96zM80 400l0-256 356.4 0L388.1 252.5c-5.5 12.4-5.5 26.6 0 39L436.4 400 80 400z"/></svg>
+                <!-- Image -->
+                <div class="order-1 lg:order-2">
+                    <div class="relative rounded-2xl overflow-hidden shadow-2xl border border-gray-200">
+                        <img src="https://uapis.cn/static/uploads/9b68796eb2_0BgDcXS52bYf.webp" alt="简洁界面" class="w-full h-auto">
                     </div>
-                    <h3>CSDN社区</h3>
-                    <p>@樱桃花下的小猫<br/>技术分享，问题解答，经验交流</p>
-                    <a href="https://blog.csdn.net/m0_71727150" 
-                       target="_blank" class="platform-link">
-                        技术交流
-                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Feature Details Section 2 -->
+    <section class="py-24 px-4 sm:px-6 lg:px-8 bg-white">
+        <div class="max-w-7xl mx-auto">
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+                <!-- Image -->
+                <div>
+                    <div class="relative rounded-2xl overflow-hidden shadow-2xl border border-gray-200">
+                        <img src="https://tc.vlogidc.cn/img/2025/03/12/67d147034c87a.webp" alt="电竞级网络" class="w-full h-auto">
+                    </div>
                 </div>
                 
-                <div class="platform-card">
-                    <div class="platform-icon docs-icon">
-                        <i class="fas fa-file-alt"></i>
+                <!-- Content -->
+                <div>
+                    <h2 class="text-3xl sm:text-4xl font-bold text-gray-900 mb-6">
+                        电竞级网络，稳定游戏体验
+                    </h2>
+                    <p class="text-lg text-gray-600 mb-8 leading-relaxed">
+                        多线高带宽线路，高质量线路帮助你畅玩游戏。综合提升 70%、延迟 40ms、丢包 0%。
+                    </p>
+                    
+                    <!-- Stats Grid -->
+                    <div class="grid grid-cols-3 gap-6 mb-8">
+                        <div class="text-center p-4 bg-gray-50 rounded-xl">
+                            <div class="text-3xl font-bold text-gray-900 mb-1">70%</div>
+                            <div class="text-sm text-gray-600">性能提升</div>
+                        </div>
+                        <div class="text-center p-4 bg-gray-50 rounded-xl">
+                            <div class="text-3xl font-bold text-gray-900 mb-1">40ms</div>
+                            <div class="text-sm text-gray-600">平均延迟</div>
+                        </div>
+                        <div class="text-center p-4 bg-gray-50 rounded-xl">
+                            <div class="text-3xl font-bold text-gray-900 mb-1">0%</div>
+                            <div class="text-sm text-gray-600">丢包率</div>
+                        </div>
                     </div>
-                    <h3>帮助文档</h3>
-                    <p>详细使用教程<br/>常见问题解答，故障排除指南</p>
-                    <a href="/docs/q/" 
-                       target="_blank" class="platform-link">
-                        查看文档
-                    </a>
+                    
+                    <!-- Feature List -->
+                    <div class="space-y-4">
+                        <div class="flex items-center">
+                            <div class="flex-shrink-0 w-6 h-6 bg-black rounded-full flex items-center justify-center">
+                                <i class="fas fa-bolt text-white text-xs"></i>
+                            </div>
+                            <span class="ml-4 text-base font-medium text-gray-900">高速稳定的网络连接</span>
+                        </div>
+                        
+                        <div class="flex items-center">
+                            <div class="flex-shrink-0 w-6 h-6 bg-black rounded-full flex items-center justify-center">
+                                <i class="fas fa-shield-alt text-white text-xs"></i>
+                            </div>
+                            <span class="ml-4 text-base font-medium text-gray-900">零丢包保证</span>
+                        </div>
+                        
+                        <div class="flex items-center">
+                            <div class="flex-shrink-0 w-6 h-6 bg-black rounded-full flex items-center justify-center">
+                                <i class="fas fa-tachometer-alt text-white text-xs"></i>
+                            </div>
+                            <span class="ml-4 text-base font-medium text-gray-900">低延迟体验</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Feature Details Section 3 -->
+    <section class="py-24 px-4 sm:px-6 lg:px-8 bg-gray-50">
+        <div class="max-w-7xl mx-auto">
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+                <!-- Content -->
+                <div class="order-2 lg:order-1">
+                    <h2 class="text-3xl sm:text-4xl font-bold text-gray-900 mb-6">
+                        不限制人数高速联机
+                    </h2>
+                    <p class="text-lg text-gray-600 mb-8 leading-relaxed">
+                        自动创建虚拟局域网，异地玩家也能联机游戏。自动打洞创建更优质的P2P连接，延迟进一步降低。不限制人数、网速、类型联机。
+                    </p>
+                    
+                    <!-- Feature List -->
+                    <div class="space-y-4">
+                        <div class="flex items-start">
+                            <div class="flex-shrink-0 w-6 h-6 bg-black rounded-full flex items-center justify-center mt-1">
+                                <i class="fas fa-users text-white text-xs"></i>
+                            </div>
+                            <div class="ml-4">
+                                <h4 class="text-base font-semibold text-gray-900 mb-1">不限制玩家人数</h4>
+                                <p class="text-sm text-gray-600">支持大规模多人联机，畅玩无忧</p>
+                            </div>
+                        </div>
+                        
+                        <div class="flex items-start">
+                            <div class="flex-shrink-0 w-6 h-6 bg-black rounded-full flex items-center justify-center mt-1">
+                                <i class="fas fa-network-wired text-white text-xs"></i>
+                            </div>
+                            <div class="ml-4">
+                                <h4 class="text-base font-semibold text-gray-900 mb-1">P2P自动打洞</h4>
+                                <p class="text-sm text-gray-600">智能优化连接路径，降低延迟</p>
+                            </div>
+                        </div>
+                        
+                        <div class="flex items-start">
+                            <div class="flex-shrink-0 w-6 h-6 bg-black rounded-full flex items-center justify-center mt-1">
+                                <i class="fas fa-gamepad text-white text-xs"></i>
+                            </div>
+                            <div class="ml-4">
+                                <h4 class="text-base font-semibold text-gray-900 mb-1">支持所有类型游戏</h4>
+                                <p class="text-sm text-gray-600">兼容各类局域网游戏，无限可能</p>
+                            </div>
+                        </div>
+                    </div>
                 </div>
                 
-                <div class="platform-card">
-                    <div class="platform-icon sponsor-icon">
-                        <i class="fas fa-heart"></i>
+                <!-- Image -->
+                <div class="order-1 lg:order-2">
+                    <div class="relative rounded-2xl overflow-hidden shadow-2xl border border-gray-200">
+                        <img src="https://uapis.cn/static/uploads/9bbcc1a399_zQngfQ1in2pY.webp" alt="不限制人数" class="w-full h-auto">
                     </div>
-                    <h3>赞助支持</h3>
-                    <p>支持项目发展<br/>获得更好的服务和优先支持</p>
-                    <a href="https://afdian.com/a/seeyouagain" 
-                       target="_blank" class="platform-link">
-                        赞助我们
-                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Feature Details Section 4 - 自建服务器 -->
+    <section class="py-24 px-4 sm:px-6 lg:px-8 bg-white">
+        <div class="max-w-7xl mx-auto">
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+                <!-- Image -->
+                <div>
+                    <div class="relative rounded-2xl overflow-hidden shadow-2xl border border-gray-200">
+                        <img src="https://uapis.cn/static/uploads/9bbcbf328e_OV65ALkpAdCR.webp" alt="自建服务器节点" class="w-full h-auto">
+                    </div>
+                </div>
+                
+                <!-- Content -->
+                <div>
+                    <h2 class="text-3xl sm:text-4xl font-bold text-gray-900 mb-6">
+                        自建服务器节点
+                    </h2>
+                    <p class="text-lg text-gray-600 mb-8 leading-relaxed">
+                        支持自建服务器节点，无需朋友添加，更稳定更便宜！打造专属的私有网络环境。
+                    </p>
+                    
+                    <!-- Feature List -->
+                    <div class="space-y-4">
+                        <div class="flex items-start">
+                            <div class="flex-shrink-0 w-6 h-6 bg-black rounded-full flex items-center justify-center mt-1">
+                                <i class="fas fa-check text-white text-xs"></i>
+                            </div>
+                            <div class="ml-4">
+                                <h4 class="text-base font-semibold text-gray-900 mb-1">更低延迟，更稳定的连接</h4>
+                                <p class="text-sm text-gray-600">自主掌控服务器，优化网络路径</p>
+                            </div>
+                        </div>
+                        
+                        <div class="flex items-start">
+                            <div class="flex-shrink-0 w-6 h-6 bg-black rounded-full flex items-center justify-center mt-1">
+                                <i class="fas fa-check text-white text-xs"></i>
+                            </div>
+                            <div class="ml-4">
+                                <h4 class="text-base font-semibold text-gray-900 mb-1">无需朋友添加，即可直接连接</h4>
+                                <p class="text-sm text-gray-600">简化连接流程，提升使用体验</p>
+                            </div>
+                        </div>
+                        
+                        <div class="flex items-start">
+                            <div class="flex-shrink-0 w-6 h-6 bg-black rounded-full flex items-center justify-center mt-1">
+                                <i class="fas fa-check text-white text-xs"></i>
+                            </div>
+                            <div class="ml-4">
+                                <h4 class="text-base font-semibold text-gray-900 mb-1">更经济实惠的价格</h4>
+                                <p class="text-sm text-gray-600">灵活配置，按需付费</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Community Section - 全球社区 -->
+    <section class="py-24 px-4 sm:px-6 lg:px-8 bg-gray-50">
+        <div class="max-w-7xl mx-auto">
+            <!-- Section Header -->
+            <div class="text-center mb-16">
+                <div class="inline-flex items-center justify-center w-16 h-16 bg-black rounded-2xl mb-6">
+                    <i class="fas fa-users text-white text-2xl"></i>
+                </div>
+                <h2 class="text-3xl sm:text-4xl font-bold text-gray-900 mb-4">
+                    加入好朋友联机工具社区
+                </h2>
+                <p class="text-lg text-gray-600 max-w-2xl mx-auto">
+                    与全球玩家一起交流学习，分享游戏联机经验，获取最新资讯和技术支持
+                </p>
+            </div>
+            
+            <!-- Community Platforms -->
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mb-12">
+                <!-- QQ群 -->
+                <a href="http://qm.qq.com/cgi-bin/qm/qr?_wv=1027&k=I_-arUNUYkqURts3vwRmAT44H2O9EQoA&authKey=w19mK3S6ftOLQjiLnxjOiOkTP0uHSk9c33zqrj9b%2BliDev0H42O%2B7WZCROCftet5&noverify=0&group_code=741616947" target="_blank" class="group bg-white border border-gray-200 rounded-2xl p-6 hover:border-gray-900 hover:shadow-xl transition-all duration-300">
+                    <div class="w-12 h-12 bg-blue-500 rounded-xl flex items-center justify-center mb-4 group-hover:scale-110 transition-transform">
+                        <i class="fab fa-qq text-white text-xl"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-gray-900 mb-2">官方QQ群</h3>
+                    <p class="text-gray-600 text-sm mb-4">群号：741616947<br>实时答疑，问题反馈，版本更新通知</p>
+                    <span class="inline-flex items-center text-sm font-medium text-gray-900 group-hover:text-blue-500">
+                        立即加入 <i class="fas fa-arrow-right ml-2 group-hover:translate-x-1 transition-transform"></i>
+                    </span>
+                </a>
+                
+                <!-- B站 -->
+                <a href="https://space.bilibili.com/1163442661" target="_blank" class="group bg-white border border-gray-200 rounded-2xl p-6 hover:border-gray-900 hover:shadow-xl transition-all duration-300">
+                    <div class="w-12 h-12 bg-pink-500 rounded-xl flex items-center justify-center mb-4 group-hover:scale-110 transition-transform">
+                        <i class="fab fa-bilibili text-white text-xl"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-gray-900 mb-2">官方B站</h3>
+                    <p class="text-gray-600 text-sm mb-4">@樱桃花下的小猫<br>视频教程，使用指南，更新日志</p>
+                    <span class="inline-flex items-center text-sm font-medium text-gray-900 group-hover:text-pink-500">
+                        关注我们 <i class="fas fa-arrow-right ml-2 group-hover:translate-x-1 transition-transform"></i>
+                    </span>
+                </a>
+                
+                <!-- 博客 -->
+                <a href="https://blog.hpylan.com/" target="_blank" class="group bg-white border border-gray-200 rounded-2xl p-6 hover:border-gray-900 hover:shadow-xl transition-all duration-300">
+                    <div class="w-12 h-12 bg-green-500 rounded-xl flex items-center justify-center mb-4 group-hover:scale-110 transition-transform">
+                        <i class="fas fa-blog text-white text-xl"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-gray-900 mb-2">官方博客</h3>
+                    <p class="text-gray-600 text-sm mb-4">@樱花下的小猫<br>技术文章，深度教程，开发日志</p>
+                    <span class="inline-flex items-center text-sm font-medium text-gray-900 group-hover:text-green-500">
+                        访问博客 <i class="fas fa-arrow-right ml-2 group-hover:translate-x-1 transition-transform"></i>
+                    </span>
+                </a>
+                
+                <!-- CSDN -->
+                <a href="https://blog.csdn.net/m0_71727150" target="_blank" class="group bg-white border border-gray-200 rounded-2xl p-6 hover:border-gray-900 hover:shadow-xl transition-all duration-300">
+                    <div class="w-12 h-12 bg-orange-500 rounded-xl flex items-center justify-center mb-4 group-hover:scale-110 transition-transform">
+                        <i class="fas fa-code text-white text-xl"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-gray-900 mb-2">CSDN社区</h3>
+                    <p class="text-gray-600 text-sm mb-4">@樱桃花下的小猫<br>技术分享，问题解答，经验交流</p>
+                    <span class="inline-flex items-center text-sm font-medium text-gray-900 group-hover:text-orange-500">
+                        技术交流 <i class="fas fa-arrow-right ml-2 group-hover:translate-x-1 transition-transform"></i>
+                    </span>
+                </a>
+                
+                <!-- 帮助文档 -->
+                <a href="/docs/q/" target="_blank" class="group bg-white border border-gray-200 rounded-2xl p-6 hover:border-gray-900 hover:shadow-xl transition-all duration-300">
+                    <div class="w-12 h-12 bg-gray-700 rounded-xl flex items-center justify-center mb-4 group-hover:scale-110 transition-transform">
+                        <i class="fas fa-file-alt text-white text-xl"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-gray-900 mb-2">帮助文档</h3>
+                    <p class="text-gray-600 text-sm mb-4">详细使用教程<br>常见问题解答，故障排除指南</p>
+                    <span class="inline-flex items-center text-sm font-medium text-gray-900 group-hover:text-gray-700">
+                        查看文档 <i class="fas fa-arrow-right ml-2 group-hover:translate-x-1 transition-transform"></i>
+                    </span>
+                </a>
+                
+                <!-- 赞助支持 -->
+                <a href="https://afdian.com/a/seeyouagain" target="_blank" class="group bg-white border border-gray-200 rounded-2xl p-6 hover:border-gray-900 hover:shadow-xl transition-all duration-300">
+                    <div class="w-12 h-12 bg-red-500 rounded-xl flex items-center justify-center mb-4 group-hover:scale-110 transition-transform">
+                        <i class="fas fa-heart text-white text-xl"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-gray-900 mb-2">赞助支持</h3>
+                    <p class="text-gray-600 text-sm mb-4">支持项目发展<br>获得更好的服务和优先支持</p>
+                    <span class="inline-flex items-center text-sm font-medium text-gray-900 group-hover:text-red-500">
+                        赞助我们 <i class="fas fa-arrow-right ml-2 group-hover:translate-x-1 transition-transform"></i>
+                    </span>
+                </a>
+            </div>
+            
+            <!-- Community Stats -->
+            <div class="bg-white border border-gray-200 rounded-2xl p-8">
+                <div class="grid grid-cols-2 md:grid-cols-4 gap-8">
+                    <div class="text-center">
+                        <div class="text-4xl font-bold text-gray-900 mb-2">10K+</div>
+                        <div class="text-sm text-gray-600 uppercase tracking-wider">活跃用户</div>
+                    </div>
+                    <div class="text-center">
+                        <div class="text-4xl font-bold text-gray-900 mb-2">1000+</div>
+                        <div class="text-sm text-gray-600 uppercase tracking-wider">成功联机</div>
+                    </div>
+                    <div class="text-center">
+                        <div class="text-4xl font-bold text-gray-900 mb-2">24/7</div>
+                        <div class="text-sm text-gray-600 uppercase tracking-wider">在线支持</div>
+                    </div>
+                    <div class="text-center">
+                        <div class="text-4xl font-bold text-gray-900 mb-2">10+</div>
+                        <div class="text-sm text-gray-600 uppercase tracking-wider">丰富文档</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials Section - 口碑认证 -->
+    <section class="py-24 px-4 sm:px-6 lg:px-8 bg-white">
+        <div class="max-w-7xl mx-auto">
+            <!-- Section Header -->
+            <div class="text-center mb-16">
+                <div class="inline-flex items-center justify-center w-16 h-16 bg-black rounded-2xl mb-6">
+                    <i class="fas fa-star text-white text-2xl"></i>
+                </div>
+                <h2 class="text-3xl sm:text-4xl font-bold text-gray-900 mb-4">
+                    口碑认证，真的好用
+                </h2>
+                <p class="text-lg text-gray-600 max-w-2xl mx-auto">
+                    来自全球用户的真实评价，见证 KatoLan 的专业品质
+                </p>
+            </div>
+            
+            <!-- Testimonials Grid -->
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8 mb-12">
+                <!-- Testimonial 1 -->
+                <div class="bg-gray-50 rounded-2xl p-8 border border-gray-200">
+                    <div class="flex items-center mb-4">
+                        <div class="flex text-yellow-400">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                        </div>
+                    </div>
+                    <p class="text-gray-700 mb-6 leading-relaxed">
+                        "用了很多联机工具，KatoLan 是最简单好用的！和朋友玩 MC 再也不用担心延迟问题了，连接速度超快！"
+                    </p>
+                    <div class="flex items-center">
+                        <div class="w-10 h-10 bg-gray-300 rounded-full flex items-center justify-center mr-3">
+                            <i class="fas fa-user text-gray-600"></i>
+                        </div>
+                        <div>
+                            <div class="font-semibold text-gray-900">小明</div>
+                            <div class="text-sm text-gray-600">MC 玩家</div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Testimonial 2 -->
+                <div class="bg-gray-50 rounded-2xl p-8 border border-gray-200">
+                    <div class="flex items-center mb-4">
+                        <div class="flex text-yellow-400">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                        </div>
+                    </div>
+                    <p class="text-gray-700 mb-6 leading-relaxed">
+                        "界面简洁，操作方便！最重要的是稳定性很好，玩了一整天都没有掉线。强烈推荐！"
+                    </p>
+                    <div class="flex items-center">
+                        <div class="w-10 h-10 bg-gray-300 rounded-full flex items-center justify-center mr-3">
+                            <i class="fas fa-user text-gray-600"></i>
+                        </div>
+                        <div>
+                            <div class="font-semibold text-gray-900">游戏达人</div>
+                            <div class="text-sm text-gray-600">资深玩家</div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Testimonial 3 -->
+                <div class="bg-gray-50 rounded-2xl p-8 border border-gray-200">
+                    <div class="flex items-center mb-4">
+                        <div class="flex text-yellow-400">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                        </div>
+                    </div>
+                    <p class="text-gray-700 mb-6 leading-relaxed">
+                        "作为一个技术小白，我也能轻松上手。客服响应很快，遇到问题都能及时解决。这个工具真的很棒！"
+                    </p>
+                    <div class="flex items-center">
+                        <div class="w-10 h-10 bg-gray-300 rounded-full flex items-center justify-center mr-3">
+                            <i class="fas fa-user text-gray-600"></i>
+                        </div>
+                        <div>
+                            <div class="font-semibold text-gray-900">新手玩家</div>
+                            <div class="text-sm text-gray-600">休闲玩家</div>
+                        </div>
+                    </div>
                 </div>
             </div>
             
-            <div class="community-stats">
-                <div class="stat-item">
-                    <div class="stat-number">10K+</div>
-                    <div class="stat-label">活跃用户</div>
+            <!-- Trust Badges -->
+            <!-- <div class="bg-gray-50 rounded-2xl p-8 border border-gray-200">
+                <div class="grid grid-cols-2 md:grid-cols-4 gap-8">
+                    <div class="text-center">
+                        <div class="w-16 h-16 bg-white rounded-xl flex items-center justify-center mx-auto mb-3 shadow-sm">
+                            <i class="fas fa-shield-check text-green-500 text-2xl"></i>
+                        </div>
+                        <div class="font-semibold text-gray-900 mb-1">安全认证</div>
+                        <div class="text-sm text-gray-600">数据加密传输</div>
+                    </div>
+                    
+                    <div class="text-center">
+                        <div class="w-16 h-16 bg-white rounded-xl flex items-center justify-center mx-auto mb-3 shadow-sm">
+                            <i class="fas fa-award text-blue-500 text-2xl"></i>
+                        </div>
+                        <div class="font-semibold text-gray-900 mb-1">品质保证</div>
+                        <div class="text-sm text-gray-600">专业团队维护</div>
+                    </div>
+                    
+                    <div class="text-center">
+                        <div class="w-16 h-16 bg-white rounded-xl flex items-center justify-center mx-auto mb-3 shadow-sm">
+                            <i class="fas fa-headset text-purple-500 text-2xl"></i>
+                        </div>
+                        <div class="font-semibold text-gray-900 mb-1">贴心服务</div>
+                        <div class="text-sm text-gray-600">7×24小时支持</div>
+                    </div>
+                    
+                    <div class="text-center">
+                        <div class="w-16 h-16 bg-white rounded-xl flex items-center justify-center mx-auto mb-3 shadow-sm">
+                            <i class="fas fa-rocket text-orange-500 text-2xl"></i>
+                        </div>
+                        <div class="font-semibold text-gray-900 mb-1">持续更新</div>
+                        <div class="text-sm text-gray-600">功能不断优化</div>
+                    </div>
                 </div>
-                <div class="stat-item">
-                    <div class="stat-number">1000+</div>
-                    <div class="stat-label">成功联机</div>
-                </div>
-                <div class="stat-item">
-                    <div class="stat-number">24/7</div>
-                    <div class="stat-label">在线支持</div>
-                </div>
-                <div class="stat-item">
-                    <div class="stat-number">10+</div>
-                    <div class="stat-label">丰富文档</div>
-                </div>
-            </div>
+            </div> -->
         </div>
     </section>
-    <section class="slice slice-lg bg-section-dark pt-5 pt-lg-8">
-        <!-- SVG separator -->
-        <!-- <div class="shape-container shape-line shape-position-top shape-orientation-inverse">
-            <svg width="2560px" height="100px" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" preserveAspectRatio="none" x="0px" y="0px" viewBox="0 0 2560 100" style="enable-background:new 0 0 2560 100;" xml:space="preserve" class="">
-                <polygon points="2560 0 2560 100 0 100"></polygon>
-            </svg>
-        </div> -->
-        <!-- Container -->
-        <div class="container position-relative zindex-100">
-            <div class="col">
-                <div class="row justify-content-center">
-                    <div class="col-md-10 text-center">
-                        <div class="mt-4 mb-6">
-                            <h2 class="h1 text-white">
-                                准备好与你的朋友开始吗?
-                            </h2>
-                            <h4 class="text-white mt-3">Create your own experience</h4>
-                            <!-- Play button -->
-<!--                             <a href="download.html" class="btn btn-primary btn-icon mt-4">立即下载</a> -->
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-    <section class="slice pt-0">
-        <div class="container position-relative zindex-100">
-            <div class="row">
-                <div class="col-xl-4 col-sm-6 mt-n7">
-                    <div class="card">
-                        <div class="d-flex p-5">
-                            <div>
-                                <span class="badge badge-warning badge-pill">第一步</span>
-                            </div>
-                            <div class="pl-4">
-                                <h5 class="lh-130">下载安装KatoLan</h5>
-                                <p class="text-muted mb-0">
-                                    下载并运行，选择一个位置安装KatoLan，这一步很简单！
-                                </p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-xl-4 col-sm-6 mt-sm-n7">
-                    <div class="card">
-                        <div class="d-flex p-5">
-                            <div>
-                                <span class="badge badge-success badge-pill">第二步</span>
-                            </div>
-                            <div class="pl-4">
-                                <h5 class="lh-130">连接</h5>
-                                <p class="text-muted mb-0">
-                                    选择一个服务器，你与朋友们都填一个一样的房间名（英文数字），点击连接，等待连接成功，这一步也很简单！
-                                </p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-xl-4 col-md-12 col-sm-6 mt-xl-n7">
-                    <div class="card">
-                        <div class="d-flex p-5">
-                            <div>
-                                <span class="badge badge-danger badge-pill">第三步</span>
-                            </div>
-                            <div class="pl-3">
-                                <h5 class="lh-130">开始游戏</h5>
-                                <p class="text-muted mb-0">
-                                    打开你的游戏，搜索游戏内房间或通过IP加入到一起吧，然后开始游戏吧！
-                                </p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+
+    <!-- CTA Section -->
+    <section class="py-24 px-4 sm:px-6 lg:px-8 bg-black text-white">
+        <div class="max-w-4xl mx-auto text-center">
+            <h2 class="text-3xl sm:text-5xl font-bold mb-6">
+                准备好开始了吗？
+            </h2>
+            <p class="text-lg sm:text-xl text-gray-400 mb-10 max-w-2xl mx-auto">
+                立即下载 KatoLan，与朋友一起畅玩游戏，体验专业的异地组网服务
+            </p>
+            
+            <div class="flex flex-col sm:flex-row gap-4 justify-center items-center">
+                <a href="https://wwk.lanzoul.com/b023t8qmb" target="_blank" class="group inline-flex items-center justify-center px-8 py-4 bg-white text-black text-base font-semibold rounded-xl hover:bg-gray-100 transition-all duration-200 hover:shadow-2xl hover:scale-105 w-full sm:w-auto">
+                    立即下载
+                    <i class="fas fa-arrow-right ml-2 group-hover:translate-x-1 transition-transform"></i>
+                </a>
+                <a href="/docs/q/" target="_blank" class="inline-flex items-center justify-center px-8 py-4 bg-transparent text-white text-base font-semibold rounded-xl border-2 border-white hover:bg-white hover:text-black transition-all duration-200 w-full sm:w-auto">
+                    查看文档
+                    <i class="fas fa-book ml-2"></i>
+                </a>
             </div>
             
+            <!-- Additional Info -->
+            <div class="mt-12 pt-8 border-t border-gray-800">
+                <div class="flex flex-wrap justify-center items-center gap-8 text-sm text-gray-400">
+                    <div class="flex items-center">
+                        <i class="fas fa-download mr-2"></i>
+                        <span>下载密码: 9btg</span>
+                    </div>
+                    <div class="flex items-center">
+                        <i class="fab fa-qq mr-2"></i>
+                        <span>官群: 741616947</span>
+                    </div>
+                    <div class="flex items-center">
+                        <i class="fas fa-code-branch mr-2"></i>
+                        <span>版本: v1.4.0</span>
+                    </div>
+                </div>
+            </div>
         </div>
     </section>
-    
-    
-    <footer class="position-relative" id="footer-main">
-        <div class="footer">
-            <div class="container pt-4">
-                <div class="row">
-                    <div class="col-lg-4 mb-5 mb-lg-0">
-                        <a href="index.html" class="d-block mb-3">
-                            <img src="./favicon.ico" alt="KatoLan" style="height: 40px;">
+
+    <!-- Footer -->
+    <footer class="bg-white border-t border-gray-200 py-12 px-4 sm:px-6 lg:px-8">
+        <div class="max-w-7xl mx-auto">
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-8 mb-8">
+                <!-- Brand -->
+                <div class="col-span-1 md:col-span-2">
+                    <div class="flex items-center space-x-2 mb-4">
+                        <img src="https://uapis.cn/static/uploads/9c321f0cf6_CPiR27AdEtYV.webp" alt="KatoLan" class="h-8 w-8">
+                        <span class="text-xl font-bold text-gray-900">好朋友联机工具（Katolan）</span>
+                    </div>
+                    <p class="text-gray-600 mb-4 max-w-md">
+                        专业的异地组网联机工具，让游戏联机变得更简单。支持 P2P、中转的免费虚拟局域网游戏联机工具。<br/><br/>
+                        
+                        售前售后QQ：1461787516 <br/>
+                        商务合作QQ：1461787516
+                    </p>
+                    <div class="flex space-x-4">
+                        <a href="https://space.bilibili.com/1163442661" target="_blank" class="w-10 h-10 bg-gray-100 rounded-lg flex items-center justify-center hover:bg-gray-900 hover:text-white transition-colors">
+                            <i class="fab fa-bilibili"></i>
                         </a>
-                        <p class="mt-3 text-sm opacity-8">
-                            KatoLan - 让游戏联机变得更简单
-                            <br>
-                            免费异地组网联机工具
-                        </p>
-                        <!-- <img src="https://counter.katomegumi.net/get/@katolan" alt="katolan" class="mt-3"/> -->
-                    </div>
-                    <div class="col-lg-2 col-6 mb-5 mb-lg-0">
-                        <h6 class="heading mb-3">友情链接</h6>
-                        <ul class="list-unstyled">
-                            <li><a href="https://www.wanjiadongli.com/?inviteCode=hpylan">游戏mod</a></li>
-                            <li><a href="https://docs.qq.com/doc/DQU9vckdUZ21oeFpU">腾讯文档</a></li>
-                            <li><a  href="/docs/q/" target="_blank">帮助文档</a></li>
-                            <li><a href="/changelog.html" target="_blank">更新日志</a></li>
-                        </ul>
-                    </div>
-                    <div class="col-lg-2 col-6 mb-5 mb-lg-0">
-                        <h6 class="heading mb-3">社区</h6>
-                        <ul class="list-unstyled">
-                            <li><a target="_blank" href="http://qm.qq.com/cgi-bin/qm/qr?_wv=1027&k=I_-arUNUYkqURts3vwRmAT44H2O9EQoA&authKey=w19mK3S6ftOLQjiLnxjOiOkTP0uHSk9c33zqrj9b%2BliDev0H42O%2B7WZCROCftet5&noverify=0&group_code=741616947">官方QQ群</a></li>
-                            <li><a target="_blank" href="https://space.bilibili.com/1163442661?spm_id_from=333.337.0.0">官方B站：樱桃花下的小猫</a></li>
-                            <li><a target="_blank" href="https://blog.hpylan.com/">官方博客：樱花下的小猫</a></li>
-                            <li><a target="_blank" href="https://blog.csdn.net/m0_71727150">官方CSDN：樱桃花下的小猫</a></li>
-                        </ul>
-                    </div>
-                    <div class="col-lg-4 col-md-6 mb-5 mb-lg-0">
-                        <h6 class="heading mb-3">联系我们</h6>
-                        <p class="text-sm opacity-8">
-                            有任何问题或建议，欢迎随时联系我们
-                        </p>
-                        <a href="http://qm.qq.com/cgi-bin/qm/qr?_wv=1027&k=I_-arUNUYkqURts3vwRmAT44H2O9EQoA" class="btn btn-sm btn-primary mt-3">
-                            加入官方群
+                        <a href="https://blog.hpylan.com/" target="_blank" class="w-10 h-10 bg-gray-100 rounded-lg flex items-center justify-center hover:bg-gray-900 hover:text-white transition-colors">
+                            <i class="fas fa-blog"></i>
+                        </a>
+                        <a href="http://qm.qq.com/cgi-bin/qm/qr?_wv=1027&k=I_-arUNUYkqURts3vwRmAT44H2O9EQoA&authKey=w19mK3S6ftOLQjiLnxjOiOkTP0uHSk9c33zqrj9b%2BliDev0H42O%2B7WZCROCftet5&noverify=0&group_code=741616947" target="_blank" class="w-10 h-10 bg-gray-100 rounded-lg flex items-center justify-center hover:bg-gray-900 hover:text-white transition-colors">
+                            <i class="fab fa-qq"></i>
                         </a>
                     </div>
                 </div>
-                <hr class="divider divider-fade divider-dark my-4">
-                <div class="row align-items-center justify-content-md-between pb-4">
-                    <div class="col-md-6">
-                        <div class="copyright text-sm font-weight-bold text-center text-md-left">
-                            &copy; 2024 <a href="https://www.katomegumi.net" class="font-weight-bold" target="_blank">Katomegumi Inc.</a> All rights reserved
-                        </div>
-                    </div>
-                    <div class="col-md-6">
-                        <ul class="nav justify-content-center justify-content-md-end mt-3 mt-md-0">
-                            <li class="nav-item">
-                                <a class="nav-link" target="_blank" href="./privacy.html">隐私政策</a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link" target="_blank" href="./privacy.html">服务条款</a>
-                            </li>
-                        </ul>
-                    </div>
+                
+                <!-- Quick Links -->
+                <div>
+                    <h3 class="text-sm font-semibold text-gray-900 uppercase tracking-wider mb-4">快速链接</h3>
+                    <ul class="space-y-3">
+                        <li><a href="index.html" class="text-gray-600 hover:text-gray-900 transition-colors">首页</a></li>
+                        <li><a href="/docs/q/" target="_blank" class="text-gray-600 hover:text-gray-900 transition-colors">帮助文档</a></li>
+                        <li><a href="https://wwk.lanzoul.com/b023t8qmb" target="_blank" class="text-gray-600 hover:text-gray-900 transition-colors">下载中心</a></li>
+                        <li><a href="./privacy.html" target="_blank" class="text-gray-600 hover:text-gray-900 transition-colors">隐私协议</a></li>
+                    </ul>
+                </div>
+                
+                <!-- Resources -->
+                <div>
+                    <h3 class="text-sm font-semibold text-gray-900 uppercase tracking-wider mb-4">资源</h3>
+                    <ul class="space-y-3">
+                        <li><a href="https://space.bilibili.com/1163442661" target="_blank" class="text-gray-600 hover:text-gray-900 transition-colors">官方B站</a></li>
+                        <li><a href="https://blog.hpylan.com/" target="_blank" class="text-gray-600 hover:text-gray-900 transition-colors">官方博客</a></li>
+                        <li><a href="http://qm.qq.com/cgi-bin/qm/qr?_wv=1027&k=I_-arUNUYkqURts3vwRmAT44H2O9EQoA&authKey=w19mK3S6ftOLQjiLnxjOiOkTP0uHSk9c33zqrj9b%2BliDev0H42O%2B7WZCROCftet5&noverify=0&group_code=741616947" target="_blank" class="text-gray-600 hover:text-gray-900 transition-colors">官群答疑</a></li>
+                        <li><a href="https://www.wanjiadongli.com/?inviteCode=hpylan" target="_blank" class="text-gray-600 hover:text-gray-900 transition-colors">模组工具</a></li>
+                    </ul>
+                </div>
+            </div>
+            
+            <!-- Bottom Bar -->
+            <div class="pt-8 border-t border-gray-200">
+                <div class="flex flex-col md:flex-row justify-center items-center">
+                                 <a href="https://www.skykite.net/" target="_blank">重庆云鸢科技有限公司</a> &nbsp;|&nbsp;
+              <a href="https://beian.miit.gov.cn/" target="_blank">渝ICP备2026001056号-2</a> &nbsp;|&nbsp;
+             <a href="https://beian.mps.gov.cn/#/query/webSearch?code=50009802003065" target="_blank">渝公网安备50009802003065号</a> &nbsp;|&nbsp;
+             <a href="https://beian.miit.gov.cn/" target="_blank">增值电信业务许可证(ISP/IDC/CDN/VPN) B1-20260520</a>&nbsp;|&nbsp;
+             <a href="" target="_blank">软著登记号2024SR1102382</a>
                 </div>
             </div>
         </div>
     </footer>
-    </body>
 
+    <!-- Scripts -->
+    <script>
+        // Mobile menu toggle
+        const mobileMenuButton = document.getElementById('mobile-menu-button');
+        const mobileMenu = document.getElementById('mobile-menu');
+        
+        mobileMenuButton.addEventListener('click', () => {
+            mobileMenu.classList.toggle('hidden');
+        });
+        
+        // Smooth scroll for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+        
+        // Navbar scroll effect
+        let lastScroll = 0;
+        const navbar = document.querySelector('nav');
+        
+        window.addEventListener('scroll', () => {
+            const currentScroll = window.pageYOffset;
+            
+            if (currentScroll > 100) {
+                navbar.classList.add('shadow-lg');
+            } else {
+                navbar.classList.remove('shadow-lg');
+            }
+            
+            lastScroll = currentScroll;
+        });
+        
+        // Intersection Observer for fade-in animations
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+        
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('animate-fade-in');
+                    observer.unobserve(entry.target);
+                }
+            });
+        }, observerOptions);
+        
+        // Observe all sections
+        document.querySelectorAll('section').forEach(section => {
+            observer.observe(section);
+        });
+    </script>
+</body>
 </html>
