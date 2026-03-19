@@ -27,6 +27,8 @@ description: 收录了一些联机工具的一些常见问题
 
 <img src="./img/3.png" alt="Description" style="width:50%;height:50%;">
 
+下载使用修复版（自带运行时）：[好朋友联机工具\_1.4.4_x64-fixsetup.exe](https://cdn.skykite.net/好朋友联机工具_1.4.4_x64-fixsetup.exe)
+
 - 软件使用 Edge 默认浏览器框架，不能禁用 edge 浏览器。
 - 软件目前**不支持 win7 系统**，会提示应用程序无法正常启动。
   <img src="./img/5.png" alt="Description" style="width:50%;height:50%;">
