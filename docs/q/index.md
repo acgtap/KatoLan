@@ -12,7 +12,7 @@ description: 收录了一些联机工具的一些常见问题
 - 联机补丁资源站：<https://wp.cngame.wiki/?ref=eCAvlqjmr>
 - 联机教程：<https://space.bilibili.com/1163442661?spm_id_from=333.337.0.0>
 - **自建服务器节点教程：**<https://blog.csdn.net/m0_71727150/article/details/149505749>
-- **云服购买（享五折优惠）：**<https://www.rainyun.com/katolan_>
+- **云服购买（享五折优惠）：**<https://game.yunyuan.cloud>
 - 官方 QQ 群：**741616947**
 
 ### 1、下载软件、安装软件过程相关问题/防火墙及实时保护关闭教程？
@@ -160,7 +160,7 @@ NAT 穿透是如何工作的：[nat 穿透工作原理](https://tailscale.com/bl
 
 想和朋友畅玩，却不会捣鼓工具，或者无法使用，可以使用私服，目前支持 MC，泰拉，饥荒，星露谷，七日，僵毁等等，
 
-- 私服购买链接：<http://yy.meto.ink/auth/register?ref=REF168D613F>
+- 私服购买链接：<https://game.yunyuan.cloud>
 
 ### 11、增强模式
 
