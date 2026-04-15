@@ -20,7 +20,7 @@
     "build": "vitepress build docs",
     "build:github": "cross-env APP_BASE_PATH=/mm-notes/ npm run build",
     "lint": "prettier --write .",
-    "prepare": "husky install" 
+    "prepare": "husky install"
   },
   "devDependencies": {
     "@femm/prettier": "^1.0.1",
@@ -33,7 +33,7 @@
     "prettier": "^2.8.4",
     "sass": "^1.58.3",
     "sitemap": "^7.1.1",
-    "vitepress": "1.0.0-alpha.60",
+    "vitepress": "^1.6.4",
     "vue": "^3.2.47"
   },
   "lint-staged": {

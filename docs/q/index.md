@@ -10,7 +10,7 @@ description: 收录了一些联机工具的一些常见问题
 - 软件官网：<https://www.hpylan.com/>
 - 游戏资源网站：<https://www.cngame.wiki/?ref=eCAvlqjmr>
 - 联机补丁资源站：<https://wp.cngame.wiki/?ref=eCAvlqjmr>
-- 联机教程：<https://space.bilibili.com/1163442661?spm_id_from=333.337.0.0>
+- 联机视频教程：<https://space.bilibili.com/1163442661?spm_id_from=333.337.0.0>
 - **自建服务器节点教程：**<https://blog.csdn.net/m0_71727150/article/details/149505749>
 - **云服购买（享五折优惠）：**<https://www.rainyun.com/katolan_>
 - 官方 QQ 群：**741616947**
