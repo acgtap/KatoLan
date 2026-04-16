@@ -1,35 +1,32 @@
 ---
 layout: home
 layoutClass: 'm-home-layout'
-
+title: 好朋友联机工具 KatoLan 免费异地组网联机工具，快速、简洁、方便与朋友异地联机游戏！超简单的虚拟局域网！
 hero:
-  name: KatoLan
+  name: 好朋友联机工具
   text: 免费异地组网联机工具
-  tagline: 与朋友快速、简洁、方便的进行异地联机游戏！
+  tagline: Katolan与朋友快速、简洁、方便的进行异地联机游戏！
   image:
     src: /logo.png
-    alt: Katolan
+    alt: Katolan联机工具吉祥物樱核玩家
   actions:
     - text: 马上下载
-      link: https://lan.katomegumi.net/download.html
+      link: https://www.hpylan.cn
     - text: 使用文档
-      link: /use/index
+      link: /q/index
       theme: alt
 features:
   - icon: 🎮
     title: 联机游戏
     details: 与朋友远程虚拟局域网游戏，适配大量联机游戏<br/>不再为小伙伴不会而烦恼
-    link: /use/index
     linkText: 如何联机
   - icon: 💡
     title: 快速简洁
     details: 只需一分钟下载安装即可开始与你的朋友远程虚拟局域网联机！<br/>无需繁琐配置！
-    link: /use/index
     linkText: 加密方式
   - icon: 📖
     title: 万物互联
     details: 从任何地方访问您的计算机、NAS、家庭自动化、IP 摄像机、业余无线电或其他设备<br/>方便地共享文件和数据，设备组网必备！
-    link: /use/index
     linkText: 快速开始
   - icon: 🧰
     title: 让游戏加速变得更简单
@@ -60,10 +57,7 @@ features:
   justify-content: flex-end;
   align-items: end;
 }
-  .title :nth-child(1) {
-    /* pointer-events: auto; */
-    display: none;
-}
+
   table{
     margin:auto;
   }

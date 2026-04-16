@@ -10,14 +10,14 @@ const pageId = computed(() => route.path.replace('/mm-notes', ''))
 
 <template>
   <div class="copyright">
-    <img
+    <!-- <img
       v-if="!DEV"
       class="visitor"
       :src="`https://visitor-badge.laobi.icu/badge?page_id=katolan.${pageId}`"
       title="当前页面累计访问数"
       onerror="this.style.display='none'"
     />
-    Copyright © 2019-present maomao
+    Copyright © 2024 -->
   </div>
 </template>
 
