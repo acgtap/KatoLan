@@ -1,7 +1,7 @@
 import type { DefaultTheme } from 'vitepress'
 
 export const nav: DefaultTheme.Config['nav'] = [
-  { text: '官网首页', link: 'https://lan.katomegumi.net', activeMatch: '^/' },
+  { text: '官网首页', link: 'https://www.hpylan.cn', activeMatch: '^/' },
   { text: '文档首页', link: '/', activeMatch: '^/' },
   { text: '使用教程', link: '/help/index', activeMatch: '^/help/' },
   { text: '常见问题', link: '/q/index', activeMatch: '^/q/index' },

@@ -16,6 +16,7 @@ const DEV = inject('DEV') as Ref<boolean>
 <style scoped>
 .visitor {
   margin-left: 8px;
+   display: none;
 }
 @media (min-width: 768px) and (max-width: 920px) {
   .visitor {

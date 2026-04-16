@@ -7,7 +7,7 @@ description: 收录了一些联机工具的一些常见问题
 
 低版本可能会出现：`无法进行赞助` `无法加载服务器列表` `无增强模式` `版本不一致以至于无法连接`
 
-- 软件官网：<https://www.hpylan.com/>
+- 软件官网：<https://www.hpylan.cn/>
 - 游戏资源网站：<https://www.cngame.wiki/?ref=eCAvlqjmr>
 - 联机补丁资源站：<https://wp.cngame.wiki/?ref=eCAvlqjmr>
 - 联机视频教程：<https://space.bilibili.com/1163442661?spm_id_from=333.337.0.0>
@@ -19,7 +19,7 @@ description: 收录了一些联机工具的一些常见问题
 
 <img src="./img/1.png" style="width:50%;height:50%">
 
-- **软件官网**：[Katola 好朋友联机工具](https://www.hpylan.com/)
+- **软件官网**：[Katola 好朋友联机工具](https://www.hpylan.cn/)
 - **教程链接**：[katolan 好朋友联机工具保姆级下载流程（下载前必看）](https://blog.csdn.net/m0_71727150/article/details/148081847?)
 - 如果有安装其它**杀毒软件，在下载及平时使用之前请务必关闭**，软件网卡驱动每次启动时会自动运行，但会被杀毒软件或自带的病毒防护认定为病毒文件进行隔离。
 
@@ -27,7 +27,7 @@ description: 收录了一些联机工具的一些常见问题
 
 <img src="./img/3.png" alt="Description" style="width:50%;height:50%;">
 
-下载使用修复版（自带运行时）：[好朋友联机工具\_1.4.4_x64-fixsetup.exe](https://cdn.skykite.net/好朋友联机工具_1.4.4_x64-fixsetup.exe)
+下载使用修复版（自带运行时）：[好朋友联机工具\_1.4.4_x64-fixsetup.exe](https://cdn.skykite.net/好朋友联机工具_1.4.5_x64-fixsetup.exe)
 
 - 软件使用 Edge 默认浏览器框架，不能禁用 edge 浏览器。
 - 软件目前**不支持 win7 系统**，会提示应用程序无法正常启动。
@@ -56,16 +56,6 @@ description: 收录了一些联机工具的一些常见问题
 - 软件界面出现获取登录地址失败为**QQ 登录节点失效**，出现这种情况多半为**上游服务商服务器故障或升级**，通常情况一小时内解决，可以加入官方 QQ 群获取最新消息。
 - 如果能**加载出登录网页**但是提示服务器异常，通常为网络问题，建议多刷新几次或者换个网络。
 
-### 文明 6 找不到房间？
-
-- **重启游戏**重新创建局域网房间即可
-- **重启电脑**，一定要先进联机工具房间再进游戏
-- 依然不行就**多试几次**
-- 有时候是因为你的网络环境不好，可以尝试**换个网络环境**
-- 游戏**版本需要保持一致**，模组也需要保持一致
-- 还有问题可以加入官方群反馈
-- **卡在正在连接玩家？** 请检查模组是否一致、重新开启局域网游戏、关闭防火墙、切换网络
-
 ### 5、提示 NAT 类型为 Symmentric NAT?
 
 ##### NAT 类型的基本介绍及更改方法
@@ -90,7 +80,7 @@ NAT 穿透是如何工作的：[nat 穿透工作原理](https://tailscale.com/bl
 
 - 使用管理员权限运行软件会自动安装好软件，一定要关闭防火墙和杀毒软件，避免报错！
 - 联机工具必须自行通过浏览器下载安装，**不能好友之间互传**
-- 工具下载链接：[好朋友联机工具（KatoLan）](https://www.hpylan.com/)
+- 工具下载链接：[好朋友联机工具（KatoLan）](https://www.hpylan.cn/)
 
 ##### 卡在正在连接中安装驱动/正在卸载驱动/一直提示等待手动安装驱动?
 
@@ -162,7 +152,7 @@ NAT 穿透是如何工作的：[nat 穿透工作原理](https://tailscale.com/bl
 
 想和朋友畅玩，却不会捣鼓工具，或者无法使用，可以使用私服，目前支持 MC，泰拉，饥荒，星露谷，七日，僵毁等等，
 
-- 私服购买链接：<http://yy.meto.ink/auth/register?ref=REF168D613F>
+- 私服购买链接：<http://game.yunyuan.cloud/auth/register?ref=REF168D613F>
 
 ### 11、增强模式
 
