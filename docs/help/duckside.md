@@ -48,7 +48,7 @@ outline: [2, 3]
 
 进入游戏后，再打开 **好朋友联机工具（KatoLan）**，由房主创建一个房间，让朋友也一起加入进来。
 
-![创建 KatoLan 房间](/help-img/软件首页.png)
+![创建 KatoLan 房间](/help-img/rjsy.png)
 
 完成后，房主端的准备工作就基本完成了。
 
