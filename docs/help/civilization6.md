@@ -10,7 +10,7 @@ outline: [2, 3]
 
 # 文明 6 使用好朋友联机工具联机教程
 
-![文明 6 联机封面](/help-img/882a96c229514afdb0382d8924a52be9.png)
+![文明 6 联机封面](/help-img/文明6.png)
 
 本文介绍如何使用 **好朋友联机工具（KatoLan）** 与好友异地联机游玩 **文明 6（Civilization VI）**。
 
@@ -56,9 +56,9 @@ outline: [2, 3]
 - 换一个房间名
 - 换一个服务器节点
 
-![联机工具主页](/help-img/70d11fdeef8d4c6aa1df1d1b000ec225.png)
+![联机工具主页](/help-img/软件首页.png)
 
-![创建房间](/help-img/944c41775a9b4aad8843bd24a91ee2fc.png)
+![创建房间](/help-img/创建房间.png)
 
 ### 2. 好友加入房间
 
@@ -76,7 +76,7 @@ outline: [2, 3]
 
 这时建议先等待几秒，等所有人的延迟稳定后再进入游戏。
 
-![成员列表](/help-img/2daa4e1d9e8f4a6484f75741b4420c66.png)
+![成员列表](/help-img/好友列表.png)
 
 ## 三、进入文明 6 开始联机
 

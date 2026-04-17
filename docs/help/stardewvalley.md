@@ -10,7 +10,7 @@ outline: [2, 3]
 
 # 星露谷物语使用好朋友联机工具联机教程
 
-![星露谷联机封面](/help-img/cc69eba0efd44ac58bc375e1e77b81c1.png)
+![星露谷联机封面](/help-img/星露谷物语.png)
 
 本文介绍如何使用 **好朋友联机工具（KatoLan）** 和好友远程联机游玩 **星露谷物语（Stardew Valley）**。
 
@@ -20,9 +20,9 @@ outline: [2, 3]
 - 由一名玩家创建房间，其他玩家加入同一个房间。
 - 等房间内延迟稳定后再进游戏。
 
-![联机工具主页](/help-img/cfd2b72cb7684ea5955911fa52394fff.png)
+![联机工具主页](/help-img/软件首页.png)
 
-![房间列表](/help-img/583d870c0f874aaaaad00b9ef4034889.png)
+![房间列表](/help-img/好友列表.png)
 
 ## 二、房主创建合作农场
 
